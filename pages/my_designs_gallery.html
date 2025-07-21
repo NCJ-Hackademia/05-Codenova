@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Designs Gallery - Live N Fit</title>
+    <meta name="description" content="Manage your home design portfolio, collaborate with family, and connect with professionals to bring your AI-generated designs to life." />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Flivenfit5572back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+</head>
+<body class="bg-background font-body">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-card sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="homepage.html" class="flex items-center space-x-2">
+                        <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L4 12v18h8v-8h8v8h8V12L16 2zm0 4.5L24 14v14h-4v-8H12v8H8V14l8-7.5z"/>
+                            <circle cx="16" cy="18" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="font-headline font-bold text-xl text-primary">Live N Fit</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="homepage.html" class="text-text-secondary hover:text-primary transition-quick">Home</a>
+                    <a href="design_form_portal.html" class="text-text-secondary hover:text-primary transition-quick">Design</a>
+                    <a href="3d_immersion_theater.html" class="text-text-secondary hover:text-primary transition-quick">3D Viewer</a>
+                    <a href="price_evaluator_dashboard.html" class="text-text-secondary hover:text-primary transition-quick">Pricing</a>
+                    <a href="my_designs_gallery.html" class="text-primary font-semibold border-b-2 border-secondary">My Designs</a>
+                    <a href="technology_deep_dive.html" class="text-text-secondary hover:text-primary transition-quick">Technology</a>
+                </div>
+                
+                <!-- User Profile -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="User Profile" class="w-8 h-8 rounded-full object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                        <span class="text-sm font-semibold text-primary">Michael Johnson</span>
+                    </div>
+                    <a href="design_form_portal.html" class="btn-primary">New Design</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-primary hover:text-secondary transition-quick">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-surface border-t border-border">
+            <div class="px-4 py-2 space-y-2">
+                <a href="homepage.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Home</a>
+                <a href="design_form_portal.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Design</a>
+                <a href="3d_immersion_theater.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">3D Viewer</a>
+                <a href="price_evaluator_dashboard.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Pricing</a>
+                <a href="my_designs_gallery.html" class="block py-2 text-primary font-semibold">My Designs</a>
+                <a href="technology_deep_dive.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Technology</a>
+                <a href="design_form_portal.html" class="block py-2 mt-4 btn-primary text-center">New Design</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="bg-gradient-to-r from-primary-50 to-secondary-50 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
+                <div>
+                    <h1 class="text-display font-headline font-bold text-primary mb-2">My Design Portfolio</h1>
+                    <p class="text-body-lg text-text-secondary">Manage your home designs, collaborate with family, and bring your vision to life</p>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="flex space-x-6">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-secondary">8</div>
+                        <div class="text-sm text-text-secondary">Active Designs</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-accent">3</div>
+                        <div class="text-sm text-text-secondary">Shared Projects</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-success">2</div>
+                        <div class="text-sm text-text-secondary">In Progress</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter and Search Bar -->
+    <section class="py-6 bg-surface border-b border-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
+                <!-- Search and Filter -->
+                <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 flex-1">
+                    <div class="relative flex-1 max-w-md">
+                        <input type="text" placeholder="Search designs..." class="form-input pl-10" id="search-designs" />
+                        <svg class="w-5 h-5 text-text-secondary absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="flex space-x-2">
+                        <select class="form-input">
+                            <option>All Projects</option>
+                            <option>Active</option>
+                            <option>Completed</option>
+                            <option>Shared</option>
+                            <option>Archived</option>
+                        </select>
+                        
+                        <select class="form-input">
+                            <option>All Styles</option>
+                            <option>Modern</option>
+                            <option>Traditional</option>
+                            <option>Contemporary</option>
+                            <option>Farmhouse</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- View Toggle and Actions -->
+                <div class="flex items-center space-x-4">
+                    <div class="flex bg-gray-100 rounded-lg p-1">
+                        <button class="px-3 py-1 bg-white rounded-md shadow-sm text-sm font-medium text-primary">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                            </svg>
+                        </button>
+                        <button class="px-3 py-1 text-sm font-medium text-text-secondary hover:text-primary transition-quick">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <button class="text-text-secondary hover:text-primary transition-quick">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.414A1 1 0 013 6.707V4z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Gallery -->
+    <section class="py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Pinterest-style Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Design Card 1 - Featured -->
+                <div class="card group hover:shadow-premium transition-smooth">
+                    <div class="relative">
+                        <div class="aspect-video bg-gradient-to-br from-primary-100 to-secondary-100 rounded-lg mb-4 overflow-hidden">
+                            <img src="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Modern Family Home" class="w-full h-full object-cover group-hover:scale-105 transition-camera" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg'; this.onerror=null;" />
+                        </div>
+                        
+                        <!-- Status Badge -->
+                        <div class="absolute top-2 left-2 bg-success text-white text-xs font-semibold px-2 py-1 rounded-full">
+                            In Progress
+                        </div>
+                        
+                        <!-- Quick Actions -->
+                        <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-smooth">
+                            <div class="flex space-x-1">
+                                <button class="w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-quick">
+                                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                                    </svg>
+                                </button>
+                                <button class="w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-quick">
+                                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-start">
+                            <h3 class="font-headline font-bold text-lg text-primary">Modern Family Home</h3>
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                </svg>
+                                <span class="text-sm text-text-secondary">Featured</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between text-sm text-text-secondary">
+                            <span>2,400 sq ft</span>
+                            <span>$485K est.</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center text-xs text-text-secondary">
+                            <span>Created: Jan 15, 2025</span>
+                            <span>Modified: 2 days ago</span>
+                        </div>
+                        
+                        <!-- Progress Bar -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-text-secondary">Design Progress</span>
+                                <span class="text-secondary font-semibold">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-secondary h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Family Collaboration -->
+                        <div class="flex items-center justify-between pt-2 border-t border-border">
+                            <div class="flex -space-x-2">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Michael" class="w-6 h-6 rounded-full border-2 border-white object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                                <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Sarah" class="w-6 h-6 rounded-full border-2 border-white object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                                <div class="w-6 h-6 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-xs font-semibold text-text-secondary">
+                                    +2
+                                </div>
+                            </div>
+                            
+                            <div class="flex space-x-2">
+                                <button class="text-text-secondary hover:text-primary transition-quick">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                    </svg>
+                                </button>
+                                <button class="text-text-secondary hover:text-primary transition-quick">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design Card 2 -->
+                <div class="card group hover:shadow-premium transition-smooth">
+                    <div class="relative">
+                        <div class="aspect-video bg-gradient-to-br from-accent-100 to-primary-100 rounded-lg mb-4 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Contemporary Townhouse" class="w-full h-full object-cover group-hover:scale-105 transition-camera" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg'; this.onerror=null;" />
+                        </div>
+                        
+                        <div class="absolute top-2 left-2 bg-primary text-white text-xs font-semibold px-2 py-1 rounded-full">
+                            Completed
+                        </div>
+                        
+                        <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-smooth">
+                            <div class="flex space-x-1">
+                                <button class="w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-quick">
+                                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                                    </svg>
+                                </button>
+                                <button class="w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-quick">
+                                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <h3 class="font-headline font-bold text-lg text-primary">Contemporary Townhouse</h3>
+                        
+                        <div class="flex justify-between text-sm text-text-secondary">
+                            <span>1,800 sq ft</span>
+                            <span>$325K est.</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center text-xs text-text-secondary">
+                            <span>Created: Dec 8, 2024</span>
+                            <span>Completed: Jan 10, 2025</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between pt-2 border-t border-border">
+                            <div class="flex -space-x-2">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Michael" class="w-6 h-6 rounded-full border-2 border-white object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                            </div>
+                            
+                            <div class="flex items-center space-x-2 text-xs text-success">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>Ready to Build</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design Card 3 -->
+                <div class="card group hover:shadow-premium transition-smooth">
+                    <div class="relative">
+                        <div class="aspect-video bg-gradient-to-br from-secondary-100 to-accent-100 rounded-lg mb-4 overflow-hidden">
+                            <img src="https://images.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg" alt="Farmhouse Style" class="w-full h-full object-cover group-hover:scale-105 transition-camera" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop'; this.onerror=null;" />
+                        </div>
+                        
+                        <div class="absolute top-2 left-2 bg-warning text-white text-xs font-semibold px-2 py-1 rounded-full">
+                            Draft
+                        </div>
+                        
+                        <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-smooth">
+                            <div class="flex space-x-1">
+                                <button class="w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-quick">
+                                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                    </svg>
+                                </button>
+                                <button class="w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-quick">
+                                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <h3 class="font-headline font-bold text-lg text-primary">Farmhouse Style</h3>
+                        
+                        <div class="flex justify-between text-sm text-text-secondary">
+                            <span>3,200 sq ft</span>
+                            <span>$620K est.</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center text-xs text-text-secondary">
+                            <span>Created: Jan 18, 2025</span>
+                            <span>Modified: 1 hour ago</span>
+                        </div>
+                        
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-text-secondary">Design Progress</span>
+                                <span class="text-warning font-semibold">25%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-warning h-2 rounded-full" style="width: 25%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between pt-2 border-t border-border">
+                            <div class="flex -space-x-2">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Michael" class="w-6 h-6 rounded-full border-2 border-white object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                                <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Sarah" class="w-6 h-6 rounded-full border-2 border-white object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                            </div>
+                            
+                            <div class="flex space-x-2">
+                                <button class="text-text-secondary hover:text-primary transition-quick">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                    </svg>
+                                </button>
+                                <button class="text-text-secondary hover:text-primary transition-quick">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design Card 4 -->
+                <div class="card group hover:shadow-premium transition-smooth">
+                    <div class="relative">
+                        <div class="aspect-video bg-gradient-to-br from-primary-100 to-accent-100 rounded-lg mb-4 overflow-hidden">
+                            <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Minimalist Apartment" class="w-full h-full object-cover group-hover:scale-105 transition-camera" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2017/03/22/17/39/kitchen-2165756_1280.jpg'; this.onerror=null;" />
+                        </div>
+                        
+                        <div class="absolute top-2 left-2 bg-secondary text-white text-xs font-semibold px-2 py-1 rounded-full">
+                            Shared
+                        </div>
+                        
+                        <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-smooth">
+                            <div class="flex space-x-1">
+                                <button class="w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-quick">
+                                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                </button>
+                                <button class="w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-quick">
+                                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <h3 class="font-headline font-bold text-lg text-primary">Minimalist Apartment</h3>
+                        
+                        <div class="flex justify-between text-sm text-text-secondary">
+                            <span>1,200 sq ft</span>
+                            <span>$280K est.</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center text-xs text-text-secondary">
+                            <span>Created: Jan 5, 2025</span>
+                            <span>Shared: 5 days ago</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between pt-2 border-t border-border">
+                            <div class="flex -space-x-2">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Michael" class="w-6 h-6 rounded-full border-2 border-white object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616c0763c5e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Emma" class="w-6 h-6 rounded-full border-2 border-white object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                                <div class="w-6 h-6 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-xs font-semibold text-text-secondary">
+                                    +3
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-1 text-xs text-secondary">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"/>
+                                </svg>
+                                <span>12 shares</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add More Designs Card -->
+                <div class="card border-2 border-dashed border-border hover:border-secondary transition-smooth cursor-pointer group">
+                    <div class="aspect-video bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg mb-4 flex items-center justify-center">
+                        <div class="text-center">
+                            <svg class="w-12 h-12 text-text-secondary mx-auto mb-2 group-hover:text-secondary transition-quick" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                            </svg>
+                            <p class="text-sm font-semibold text-text-secondary group-hover:text-secondary transition-quick">Create New Design</p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <h3 class="font-headline font-bold text-lg text-primary mb-2">Start Fresh</h3>
+                        <p class="text-sm text-text-secondary mb-4">Begin a new home design project with our AI-powered tools</p>
+                        <a href="design_form_portal.html" class="btn-primary w-full">
+                            New Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Evolution Section -->
+    <section class="py-16 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-display font-headline font-bold text-primary mb-4">Design Evolution</h2>
+                <p class="text-body-lg text-text-secondary max-w-3xl mx-auto">
+                    Track how your vision has evolved over time and compare different iterations of your designs
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-elevated p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="font-headline font-bold text-xl text-primary">Modern Family Home - Evolution Timeline</h3>
+                    <button class="text-secondary hover:text-secondary-600 transition-quick">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Timeline -->
+                <div class="relative">
+                    <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-border"></div>
+                    
+                    <div class="space-y-8">
+                        <!-- Version 1 -->
+                        <div class="flex items-start space-x-6">
+                            <div class="w-8 h-8 bg-success rounded-full flex items-center justify-center flex-shrink-0 relative z-10">
+                                <span class="text-white text-sm font-bold">3</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-headline font-bold text-primary">Version 3.0 - Current</h4>
+                                    <span class="text-sm text-text-secondary">Jan 19, 2025</span>
+                                </div>
+                                <p class="text-text-secondary mb-4">Added master suite expansion and redesigned kitchen layout based on family feedback</p>
+                                <div class="grid grid-cols-3 gap-4">
+                                    <img src="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&dpr=2" alt="Version 3 Preview" class="w-full h-20 object-cover rounded-lg" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg'; this.onerror=null;" />
+                                    <div class="text-center">
+                                        <div class="text-lg font-bold text-primary">2,400</div>
+                                        <div class="text-xs text-text-secondary">sq ft</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-lg font-bold text-accent">$485K</div>
+                                        <div class="text-xs text-text-secondary">estimated</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Version 2 -->
+                        <div class="flex items-start space-x-6">
+                            <div class="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 relative z-10">
+                                <span class="text-white text-sm font-bold">2</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-headline font-bold text-primary">Version 2.0</h4>
+                                    <span class="text-sm text-text-secondary">Jan 16, 2025</span>
+                                </div>
+                                <p class="text-text-secondary mb-4">Optimized floor plan for better natural light and added home office space</p>
+                                <div class="grid grid-cols-3 gap-4">
+                                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=400&auto=format&fit=crop" alt="Version 2 Preview" class="w-full h-20 object-cover rounded-lg" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg'; this.onerror=null;" />
+                                    <div class="text-center">
+                                        <div class="text-lg font-bold text-primary">2,200</div>
+                                        <div class="text-xs text-text-secondary">sq ft</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-lg font-bold text-accent">$445K</div>
+                                        <div class="text-xs text-text-secondary">estimated</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Version 1 -->
+                        <div class="flex items-start space-x-6">
+                            <div class="w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center flex-shrink-0 relative z-10">
+                                <span class="text-white text-sm font-bold">1</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-headline font-bold text-primary">Version 1.0 - Original</h4>
+                                    <span class="text-sm text-text-secondary">Jan 15, 2025</span>
+                                </div>
+                                <p class="text-text-secondary mb-4">Initial AI-generated design based on family requirements and preferences</p>
+                                <div class="grid grid-cols-3 gap-4">
+                                    <img src="https://images.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg" alt="Version 1 Preview" class="w-full h-20 object-cover rounded-lg" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop'; this.onerror=null;" />
+                                    <div class="text-center">
+                                        <div class="text-lg font-bold text-primary">2,000</div>
+                                        <div class="text-xs text-text-secondary">sq ft</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-lg font-bold text-accent">$395K</div>
+                                        <div class="text-xs text-text-secondary">estimated</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Family Collaboration Section -->
+    <section class="py-16 bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-display font-headline font-bold text-primary mb-4">Family Collaboration</h2>
+                <p class="text-body-lg text-text-secondary max-w-3xl mx-auto">
+                    Turn home design into a shared family activity with comments, suggestions, and voting
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Recent Comments -->
+                <div class="card">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="font-headline font-bold text-xl text-primary">Recent Comments</h3>
+                        <span class="text-sm text-text-secondary">Modern Family Home</span>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Sarah Johnson" class="w-8 h-8 rounded-full object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-1">
+                                    <span class="font-semibold text-primary">Sarah Johnson</span>
+                                    <span class="text-xs text-text-secondary">2 hours ago</span>
+                                </div>
+                                <p class="text-text-secondary text-sm">I love the expanded master suite! Can we add a reading nook by the window?</p>
+                                <div class="flex items-center space-x-4 mt-2">
+                                    <button class="text-xs text-text-secondary hover:text-primary transition-quick">Reply</button>
+                                    <button class="text-xs text-text-secondary hover:text-primary transition-quick flex items-center space-x-1">
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                        </svg>
+                                        <span>3</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="David Johnson" class="w-8 h-8 rounded-full object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-1">
+                                    <span class="font-semibold text-primary">David Johnson</span>
+                                    <span class="text-xs text-text-secondary">5 hours ago</span>
+                                </div>
+                                <p class="text-text-secondary text-sm">The kitchen island looks perfect for family gatherings. Great work on this iteration!</p>
+                                <div class="flex items-center space-x-4 mt-2">
+                                    <button class="text-xs text-text-secondary hover:text-primary transition-quick">Reply</button>
+                                    <button class="text-xs text-text-secondary hover:text-primary transition-quick flex items-center space-x-1">
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                        </svg>
+                                        <span>7</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Emma Johnson" class="w-8 h-8 rounded-full object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-1">
+                                    <span class="font-semibold text-primary">Emma Johnson</span>
+                                    <span class="text-xs text-text-secondary">1 day ago</span>
+                                </div>
+                                <p class="text-text-secondary text-sm">Can we make my room bigger? I need more space for my art supplies! 🎨</p>
+                                <div class="flex items-center space-x-4 mt-2">
+                                    <button class="text-xs text-text-secondary hover:text-primary transition-quick">Reply</button>
+                                    <button class="text-xs text-text-secondary hover:text-primary transition-quick flex items-center space-x-1">
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                        </svg>
+                                        <span>5</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 pt-4 border-t border-border">
+                        <div class="flex items-center space-x-3">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Your Avatar" class="w-8 h-8 rounded-full object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                            <input type="text" placeholder="Add a comment..." class="flex-1 form-input" />
+                            <button class="btn-primary px-4 py-2">Post</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Family Voting -->
+                <div class="card">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="font-headline font-bold text-xl text-primary">Family Voting</h3>
+                        <span class="text-sm text-text-secondary">Kitchen Layout Options</span>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <!-- Option 1 -->
+                        <div class="border border-border rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <h4 class="font-semibold text-primary">Option A: Island Layout</h4>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-sm text-text-secondary">4 votes</span>
+                                    <button class="text-success hover:text-green-600 transition-quick">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="aspect-video bg-gradient-to-br from-primary-100 to-secondary-100 rounded-lg mb-3 overflow-hidden">
+                                <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Kitchen Island Layout" class="w-full h-full object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2017/03/22/17/39/kitchen-2165756_1280.jpg'; this.onerror=null;" />
+                            </div>
+                            
+                            <div class="flex items-center justify-between">
+                                <div class="flex -space-x-2">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Michael" class="w-6 h-6 rounded-full border-2 border-white object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                                    <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Sarah" class="w-6 h-6 rounded-full border-2 border-white object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="David" class="w-6 h-6 rounded-full border-2 border-white object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                                    <div class="w-6 h-6 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-xs font-semibold text-text-secondary">
+                                        +1
+                                    </div>
+                                </div>
+                                
+                                <div class="w-full max-w-32 bg-gray-200 rounded-full h-2 ml-4">
+                                    <div class="bg-success h-2 rounded-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Option 2 -->
+                        <div class="border border-border rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <h4 class="font-semibold text-primary">Option B: Galley Layout</h4>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-sm text-text-secondary">1 vote</span>
+                                    <button class="text-text-secondary hover:text-success transition-quick">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="aspect-video bg-gradient-to-br from-accent-100 to-primary-100 rounded-lg mb-3 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kitchen Galley Layout" class="w-full h-full object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg'; this.onerror=null;" />
+                            </div>
+                            
+                            <div class="flex items-center justify-between">
+                                <div class="flex -space-x-2">
+                                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Emma" class="w-6 h-6 rounded-full border-2 border-white object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                                </div>
+                                
+                                <div class="w-full max-w-32 bg-gray-200 rounded-full h-2 ml-4">
+                                    <div class="bg-warning h-2 rounded-full" style="width: 20%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 pt-4 border-t border-border text-center">
+                        <p class="text-sm text-text-secondary mb-3">Voting closes in 2 days</p>
+                        <button class="btn-secondary">Create New Poll</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Connect Section -->
+    <section class="py-16 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-display font-headline font-bold text-primary mb-4">Professional Connect</h2>
+                <p class="text-body-lg text-text-secondary max-w-3xl mx-auto">
+                    Connect with local contractors, architects, and interior designers to bring your AI-generated designs to life
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Recommended Contractors -->
+                <div class="card">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="font-headline font-bold text-lg text-primary">Recommended Contractors</h3>
+                        <svg class="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="BuildRight Construction" class="w-12 h-12 rounded-lg object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-primary">BuildRight Construction</h4>
+                                <p class="text-sm text-text-secondary">Specializes in modern family homes</p>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <div class="flex items-center">
+                                        <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <span class="text-sm font-semibold text-primary ml-1">4.9</span>
+                                    </div>
+                                    <span class="text-xs text-text-secondary">•</span>
+                                    <span class="text-xs text-text-secondary">127 reviews</span>
+                                </div>
+                            </div>
+                            <button class="btn-primary text-sm px-3 py-1">Connect</button>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Premier Home Builders" class="w-12 h-12 rounded-lg object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-primary">Premier Home Builders</h4>
+                                <p class="text-sm text-text-secondary">Custom homes & renovations</p>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <div class="flex items-center">
+                                        <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <span class="text-sm font-semibold text-primary ml-1">4.7</span>
+                                    </div>
+                                    <span class="text-xs text-text-secondary">•</span>
+                                    <span class="text-xs text-text-secondary">89 reviews</span>
+                                </div>
+                            </div>
+                            <button class="btn-primary text-sm px-3 py-1">Connect</button>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Craftsman Construction" class="w-12 h-12 rounded-lg object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-primary">Craftsman Construction</h4>
+                                <p class="text-sm text-text-secondary">Sustainable building practices</p>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <div class="flex items-center">
+                                        <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <span class="text-sm font-semibold text-primary ml-1">4.8</span>
+                                    </div>
+                                    <span class="text-xs text-text-secondary">•</span>
+                                    <span class="text-xs text-text-secondary">156 reviews</span>
+                                </div>
+                            </div>
+                            <button class="btn-primary text-sm px-3 py-1">Connect</button>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 pt-4 border-t border-border text-center">
+                        <button class="text-secondary hover:text-secondary-600 transition-quick text-sm font-semibold">
+                            View All Contractors →
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Interior Designers -->
+                <div class="card">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="font-headline font-bold text-lg text-primary">Interior Designers</h3>
+                        <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616c0763c5e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Modern Spaces Design" class="w-12 h-12 rounded-lg object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-primary">Modern Spaces Design</h4>
+                                <p class="text-sm text-text-secondary">Contemporary & minimalist styles</p>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <div class="flex items-center">
+                                        <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <span class="text-sm font-semibold text-primary ml-1">4.9</span>
+                                    </div>
+                                    <span class="text-xs text-text-secondary">•</span>
+                                    <span class="text-xs text-text-secondary">73 reviews</span>
+                                </div>
+                            </div>
+                            <button class="btn-secondary text-sm px-3 py-1">Connect</button>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Elegant Interiors" class="w-12 h-12 rounded-lg object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-primary">Elegant Interiors</h4>
+                                <p class="text-sm text-text-secondary">Luxury family home design</p>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <div class="flex items-center">
+                                        <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <span class="text-sm font-semibold text-primary ml-1">4.8</span>
+                                    </div>
+                                    <span class="text-xs text-text-secondary">•</span>
+                                    <span class="text-xs text-text-secondary">92 reviews</span>
+                                </div>
+                            </div>
+                            <button class="btn-secondary text-sm px-3 py-1">Connect</button>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Creative Living Studio" class="w-12 h-12 rounded-lg object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-primary">Creative Living Studio</h4>
+                                <p class="text-sm text-text-secondary">Family-focused design solutions</p>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <div class="flex items-center">
+                                        <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                        </svg>
+                                        <span class="text-sm font-semibold text-primary ml-1">4.7</span>
+                                    </div>
+                                    <span class="text-xs text-text-secondary">•</span>
+                                    <span class="text-xs text-text-secondary">64 reviews</span>
+                                </div>
+                            </div>
+                            <button class="btn-secondary text-sm px-3 py-1">Connect</button>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 pt-4 border-t border-border text-center">
+                        <button class="text-secondary hover:text-secondary-600 transition-quick text-sm font-semibold">
+                            View All Designers →
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Project Consultation -->
+                <div class="card">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="font-headline font-bold text-lg text-primary">Project Consultation</h3>
+                        <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                </svg>
+                            </div>
+                            <h4 class="font-semibold text-primary mb-2">Free Design Consultation</h4>
+                            <p class="text-sm text-text-secondary mb-4">
+                                Get expert advice on bringing your AI-generated design to life
+                            </p>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-sm text-text-secondary">30-minute video call</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-sm text-text-secondary">Design review & feedback</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-sm text-text-secondary">Professional recommendations</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-sm text-text-secondary">Next steps guidance</span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn-primary w-full">
+                            Schedule Consultation
+                        </button>
+                        
+                        <div class="text-center">
+                            <p class="text-xs text-text-secondary">
+                                Available Mon-Fri, 9 AM - 6 PM EST
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L4 12v18h8v-8h8v8h8V12L16 2zm0 4.5L24 14v14h-4v-8H12v8H8V14l8-7.5z"/>
+                            <circle cx="16" cy="18" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="font-headline font-bold text-xl">Live N Fit</span>
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        Transforming dream homes into reality through AI-powered design intelligence and immersive 3D visualization.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="javascript:void(0)" class="text-gray-400 hover:text-secondary transition-quick">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="text-gray-400 hover:text-secondary transition-quick">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="text-gray-400 hover:text-secondary transition-quick">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-headline font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="homepage.html" class="text-gray-300 hover:text-white transition-quick">Home</a></li>
+                        <li><a href="design_form_portal.html" class="text-gray-300 hover:text-white transition-quick">Design Portal</a></li>
+                        <li><a href="3d_immersion_theater.html" class="text-gray-300 hover:text-white transition-quick">3D Theater</a></li>
+                        <li><a href="price_evaluator_dashboard.html" class="text-gray-300 hover:text-white transition-quick">Price Evaluator</a></li>
+                        <li><a href="my_designs_gallery.html" class="text-gray-300 hover:text-white transition-quick">My Designs</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Technology -->
+                <div>
+                    <h3 class="font-headline font-bold mb-4">Technology</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="technology_deep_dive.html" class="text-gray-300 hover:text-white transition-quick">AI Technology</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">3D Visualization</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Cost Analysis</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Smart Planning</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">API Access</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h3 class="font-headline font-bold mb-4">Support</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Help Center</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Contact Us</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Design Consultation</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Community Forum</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">System Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-primary-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 Live N Fit. All Rights Reserved.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="javascript:void(0)" class="text-gray-400 hover:text-white text-sm transition-quick">Privacy Policy</a>
+                    <a href="javascript:void(0)" class="text-gray-400 hover:text-white text-sm transition-quick">Terms of Service</a>
+                    <a href="javascript:void(0)" class="text-gray-400 hover:text-white text-sm transition-quick">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Search functionality
+        document.getElementById('search-designs').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            // Add search logic here
+            console.log('Searching for:', searchTerm);
+        });
+    </script>
+</body>
+</html>

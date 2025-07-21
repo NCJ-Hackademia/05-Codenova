@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live N Fit - AI-Powered Smart Home Design Platform</title>
+    <meta name="description" content="Transform your dream home vision into reality with AI-powered 3D visualization, intelligent space planning, and predictive cost analysis. Design your perfect home today." />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Flivenfit5572back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+</head>
+<body class="bg-background font-body">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-card sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="homepage.html" class="flex items-center space-x-2">
+                        <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L4 12v18h8v-8h8v8h8V12L16 2zm0 4.5L24 14v14h-4v-8H12v8H8V14l8-7.5z"/>
+                            <circle cx="16" cy="18" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="font-headline font-bold text-xl text-primary">Live N Fit</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="homepage.html" class="text-primary font-semibold border-b-2 border-secondary">Home</a>
+                    <a href="design_form_portal.html" class="text-text-secondary hover:text-primary transition-quick">Design</a>
+                    <a href="3d_immersion_theater.html" class="text-text-secondary hover:text-primary transition-quick">3D Viewer</a>
+                    <a href="price_evaluator_dashboard.html" class="text-text-secondary hover:text-primary transition-quick">Pricing</a>
+                    <a href="my_designs_gallery.html" class="text-text-secondary hover:text-primary transition-quick">My Designs</a>
+                    <a href="technology_deep_dive.html" class="text-text-secondary hover:text-primary transition-quick">Technology</a>
+                </div>
+                
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="design_form_portal.html" class="btn-primary">Start Designing</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-primary hover:text-secondary transition-quick">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-surface border-t border-border">
+            <div class="px-4 py-2 space-y-2">
+                <a href="homepage.html" class="block py-2 text-primary font-semibold">Home</a>
+                <a href="design_form_portal.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Design</a>
+                <a href="3d_immersion_theater.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">3D Viewer</a>
+                <a href="price_evaluator_dashboard.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Pricing</a>
+                <a href="my_designs_gallery.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">My Designs</a>
+                <a href="technology_deep_dive.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Technology</a>
+                <a href="design_form_portal.html" class="block py-2 mt-4 btn-primary text-center">Start Designing</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="text-white space-y-8 animate-fade-in">
+                    <h1 class="text-hero font-headline font-bold leading-tight">
+                        Your family's unique lifestyle deserves a 
+                        <span class="text-accent">uniquely designed home</span>
+                    </h1>
+                    <p class="text-xl text-gray-100 leading-relaxed">
+                        Transform your dream home vision into reality with AI-powered 3D visualization, 
+                        intelligent space planning, and predictive cost analysis. Professional-grade design 
+                        intelligence, simplified for real families.
+                    </p>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="design_form_portal.html" class="bg-accent text-primary font-semibold py-4 px-8 rounded-lg shadow-elevated hover:shadow-premium transition-smooth text-center">
+                            Design My Home
+                        </a>
+                        <a href="#demo-section" class="border-2 border-white text-white font-semibold py-4 px-8 rounded-lg hover:bg-white hover:text-primary transition-smooth text-center">
+                            See How It Works
+                        </a>
+                    </div>
+                    
+                    <!-- Trust Indicators -->
+                    <div class="flex flex-wrap gap-8 pt-8 border-t border-white/20">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-accent">50,000+</div>
+                            <div class="text-sm text-gray-200">Homes Designed</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-accent">23%</div>
+                            <div class="text-sm text-gray-200">Average Cost Savings</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-accent">4.9/5</div>
+                            <div class="text-sm text-gray-200">User Rating</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right 3D Preview -->
+                <div class="relative animate-slide-up">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-premium">
+                        <div class="aspect-square bg-gradient-to-br from-white/20 to-white/5 rounded-xl overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="3D Home Preview" class="w-full h-full object-cover rounded-xl" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg'; this.onerror=null;" />
+                            
+                            <!-- 3D Controls Overlay -->
+                            <div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm font-semibold text-primary">Interactive 3D Preview</span>
+                                    <div class="flex space-x-2">
+                                        <button class="w-8 h-8 bg-secondary text-white rounded-full flex items-center justify-center hover:bg-secondary-600 transition-quick">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </button>
+                                        <button class="w-8 h-8 bg-accent text-primary rounded-full flex items-center justify-center hover:bg-accent-600 transition-quick">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Style Selector -->
+                        <div class="mt-6 flex justify-center space-x-4">
+                            <button class="px-4 py-2 bg-accent text-primary rounded-lg font-semibold text-sm">Modern</button>
+                            <button class="px-4 py-2 bg-white/20 text-white rounded-lg font-semibold text-sm hover:bg-white/30 transition-quick">Traditional</button>
+                            <button class="px-4 py-2 bg-white/20 text-white rounded-lg font-semibold text-sm hover:bg-white/30 transition-quick">Contemporary</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section id="demo-section" class="py-20 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-display font-headline font-bold text-primary mb-4">
+                    See Your Dream Home in Minutes
+                </h2>
+                <p class="text-body-lg text-text-secondary max-w-3xl mx-auto">
+                    Experience the power of AI-driven design. Input your basic preferences and watch as our intelligent system creates personalized floor plans tailored to your family's lifestyle.
+                </p>
+            </div>
+            
+            <!-- Quick Demo Form -->
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-2xl p-8 shadow-elevated">
+                    <h3 class="text-heading font-headline font-bold text-primary mb-6 text-center">
+                        Try Our AI Design Assistant
+                    </h3>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <!-- Family Size -->
+                        <div class="space-y-3">
+                            <label class="block text-sm font-semibold text-primary">Family Size</label>
+                            <select class="form-input">
+                                <option>Select size</option>
+                                <option>1-2 people</option>
+                                <option>3-4 people</option>
+                                <option>5+ people</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Style Preference -->
+                        <div class="space-y-3">
+                            <label class="block text-sm font-semibold text-primary">Style Preference</label>
+                            <select class="form-input">
+                                <option>Select style</option>
+                                <option>Modern</option>
+                                <option>Traditional</option>
+                                <option>Contemporary</option>
+                                <option>Farmhouse</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Budget Range -->
+                        <div class="space-y-3">
+                            <label class="block text-sm font-semibold text-primary">Budget Range</label>
+                            <select class="form-input">
+                                <option>Select budget</option>
+                                <option>Under $200K</option>
+                                <option>$200K - $400K</option>
+                                <option>$400K - $600K</option>
+                                <option>$600K+</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn-primary text-lg px-12 py-4">
+                            Generate AI Floor Plan
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Demo Results Preview -->
+                <div class="mt-12 grid md:grid-cols-2 gap-8">
+                    <div class="card">
+                        <div class="aspect-video bg-gradient-to-br from-primary-100 to-secondary-100 rounded-lg mb-4 overflow-hidden">
+                            <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="AI Generated Floor Plan" class="w-full h-full object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2017/03/22/17/39/kitchen-2165756_1280.jpg'; this.onerror=null;" />
+                        </div>
+                        <h4 class="font-headline font-bold text-lg text-primary mb-2">AI-Generated Floor Plan</h4>
+                        <p class="text-text-secondary">Intelligent layout optimization based on your family's needs and lifestyle patterns.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="aspect-video bg-gradient-to-br from-accent-100 to-primary-100 rounded-lg mb-4 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="3D Visualization" class="w-full h-full object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg'; this.onerror=null;" />
+                        </div>
+                        <h4 class="font-headline font-bold text-lg text-primary mb-2">Immersive 3D Preview</h4>
+                        <p class="text-text-secondary">Walk through your future home with photorealistic 3D visualization and virtual reality support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intelligent Design Process -->
+    <section class="py-20 bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-display font-headline font-bold text-primary mb-4">
+                    Intelligent Design Process
+                </h2>
+                <p class="text-body-lg text-text-secondary max-w-3xl mx-auto">
+                    Our AI-powered platform transforms your vision into reality through four intelligent steps, 
+                    each designed to optimize your home for how you actually live.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Step 1: Smart Input -->
+                <div class="card text-center group hover:scale-105 transition-smooth">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-secondary-600 transition-smooth">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-headline font-bold text-lg text-primary mb-3">Smart Input</h3>
+                    <p class="text-text-secondary">Tell us about your family, lifestyle, and preferences through our conversational design wizard.</p>
+                    <div class="mt-4 text-sm text-secondary font-semibold">Step 1</div>
+                </div>
+                
+                <!-- Step 2: AI Floor Plans -->
+                <div class="card text-center group hover:scale-105 transition-smooth">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary-600 transition-smooth">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-headline font-bold text-lg text-primary mb-3">AI Floor Plans</h3>
+                    <p class="text-text-secondary">Our AI generates optimized floor plans that maximize space efficiency and family flow patterns.</p>
+                    <div class="mt-4 text-sm text-secondary font-semibold">Step 2</div>
+                </div>
+                
+                <!-- Step 3: 3D Visualization -->
+                <div class="card text-center group hover:scale-105 transition-smooth">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-accent-600 transition-smooth">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-headline font-bold text-lg text-primary mb-3">3D Visualization</h3>
+                    <p class="text-text-secondary">Experience your future home through immersive 3D walkthroughs with photorealistic rendering.</p>
+                    <div class="mt-4 text-sm text-secondary font-semibold">Step 3</div>
+                </div>
+                
+                <!-- Step 4: Cost Analysis -->
+                <div class="card text-center group hover:scale-105 transition-smooth">
+                    <div class="w-16 h-16 bg-success rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-600 transition-smooth">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/>
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-headline font-bold text-lg text-primary mb-3">Cost Analysis</h3>
+                    <p class="text-text-secondary">Get detailed cost breakdowns with market intelligence and optimization suggestions to maximize value.</p>
+                    <div class="mt-4 text-sm text-secondary font-semibold">Step 4</div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="design_form_portal.html" class="btn-primary text-lg px-8 py-4">
+                    Start Your Design Journey
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Carousel -->
+    <section class="py-20 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-display font-headline font-bold text-primary mb-4">
+                    Real Families, Real Results
+                </h2>
+                <p class="text-body-lg text-text-secondary max-w-3xl mx-auto">
+                    Discover how Live N Fit has transformed dream homes into reality for thousands of families, 
+                    delivering both stunning designs and significant cost savings.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Success Story 1 -->
+                <div class="card group hover:shadow-premium transition-smooth">
+                    <div class="aspect-video bg-gradient-to-br from-primary-100 to-secondary-100 rounded-lg mb-6 overflow-hidden">
+                        <img src="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Johnson Family Home" class="w-full h-full object-cover group-hover:scale-105 transition-camera" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg'; this.onerror=null;" />
+                    </div>
+                    
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Johnson Family" class="w-12 h-12 rounded-full object-cover mr-4" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                        <div>
+                            <h4 class="font-headline font-bold text-primary">The Johnson Family</h4>
+                            <p class="text-sm text-text-secondary">Austin, Texas</p>
+                        </div>
+                    </div>
+                    
+                    <blockquote class="text-text-secondary mb-4 italic">
+                        "Live N Fit helped us design our dream 4-bedroom home while staying 18% under budget. 
+                        The AI suggestions for our kids' play areas were brilliant!"
+                    </blockquote>
+                    
+                    <div class="flex justify-between items-center pt-4 border-t border-border">
+                        <div class="text-center">
+                            <div class="font-bold text-success">$47K</div>
+                            <div class="text-xs text-text-secondary">Saved</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-bold text-primary">2,400 sq ft</div>
+                            <div class="text-xs text-text-secondary">Optimized</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-bold text-secondary">6 weeks</div>
+                            <div class="text-xs text-text-secondary">Design Time</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Success Story 2 -->
+                <div class="card group hover:shadow-premium transition-smooth">
+                    <div class="aspect-video bg-gradient-to-br from-accent-100 to-primary-100 rounded-lg mb-6 overflow-hidden">
+                        <img src="https://images.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_1280.jpg" alt="Chen Family Home" class="w-full h-full object-cover group-hover:scale-105 transition-camera" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop'; this.onerror=null;" />
+                    </div>
+                    
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Chen Family" class="w-12 h-12 rounded-full object-cover mr-4" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                        <div>
+                            <h4 class="font-headline font-bold text-primary">The Chen Family</h4>
+                            <p class="text-sm text-text-secondary">San Francisco, CA</p>
+                        </div>
+                    </div>
+                    
+                    <blockquote class="text-text-secondary mb-4 italic">
+                        "The 3D visualization was incredible! We could see exactly how our multi-generational 
+                        home would work before breaking ground. Saved us from costly changes."
+                    </blockquote>
+                    
+                    <div class="flex justify-between items-center pt-4 border-t border-border">
+                        <div class="text-center">
+                            <div class="font-bold text-success">$62K</div>
+                            <div class="text-xs text-text-secondary">Saved</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-bold text-primary">3,200 sq ft</div>
+                            <div class="text-xs text-text-secondary">Optimized</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-bold text-secondary">8 weeks</div>
+                            <div class="text-xs text-text-secondary">Design Time</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Success Story 3 -->
+                <div class="card group hover:shadow-premium transition-smooth">
+                    <div class="aspect-video bg-gradient-to-br from-secondary-100 to-accent-100 rounded-lg mb-6 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Rodriguez Family Home" class="w-full h-full object-cover group-hover:scale-105 transition-camera" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg'; this.onerror=null;" />
+                    </div>
+                    
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616c0763c5e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Rodriguez Family" class="w-12 h-12 rounded-full object-cover mr-4" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                        <div>
+                            <h4 class="font-headline font-bold text-primary">The Rodriguez Family</h4>
+                            <p class="text-sm text-text-secondary">Denver, Colorado</p>
+                        </div>
+                    </div>
+                    
+                    <blockquote class="text-text-secondary mb-4 italic">
+                        "As empty nesters, we needed to downsize smartly. Live N Fit's AI created a perfect 
+                        2-bedroom layout that feels spacious and luxurious."
+                    </blockquote>
+                    
+                    <div class="flex justify-between items-center pt-4 border-t border-border">
+                        <div class="text-center">
+                            <div class="font-bold text-success">$34K</div>
+                            <div class="text-xs text-text-secondary">Saved</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-bold text-primary">1,800 sq ft</div>
+                            <div class="text-xs text-text-secondary">Optimized</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-bold text-secondary">4 weeks</div>
+                            <div class="text-xs text-text-secondary">Design Time</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="my_designs_gallery.html" class="btn-secondary">
+                    View More Success Stories
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Preview -->
+    <section class="py-20 bg-gradient-to-br from-primary-50 to-secondary-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-display font-headline font-bold text-primary mb-4">
+                    Powered by Advanced AI Technology
+                </h2>
+                <p class="text-body-lg text-text-secondary max-w-3xl mx-auto">
+                    Our cutting-edge artificial intelligence and reinforcement learning algorithms work like a team of expert architects, 
+                    analyzing thousands of design patterns to create your perfect home.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Technology Explanation -->
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-headline font-bold text-lg text-primary mb-2">Smart Pattern Recognition</h3>
+                            <p class="text-text-secondary">Like a master architect who's studied thousands of homes, our AI recognizes optimal design patterns and applies them to your unique situation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-headline font-bold text-lg text-primary mb-2">Reinforcement Learning</h3>
+                            <p class="text-text-secondary">Our system continuously learns from successful designs, getting smarter with every home created to optimize space utilization and family flow.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                                <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-headline font-bold text-lg text-primary mb-2">Predictive Cost Analysis</h3>
+                            <p class="text-text-secondary">Think of it as having a crystal ball for construction costs - our AI predicts expenses with remarkable accuracy using real market data.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-6">
+                        <a href="technology_deep_dive.html" class="text-secondary font-semibold hover:text-secondary-600 transition-quick">
+                            Learn more about our technology →
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Technology Visualization -->
+                <div class="relative">
+                    <div class="bg-white rounded-2xl p-8 shadow-premium">
+                        <div class="aspect-square bg-gradient-to-br from-primary-100 via-secondary-100 to-accent-100 rounded-xl overflow-hidden relative">
+                            <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="AI Technology Visualization" class="w-full h-full object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2018/05/08/08/44/artificial-intelligence-3382507_1280.jpg'; this.onerror=null;" />
+                            
+                            <!-- AI Processing Indicators -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-6">
+                                <div class="text-white space-y-2">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+                                        <span class="text-sm">Analyzing family patterns...</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2 h-2 bg-secondary rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
+                                        <span class="text-sm">Optimizing space utilization...</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2 h-2 bg-success rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+                                        <span class="text-sm">Calculating cost projections...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Stats -->
+                    <div class="absolute -top-4 -right-4 bg-white rounded-lg shadow-elevated p-4">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-primary">99.2%</div>
+                            <div class="text-xs text-text-secondary">Accuracy Rate</div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -bottom-4 -left-4 bg-white rounded-lg shadow-elevated p-4">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-secondary">< 30s</div>
+                            <div class="text-xs text-text-secondary">Processing Time</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary text-white">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-display font-headline font-bold mb-6">
+                Ready to Design Your Dream Home?
+            </h2>
+            <p class="text-body-lg mb-8 text-gray-100">
+                Join thousands of families who have transformed their vision into reality with Live N Fit's 
+                AI-powered design platform. Start your journey today and see your dream home come to life.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="design_form_portal.html" class="bg-accent text-primary font-semibold py-4 px-8 rounded-lg shadow-elevated hover:shadow-premium transition-smooth">
+                    Start Designing Now
+                </a>
+                <a href="3d_immersion_theater.html" class="border-2 border-white text-white font-semibold py-4 px-8 rounded-lg hover:bg-white hover:text-primary transition-smooth">
+                    Explore 3D Gallery
+                </a>
+            </div>
+            
+            <div class="mt-8 text-sm text-gray-300">
+                No credit card required • Free design consultation • 30-day money-back guarantee
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L4 12v18h8v-8h8v8h8V12L16 2zm0 4.5L24 14v14h-4v-8H12v8H8V14l8-7.5z"/>
+                            <circle cx="16" cy="18" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="font-headline font-bold text-xl">Live N Fit</span>
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        Transforming dream homes into reality through AI-powered design intelligence and immersive 3D visualization.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="javascript:void(0)" class="text-gray-400 hover:text-secondary transition-quick">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="text-gray-400 hover:text-secondary transition-quick">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="text-gray-400 hover:text-secondary transition-quick">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-headline font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="homepage.html" class="text-gray-300 hover:text-white transition-quick">Home</a></li>
+                        <li><a href="design_form_portal.html" class="text-gray-300 hover:text-white transition-quick">Design Portal</a></li>
+                        <li><a href="3d_immersion_theater.html" class="text-gray-300 hover:text-white transition-quick">3D Theater</a></li>
+                        <li><a href="price_evaluator_dashboard.html" class="text-gray-300 hover:text-white transition-quick">Price Evaluator</a></li>
+                        <li><a href="my_designs_gallery.html" class="text-gray-300 hover:text-white transition-quick">My Designs</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Technology -->
+                <div>
+                    <h3 class="font-headline font-bold mb-4">Technology</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="technology_deep_dive.html" class="text-gray-300 hover:text-white transition-quick">AI Technology</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">3D Visualization</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Cost Analysis</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Smart Planning</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">API Access</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h3 class="font-headline font-bold mb-4">Support</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Help Center</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Contact Us</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Design Consultation</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Community Forum</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">System Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-primary-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 Live N Fit. All Rights Reserved.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="javascript:void(0)" class="text-gray-400 hover:text-white text-sm transition-quick">Privacy Policy</a>
+                    <a href="javascript:void(0)" class="text-gray-400 hover:text-white text-sm transition-quick">Terms of Service</a>
+                    <a href="javascript:void(0)" class="text-gray-400 hover:text-white text-sm transition-quick">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

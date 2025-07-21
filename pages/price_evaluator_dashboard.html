@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Price Evaluator Dashboard - Live N Fit</title>
+    <meta name="description" content="Transform cost anxiety into informed confidence with Live N Fit's transparent pricing analysis, AI-powered cost optimization, and comprehensive budget planning tools." />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Flivenfit5572back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+</head>
+<body class="bg-background font-body">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-card sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="homepage.html" class="flex items-center space-x-2">
+                        <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L4 12v18h8v-8h8v8h8V12L16 2zm0 4.5L24 14v14h-4v-8H12v8H8V14l8-7.5z"/>
+                            <circle cx="16" cy="18" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="font-headline font-bold text-xl text-primary">Live N Fit</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="homepage.html" class="text-text-secondary hover:text-primary transition-quick">Home</a>
+                    <a href="design_form_portal.html" class="text-text-secondary hover:text-primary transition-quick">Design</a>
+                    <a href="3d_immersion_theater.html" class="text-text-secondary hover:text-primary transition-quick">3D Viewer</a>
+                    <a href="price_evaluator_dashboard.html" class="text-primary font-semibold border-b-2 border-secondary">Pricing</a>
+                    <a href="my_designs_gallery.html" class="text-text-secondary hover:text-primary transition-quick">My Designs</a>
+                    <a href="technology_deep_dive.html" class="text-text-secondary hover:text-primary transition-quick">Technology</a>
+                </div>
+                
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="design_form_portal.html" class="btn-primary">Start Designing</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-primary hover:text-secondary transition-quick">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-surface border-t border-border">
+            <div class="px-4 py-2 space-y-2">
+                <a href="homepage.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Home</a>
+                <a href="design_form_portal.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Design</a>
+                <a href="3d_immersion_theater.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">3D Viewer</a>
+                <a href="price_evaluator_dashboard.html" class="block py-2 text-primary font-semibold">Pricing</a>
+                <a href="my_designs_gallery.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">My Designs</a>
+                <a href="technology_deep_dive.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Technology</a>
+                <a href="design_form_portal.html" class="block py-2 mt-4 btn-primary text-center">Start Designing</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="bg-gradient-to-r from-primary-50 to-secondary-50 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-display font-headline font-bold text-primary mb-4">
+                    Intelligent Cost Analysis
+                </h1>
+                <p class="text-body-lg text-text-secondary max-w-3xl mx-auto">
+                    Transform cost anxiety into informed confidence with transparent pricing breakdowns, 
+                    AI-powered optimization suggestions, and comprehensive budget planning tools.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Dashboard -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Total Cost Overview -->
+            <div class="mb-12">
+                <div class="card bg-gradient-to-r from-primary to-secondary text-white">
+                    <div class="grid md:grid-cols-3 gap-8 items-center">
+                        <div class="md:col-span-2">
+                            <h2 class="text-heading font-headline font-bold mb-2">Total Project Estimate</h2>
+                            <div class="text-hero font-bold mb-4">$347,500</div>
+                            <p class="text-gray-100 mb-4">
+                                AI-optimized design for 2,400 sq ft modern family home with smart integration
+                            </p>
+                            <div class="flex flex-wrap gap-4">
+                                <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
+                                    <div class="text-sm text-gray-200">Cost per sq ft</div>
+                                    <div class="font-bold">$145</div>
+                                </div>
+                                <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
+                                    <div class="text-sm text-gray-200">Market comparison</div>
+                                    <div class="font-bold text-accent">23% below average</div>
+                                </div>
+                                <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
+                                    <div class="text-sm text-gray-200">Potential savings</div>
+                                    <div class="font-bold text-accent">$87,200</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-32 h-32 mx-auto bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">
+                                <svg class="w-16 h-16 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/>
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <button class="btn-secondary bg-white text-primary hover:bg-gray-100">
+                                Export Report
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cost Breakdown Grid -->
+            <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                <!-- Interactive Cost Breakdown -->
+                <div class="card">
+                    <h3 class="font-headline font-bold text-heading text-primary mb-6">Interactive Cost Breakdown</h3>
+                    
+                    <!-- Construction Costs -->
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-3 cursor-pointer" onclick="toggleSection('construction')">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 012 0v1.586l2.293-2.293a1 1 0 111.414 1.414L6.414 15H8a1 1 0 010 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 010-2h1.586l-2.293-2.293a1 1 0 111.414-1.414L15 13.586V12a1 1 0 011-1z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="font-semibold">Construction Costs</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="font-bold text-primary">$198,750</span>
+                                <svg id="construction-arrow" class="w-4 h-4 text-text-secondary transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 mb-3">
+                            <div class="bg-secondary h-2 rounded-full" style="width: 57%"></div>
+                        </div>
+                        <div id="construction-details" class="hidden space-y-3 pl-8 border-l-2 border-secondary-100">
+                            <div class="flex justify-between">
+                                <span class="text-text-secondary">Foundation & Framing</span>
+                                <span class="font-semibold">$89,500</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-text-secondary">Roofing & Exterior</span>
+                                <span class="font-semibold">$67,250</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-text-secondary">Electrical & Plumbing</span>
+                                <span class="font-semibold">$42,000</span>
+                            </div>
+                            <div class="bg-success-50 border border-success-200 rounded-lg p-3 mt-3">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-sm text-success font-semibold">12% below regional average</span>
+                                </div>
+                                <p class="text-sm text-success-700 mt-1">Optimized layout reduces material waste</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Design Elements -->
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-3 cursor-pointer" onclick="toggleSection('design')">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                                </svg>
+                                <span class="font-semibold">Design Elements</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="font-bold text-primary">$89,250</span>
+                                <svg id="design-arrow" class="w-4 h-4 text-text-secondary transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 mb-3">
+                            <div class="bg-primary h-2 rounded-full" style="width: 26%"></div>
+                        </div>
+                        <div id="design-details" class="hidden space-y-3 pl-8 border-l-2 border-primary-100">
+                            <div class="flex justify-between">
+                                <span class="text-text-secondary">Kitchen & Appliances</span>
+                                <span class="font-semibold">$45,000</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-text-secondary">Flooring & Finishes</span>
+                                <span class="font-semibold">$28,750</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-text-secondary">Lighting & Fixtures</span>
+                                <span class="font-semibold">$15,500</span>
+                            </div>
+                            <div class="bg-accent-50 border border-accent-200 rounded-lg p-3 mt-3">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-sm text-accent font-semibold">Kitchen costs 15% below average</span>
+                                </div>
+                                <p class="text-sm text-accent-700 mt-1">Optimized layout maximizes efficiency</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Smart Home Integration -->
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-3 cursor-pointer" onclick="toggleSection('smart')">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                                </svg>
+                                <span class="font-semibold">Smart Home Integration</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="font-bold text-primary">$34,500</span>
+                                <svg id="smart-arrow" class="w-4 h-4 text-text-secondary transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 mb-3">
+                            <div class="bg-accent h-2 rounded-full" style="width: 10%"></div>
+                        </div>
+                        <div id="smart-details" class="hidden space-y-3 pl-8 border-l-2 border-accent-100">
+                            <div class="flex justify-between">
+                                <span class="text-text-secondary">Security & Automation</span>
+                                <span class="font-semibold">$18,500</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-text-secondary">Climate Control</span>
+                                <span class="font-semibold">$12,000</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-text-secondary">Entertainment Systems</span>
+                                <span class="font-semibold">$4,000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Regional Adjustments -->
+                    <div>
+                        <div class="flex justify-between items-center mb-3 cursor-pointer" onclick="toggleSection('regional')">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="font-semibold">Regional Adjustments</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="font-bold text-primary">$25,000</span>
+                                <svg id="regional-arrow" class="w-4 h-4 text-text-secondary transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 mb-3">
+                            <div class="bg-success h-2 rounded-full" style="width: 7%"></div>
+                        </div>
+                        <div id="regional-details" class="hidden space-y-3 pl-8 border-l-2 border-success-100">
+                            <div class="flex justify-between">
+                                <span class="text-text-secondary">Labor Cost Premium</span>
+                                <span class="font-semibold">$18,000</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-text-secondary">Permit & Inspection Fees</span>
+                                <span class="font-semibold">$4,500</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-text-secondary">Material Shipping</span>
+                                <span class="font-semibold">$2,500</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cost Optimization Suggestions -->
+                <div class="card">
+                    <h3 class="font-headline font-bold text-heading text-primary mb-6">AI Cost Optimization</h3>
+                    
+                    <div class="space-y-4">
+                        <!-- Optimization Suggestion 1 -->
+                        <div class="bg-success-50 border border-success-200 rounded-lg p-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-success rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-success-800 mb-1">Kitchen Layout Optimization</h4>
+                                    <p class="text-sm text-success-700 mb-2">
+                                        Galley layout reduces plumbing runs by 40%, saving $8,500 without compromising functionality.
+                                    </p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-semibold text-success-800">Potential Savings: $8,500</span>
+                                        <button class="text-xs bg-success text-white px-3 py-1 rounded-full hover:bg-success-600 transition-quick">
+                                            Apply
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Optimization Suggestion 2 -->
+                        <div class="bg-accent-50 border border-accent-200 rounded-lg p-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-accent-800 mb-1">Material Timing Strategy</h4>
+                                    <p class="text-sm text-accent-700 mb-2">
+                                        Ordering materials in Q1 2025 takes advantage of seasonal pricing, saving 12% on lumber costs.
+                                    </p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-semibold text-accent-800">Potential Savings: $12,400</span>
+                                        <button class="text-xs bg-accent text-white px-3 py-1 rounded-full hover:bg-accent-600 transition-quick">
+                                            Schedule
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Optimization Suggestion 3 -->
+                        <div class="bg-secondary-50 border border-secondary-200 rounded-lg p-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-secondary-800 mb-1">Smart Home Bundle Discount</h4>
+                                    <p class="text-sm text-secondary-700 mb-2">
+                                        Bundling security and climate systems with preferred vendor reduces installation costs by 18%.
+                                    </p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-semibold text-secondary-800">Potential Savings: $6,200</span>
+                                        <button class="text-xs bg-secondary text-white px-3 py-1 rounded-full hover:bg-secondary-600 transition-quick">
+                                            Contact Vendor
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-primary-50 border border-primary-200 rounded-lg">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="font-semibold text-primary">Total Optimization Potential</h4>
+                                <p class="text-sm text-primary-700">Apply all suggestions to maximize savings</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-primary">$27,100</div>
+                                <div class="text-sm text-primary-600">7.8% total savings</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Adjustment Tools -->
+            <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                <!-- Quality Level Adjustments -->
+                <div class="card">
+                    <h3 class="font-headline font-bold text-heading text-primary mb-6">Quality Level Adjustments</h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Kitchen Quality -->
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <label class="font-semibold text-text-primary">Kitchen Quality</label>
+                                <span class="text-sm text-text-secondary">Premium</span>
+                            </div>
+                            <input type="range" id="kitchen-quality" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" min="1" max="5" value="4" onchange="updateCost('kitchen', this.value)" />
+                            <div class="flex justify-between text-xs text-text-secondary mt-1">
+                                <span>Basic</span>
+                                <span>Standard</span>
+                                <span>Premium</span>
+                                <span>Luxury</span>
+                                <span>Ultra-Luxury</span>
+                            </div>
+                            <div class="mt-2 text-sm">
+                                <span class="text-text-secondary">Current cost: </span>
+                                <span id="kitchen-cost" class="font-semibold text-primary">$45,000</span>
+                            </div>
+                        </div>
+
+                        <!-- Flooring Quality -->
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <label class="font-semibold text-text-primary">Flooring Quality</label>
+                                <span class="text-sm text-text-secondary">Standard</span>
+                            </div>
+                            <input type="range" id="flooring-quality" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" min="1" max="5" value="2" onchange="updateCost('flooring', this.value)" />
+                            <div class="flex justify-between text-xs text-text-secondary mt-1">
+                                <span>Basic</span>
+                                <span>Standard</span>
+                                <span>Premium</span>
+                                <span>Luxury</span>
+                                <span>Ultra-Luxury</span>
+                            </div>
+                            <div class="mt-2 text-sm">
+                                <span class="text-text-secondary">Current cost: </span>
+                                <span id="flooring-cost" class="font-semibold text-primary">$18,750</span>
+                            </div>
+                        </div>
+
+                        <!-- Smart Home Level -->
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <label class="font-semibold text-text-primary">Smart Home Integration</label>
+                                <span class="text-sm text-text-secondary">Advanced</span>
+                            </div>
+                            <input type="range" id="smart-quality" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" min="0" max="4" value="3" onchange="updateCost('smart', this.value)" />
+                            <div class="flex justify-between text-xs text-text-secondary mt-1">
+                                <span>None</span>
+                                <span>Basic</span>
+                                <span>Standard</span>
+                                <span>Advanced</span>
+                                <span>Full Automation</span>
+                            </div>
+                            <div class="mt-2 text-sm">
+                                <span class="text-text-secondary">Current cost: </span>
+                                <span id="smart-cost" class="font-semibold text-primary">$34,500</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold text-text-primary">Adjusted Total:</span>
+                            <span id="adjusted-total" class="text-xl font-bold text-primary">$347,500</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Budget Planning Tools -->
+                <div class="card">
+                    <h3 class="font-headline font-bold text-heading text-primary mb-6">Budget Planning Tools</h3>
+                    
+                    <!-- Financing Calculator -->
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-text-primary mb-4">Financing Calculator</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-text-secondary mb-2">Down Payment</label>
+                                <div class="flex items-center space-x-3">
+                                    <input type="range" id="down-payment" class="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" min="5" max="30" value="20" onchange="updateFinancing()" />
+                                    <span id="down-payment-percent" class="text-sm font-semibold text-primary w-12">20%</span>
+                                </div>
+                                <div class="text-sm text-text-secondary mt-1">
+                                    Amount: <span id="down-payment-amount" class="font-semibold">$69,500</span>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-text-secondary mb-2">Loan Term</label>
+                                <select id="loan-term" class="form-input" onchange="updateFinancing()">
+                                    <option value="15">15 years</option>
+                                    <option value="20">20 years</option>
+                                    <option value="25">25 years</option>
+                                    <option value="30" selected>30 years</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-text-secondary mb-2">Interest Rate</label>
+                                <div class="flex items-center space-x-3">
+                                    <input type="range" id="interest-rate" class="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" min="3" max="8" step="0.1" value="6.5" onchange="updateFinancing()" />
+                                    <span id="interest-rate-value" class="text-sm font-semibold text-primary w-12">6.5%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 p-4 bg-secondary-50 border border-secondary-200 rounded-lg">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <div class="text-sm text-text-secondary">Monthly Payment</div>
+                                    <div id="monthly-payment" class="text-lg font-bold text-secondary">$1,756</div>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-text-secondary">Total Interest</div>
+                                    <div id="total-interest" class="text-lg font-bold text-secondary">$354,160</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Projections -->
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-text-primary mb-4">Construction Timeline</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-text-secondary">Planning & Permits</span>
+                                <span class="text-sm font-semibold text-primary">6-8 weeks</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-text-secondary">Foundation & Framing</span>
+                                <span class="text-sm font-semibold text-primary">8-10 weeks</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-text-secondary">Systems & Finishing</span>
+                                <span class="text-sm font-semibold text-primary">12-16 weeks</span>
+                            </div>
+                            <div class="border-t border-gray-200 pt-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold text-text-primary">Total Timeline</span>
+                                    <span class="font-bold text-primary">26-34 weeks</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contractor Recommendations -->
+                    <div>
+                        <h4 class="font-semibold text-text-primary mb-4">Recommended Contractors</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Premier Construction" class="w-10 h-10 rounded-full object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                                    <div>
+                                        <div class="font-semibold text-sm">Premier Construction</div>
+                                        <div class="text-xs text-text-secondary">4.9★ • 127 reviews</div>
+                                    </div>
+                                </div>
+                                <button class="text-xs bg-secondary text-white px-3 py-1 rounded-full hover:bg-secondary-600 transition-quick">
+                                    Contact
+                                </button>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Elite Builders" class="w-10 h-10 rounded-full object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg'; this.onerror=null;" />
+                                    <div>
+                                        <div class="font-semibold text-sm">Elite Builders</div>
+                                        <div class="text-xs text-text-secondary">4.8★ • 89 reviews</div>
+                                    </div>
+                                </div>
+                                <button class="text-xs bg-secondary text-white px-3 py-1 rounded-full hover:bg-secondary-600 transition-quick">
+                                    Contact
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Intelligence & Comparison -->
+            <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                <!-- Market Intelligence -->
+                <div class="card">
+                    <h3 class="font-headline font-bold text-heading text-primary mb-6">Market Intelligence</h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Regional Cost Comparison -->
+                        <div>
+                            <h4 class="font-semibold text-text-primary mb-4">Regional Cost Comparison</h4>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-text-secondary">Austin Metro Average</span>
+                                    <span class="font-semibold text-primary">$165/sq ft</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-text-secondary">Your AI-Optimized Cost</span>
+                                    <span class="font-semibold text-success">$145/sq ft</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-text-secondary">Savings vs. Average</span>
+                                    <span class="font-bold text-success">$48,000 (12%)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Seasonal Pricing Trends -->
+                        <div>
+                            <h4 class="font-semibold text-text-primary mb-4">Seasonal Pricing Trends</h4>
+                            <div class="bg-accent-50 border border-accent-200 rounded-lg p-4">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="font-semibold text-accent-800">Optimal Timing</span>
+                                </div>
+                                <p class="text-sm text-accent-700 mb-2">
+                                    Starting construction in Q1 2025 could save 8-12% on material costs due to seasonal pricing cycles.
+                                </p>
+                                <div class="text-sm font-semibold text-accent-800">
+                                    Potential Additional Savings: $27,800
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Material Availability -->
+                        <div>
+                            <h4 class="font-semibold text-text-primary mb-4">Material Availability</h4>
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-text-secondary">Lumber</span>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2 h-2 bg-success rounded-full"></div>
+                                        <span class="text-sm font-semibold text-success">Good</span>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-text-secondary">Steel</span>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2 h-2 bg-warning rounded-full"></div>
+                                        <span class="text-sm font-semibold text-warning">Limited</span>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-text-secondary">Appliances</span>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-2 h-2 bg-success rounded-full"></div>
+                                        <span class="text-sm font-semibold text-success">Excellent</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI vs Traditional Comparison -->
+                <div class="card">
+                    <h3 class="font-headline font-bold text-heading text-primary mb-6">AI vs Traditional Design</h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Cost Comparison Chart -->
+                        <div>
+                            <h4 class="font-semibold text-text-primary mb-4">Cost Comparison</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm text-text-secondary">Traditional Design</span>
+                                        <span class="font-semibold text-error">$434,700</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-error h-2 rounded-full" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm text-text-secondary">AI-Optimized Design</span>
+                                        <span class="font-semibold text-success">$347,500</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-success h-2 rounded-full" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 p-4 bg-success-50 border border-success-200 rounded-lg">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold text-success-800">Total Savings</span>
+                                    <span class="text-xl font-bold text-success">$87,200 (20%)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Efficiency Metrics -->
+                        <div>
+                            <h4 class="font-semibold text-text-primary mb-4">Efficiency Metrics</h4>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="text-center p-3 bg-secondary-50 rounded-lg">
+                                    <div class="text-2xl font-bold text-secondary">23%</div>
+                                    <div class="text-xs text-text-secondary">Space Efficiency</div>
+                                </div>
+                                <div class="text-center p-3 bg-primary-50 rounded-lg">
+                                    <div class="text-2xl font-bold text-primary">15%</div>
+                                    <div class="text-xs text-text-secondary">Energy Savings</div>
+                                </div>
+                                <div class="text-center p-3 bg-accent-50 rounded-lg">
+                                    <div class="text-2xl font-bold text-accent">40%</div>
+                                    <div class="text-xs text-text-secondary">Faster Planning</div>
+                                </div>
+                                <div class="text-center p-3 bg-success-50 rounded-lg">
+                                    <div class="text-2xl font-bold text-success">92%</div>
+                                    <div class="text-xs text-text-secondary">Client Satisfaction</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Key Advantages -->
+                        <div>
+                            <h4 class="font-semibold text-text-primary mb-4">AI Design Advantages</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center space-x-3">
+                                    <svg class="w-4 h-4 text-success flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-sm text-text-secondary">Optimized traffic flow patterns</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <svg class="w-4 h-4 text-success flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-sm text-text-secondary">Reduced material waste</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <svg class="w-4 h-4 text-success flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-sm text-text-secondary">Predictive cost accuracy</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <svg class="w-4 h-4 text-success flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-sm text-text-secondary">Future-ready smart integration</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Export and Action Buttons -->
+            <div class="text-center">
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn-primary text-lg px-8 py-4">
+                        <svg class="w-5 h-5 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                        Download PDF Report
+                    </button>
+                    <button class="btn-secondary text-lg px-8 py-4">
+                        <svg class="w-5 h-5 inline-block mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M8 12a4 4 0 11-8 0 4 4 0 018 0zM8 0a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zM3.05 3.05a.75.75 0 011.06 0l2.5 2.5a.75.75 0 01-1.06 1.06l-2.5-2.5a.75.75 0 010-1.06zM16 8a.75.75 0 01-.75.75h-3.5a.75.75 0 010-1.5h3.5A.75.75 0 0116 8zM12.95 12.95a.75.75 0 011.06 0l2.5 2.5a.75.75 0 11-1.06 1.06l-2.5-2.5a.75.75 0 010-1.06z"/>
+                        </svg>
+                        Schedule Consultation
+                    </button>
+                    <a href="my_designs_gallery.html" class="bg-white border-2 border-primary text-primary font-semibold py-4 px-8 rounded-lg hover:bg-primary hover:text-white transition-smooth text-center">
+                        Save to My Designs
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L4 12v18h8v-8h8v8h8V12L16 2zm0 4.5L24 14v14h-4v-8H12v8H8V14l8-7.5z"/>
+                            <circle cx="16" cy="18" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="font-headline font-bold text-xl">Live N Fit</span>
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        Transforming dream homes into reality through AI-powered design intelligence and immersive 3D visualization.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="javascript:void(0)" class="text-gray-400 hover:text-secondary transition-quick">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="text-gray-400 hover:text-secondary transition-quick">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="text-gray-400 hover:text-secondary transition-quick">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-headline font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="homepage.html" class="text-gray-300 hover:text-white transition-quick">Home</a></li>
+                        <li><a href="design_form_portal.html" class="text-gray-300 hover:text-white transition-quick">Design Portal</a></li>
+                        <li><a href="3d_immersion_theater.html" class="text-gray-300 hover:text-white transition-quick">3D Theater</a></li>
+                        <li><a href="price_evaluator_dashboard.html" class="text-gray-300 hover:text-white transition-quick">Price Evaluator</a></li>
+                        <li><a href="my_designs_gallery.html" class="text-gray-300 hover:text-white transition-quick">My Designs</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Technology -->
+                <div>
+                    <h3 class="font-headline font-bold mb-4">Technology</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="technology_deep_dive.html" class="text-gray-300 hover:text-white transition-quick">AI Technology</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">3D Visualization</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Cost Analysis</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Smart Planning</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">API Access</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h3 class="font-headline font-bold mb-4">Support</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Help Center</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Contact Us</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Design Consultation</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Community Forum</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">System Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-primary-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 Live N Fit. All Rights Reserved.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="javascript:void(0)" class="text-gray-400 hover:text-white text-sm transition-quick">Privacy Policy</a>
+                    <a href="javascript:void(0)" class="text-gray-400 hover:text-white text-sm transition-quick">Terms of Service</a>
+                    <a href="javascript:void(0)" class="text-gray-400 hover:text-white text-sm transition-quick">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Toggle Section Details
+        function toggleSection(sectionId) {
+            const details = document.getElementById(sectionId + '-details');
+            const arrow = document.getElementById(sectionId + '-arrow');
+            
+            details.classList.toggle('hidden');
+            arrow.classList.toggle('rotate-180');
+        }
+
+        // Update Cost Function
+        function updateCost(category, value) {
+            const costs = {
+                kitchen: [25000, 35000, 45000, 65000, 85000],
+                flooring: [12000, 18750, 28000, 42000, 58000],
+                smart: [0, 15000, 25000, 34500, 55000]
+            };
+            
+            const labels = ['Basic', 'Standard', 'Premium', 'Luxury', 'Ultra-Luxury'];
+            const smartLabels = ['None', 'Basic', 'Standard', 'Advanced', 'Full Automation'];
+            
+            let newCost;
+            let label;
+            
+            if (category === 'kitchen') {
+                newCost = costs.kitchen[value - 1];
+                label = labels[value - 1];
+            } else if (category === 'flooring') {
+                newCost = costs.flooring[value - 1];
+                label = labels[value - 1];
+            } else if (category === 'smart') {
+                newCost = costs.smart[value];
+                label = smartLabels[value];
+            }
+            
+            document.getElementById(category + '-cost').textContent = '$' + newCost.toLocaleString();
+            
+            // Update quality label
+            const qualityLabel = document.querySelector(`#${category}-quality`).nextElementSibling.nextElementSibling.querySelector('span');
+            if (qualityLabel) {
+                qualityLabel.textContent = label;
+            }
+            
+            // Recalculate total
+            updateAdjustedTotal();
+        }
+
+        // Update Adjusted Total
+        function updateAdjustedTotal() {
+            const kitchenCost = parseInt(document.getElementById('kitchen-cost').textContent.replace(/[$,]/g, ''));
+            const flooringCost = parseInt(document.getElementById('flooring-cost').textContent.replace(/[$,]/g, ''));
+            const smartCost = parseInt(document.getElementById('smart-cost').textContent.replace(/[$,]/g, ''));
+            
+            // Base costs (construction + regional)
+            const baseCost = 198750 + 25000;
+            
+            // Design elements (subtract old, add new)
+            const oldDesignCost = 89250;
+            const newDesignCost = kitchenCost + flooringCost + 15500; // lighting stays same
+            
+            const newTotal = baseCost + newDesignCost + smartCost;
+            
+            document.getElementById('adjusted-total').textContent = '$' + newTotal.toLocaleString();
+        }
+
+        // Update Financing
+        function updateFinancing() {
+            const totalCost = 347500;
+            const downPaymentPercent = document.getElementById('down-payment').value;
+            const loanTerm = document.getElementById('loan-term').value;
+            const interestRate = document.getElementById('interest-rate').value;
+            
+            const downPaymentAmount = totalCost * (downPaymentPercent / 100);
+            const loanAmount = totalCost - downPaymentAmount;
+            
+            // Calculate monthly payment
+            const monthlyRate = (interestRate / 100) / 12;
+            const numPayments = loanTerm * 12;
+            const monthlyPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
+            
+            const totalInterest = (monthlyPayment * numPayments) - loanAmount;
+            
+            // Update display
+            document.getElementById('down-payment-percent').textContent = downPaymentPercent + '%';
+            document.getElementById('down-payment-amount').textContent = '$' + Math.round(downPaymentAmount).toLocaleString();
+            document.getElementById('interest-rate-value').textContent = interestRate + '%';
+            document.getElementById('monthly-payment').textContent = '$' + Math.round(monthlyPayment).toLocaleString();
+            document.getElementById('total-interest').textContent = '$' + Math.round(totalInterest).toLocaleString();
+        }
+
+        // Initialize financing calculator
+        updateFinancing();
+    </script>
+</body>
+</html>

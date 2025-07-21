@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary Colors */
+  --color-primary: #1a365d; /* Deep navy for trust and professional credibility */
+  --color-primary-50: #e6f3ff;
+  --color-primary-100: #b3d9ff;
+  --color-primary-200: #80bfff;
+  --color-primary-300: #4da6ff;
+  --color-primary-400: #1a8cff;
+  --color-primary-500: #1a365d;
+  --color-primary-600: #152d4d;
+  --color-primary-700: #10243d;
+  --color-primary-800: #0b1b2d;
+  --color-primary-900: #06121d;
+
+  /* Secondary Colors */
+  --color-secondary: #38b2ac; /* Bright teal for innovation and technological confidence */
+  --color-secondary-50: #e6fffa;
+  --color-secondary-100: #b2f5ea;
+  --color-secondary-200: #81e6d9;
+  --color-secondary-300: #4fd1c7;
+  --color-secondary-400: #38b2ac;
+  --color-secondary-500: #319795;
+  --color-secondary-600: #2c7a7b;
+  --color-secondary-700: #285e61;
+  --color-secondary-800: #234e52;
+  --color-secondary-900: #1d4044;
+
+  /* Accent Colors */
+  --color-accent: #f6ad55; /* Warm gold for premium moments and success states */
+  --color-accent-50: #fffbf0;
+  --color-accent-100: #fef5e7;
+  --color-accent-200: #feebc8;
+  --color-accent-300: #fbd38d;
+  --color-accent-400: #f6ad55;
+  --color-accent-500: #ed8936;
+  --color-accent-600: #dd6b20;
+  --color-accent-700: #c05621;
+  --color-accent-800: #9c4221;
+  --color-accent-900: #7b341e;
+
+  /* Background Colors */
+  --color-background: #fafafa; /* Soft white for clean content presentation */
+  --color-surface: #ffffff; /* Pure white for card elements and form backgrounds */
+
+  /* Text Colors */
+  --color-text-primary: #2d3748; /* Charcoal for comfortable extended reading */
+  --color-text-secondary: #718096; /* Medium gray for supporting information hierarchy */
+
+  /* Status Colors */
+  --color-success: #48bb78; /* Fresh green for positive confirmation moments */
+  --color-warning: #ed8936; /* Warm orange for helpful alerts without alarm */
+  --color-error: #e53e3e; /* Clear red for important corrections and guidance */
+
+  /* Border Colors */
+  --color-border: #e2e8f0; /* Minimal borders for functional separation */
+  --color-border-light: #f7fafc;
+  --color-border-dark: #cbd5e0;
+
+  /* Shadow Colors */
+  --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+  --shadow-dark: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Custom Animation Classes */
+.transition-smooth {
+  transition: all 300ms ease-out;
+}
+
+.transition-quick {
+  transition: all 200ms ease-out;
+}
+
+.transition-camera {
+  transition: all 400ms ease-out;
+}
+
+/* Custom Shadow Classes */
+.shadow-card {
+  box-shadow: var(--shadow-light);
+}
+
+.shadow-elevated {
+  box-shadow: var(--shadow-medium);
+}
+
+.shadow-premium {
+  box-shadow: var(--shadow-dark);
+}
+
+/* Typography Utilities */
+.font-headline {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.font-accent {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Custom Component Classes */
+.btn-primary {
+  @apply bg-accent text-white font-semibold py-3 px-6 rounded-lg shadow-card hover:shadow-elevated transition-smooth;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-white font-semibold py-3 px-6 rounded-lg shadow-card hover:shadow-elevated transition-smooth;
+}
+
+.card {
+  @apply bg-surface rounded-lg shadow-card p-6 transition-smooth hover:shadow-elevated;
+}
+
+.form-input {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition-quick;
+}
+
+/* Hero Section Styles */
+.hero-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+}
+
+/* 3D Viewer Styles */
+.viewer-controls {
+  @apply bg-surface rounded-lg shadow-premium p-4 transition-camera;
+}
+
+/* Progress Indicator Styles */
+.progress-step {
+  @apply w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-smooth;
+}
+
+.progress-step.active {
+  @apply bg-secondary text-white;
+}
+
+.progress-step.completed {
+  @apply bg-success text-white;
+}
+
+.progress-step.inactive {
+  @apply bg-gray-200 text-gray-500;
+}

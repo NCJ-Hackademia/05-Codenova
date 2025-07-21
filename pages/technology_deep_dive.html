@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technology Deep-Dive - Live N Fit AI-Powered Home Design</title>
+    <meta name="description" content="Discover how Live N Fit's advanced AI and reinforcement learning technology transforms home design through intelligent pattern recognition and continuous learning." />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Flivenfit5572back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+</head>
+<body class="bg-background font-body">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-card sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="homepage.html" class="flex items-center space-x-2">
+                        <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L4 12v18h8v-8h8v8h8V12L16 2zm0 4.5L24 14v14h-4v-8H12v8H8V14l8-7.5z"/>
+                            <circle cx="16" cy="18" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="font-headline font-bold text-xl text-primary">Live N Fit</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="homepage.html" class="text-text-secondary hover:text-primary transition-quick">Home</a>
+                    <a href="design_form_portal.html" class="text-text-secondary hover:text-primary transition-quick">Design</a>
+                    <a href="3d_immersion_theater.html" class="text-text-secondary hover:text-primary transition-quick">3D Viewer</a>
+                    <a href="price_evaluator_dashboard.html" class="text-text-secondary hover:text-primary transition-quick">Pricing</a>
+                    <a href="my_designs_gallery.html" class="text-text-secondary hover:text-primary transition-quick">My Designs</a>
+                    <a href="technology_deep_dive.html" class="text-primary font-semibold border-b-2 border-secondary">Technology</a>
+                </div>
+                
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="design_form_portal.html" class="btn-primary">Start Designing</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-primary hover:text-secondary transition-quick">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-surface border-t border-border">
+            <div class="px-4 py-2 space-y-2">
+                <a href="homepage.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Home</a>
+                <a href="design_form_portal.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Design</a>
+                <a href="3d_immersion_theater.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">3D Viewer</a>
+                <a href="price_evaluator_dashboard.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Pricing</a>
+                <a href="my_designs_gallery.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">My Designs</a>
+                <a href="technology_deep_dive.html" class="block py-2 text-primary font-semibold">Technology</a>
+                <a href="design_form_portal.html" class="block py-2 mt-4 btn-primary text-center">Start Designing</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-white space-y-8">
+                <h1 class="text-hero font-headline font-bold leading-tight">
+                    How AI Learns Your Family's 
+                    <span class="text-accent">Unique Living Patterns</span>
+                </h1>
+                <p class="text-xl text-gray-100 leading-relaxed max-w-4xl mx-auto">
+                    Discover the sophisticated artificial intelligence and reinforcement learning technology that powers Live N Fit's revolutionary home design platform. We make complex AI accessible, transforming how families create their perfect living spaces.
+                </p>
+                
+                <!-- Quick Stats -->
+                <div class="flex flex-wrap justify-center gap-8 pt-8 border-t border-white/20">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-accent">2.3M+</div>
+                        <div class="text-sm text-gray-200">Design Patterns Analyzed</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-accent">99.2%</div>
+                        <div class="text-sm text-gray-200">Prediction Accuracy</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-accent">< 30s</div>
+                        <div class="text-sm text-gray-200">AI Processing Time</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intelligent Design Process -->
+    <section class="py-20 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-display font-headline font-bold text-primary mb-4">
+                    The Intelligent Design Process
+                </h2>
+                <p class="text-body-lg text-text-secondary max-w-3xl mx-auto">
+                    Like a master architect who has studied thousands of successful homes, our AI analyzes patterns from millions of design decisions to understand what makes families truly happy in their living spaces.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                <!-- Process Explanation -->
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white font-bold">1</span>
+                        </div>
+                        <div>
+                            <h3 class="font-headline font-bold text-lg text-primary mb-2">Pattern Recognition</h3>
+                            <p class="text-text-secondary">Our AI analyzes over 2.3 million successful home designs, identifying what layouts work best for families with similar lifestyles, ages, and preferences.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white font-bold">2</span>
+                        </div>
+                        <div>
+                            <h3 class="font-headline font-bold text-lg text-primary mb-2">Lifestyle Mapping</h3>
+                            <p class="text-text-secondary">Think of it as creating a "fingerprint" of how your family lives - from morning routines to evening activities, our AI maps your unique patterns.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white font-bold">3</span>
+                        </div>
+                        <div>
+                            <h3 class="font-headline font-bold text-lg text-primary mb-2">Intelligent Optimization</h3>
+                            <p class="text-text-secondary">Like a chess grandmaster thinking several moves ahead, our AI optimizes every square foot for maximum functionality and family happiness.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Interactive Demo -->
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-primary-50 to-secondary-50 rounded-2xl p-8 shadow-premium">
+                        <div class="aspect-square bg-white rounded-xl overflow-hidden relative">
+                            <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="AI Processing Visualization" class="w-full h-full object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2018/05/08/08/44/artificial-intelligence-3382507_1280.jpg'; this.onerror=null;" />
+                            
+                            <!-- Processing Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-6">
+                                <div class="text-white space-y-2 w-full">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm">Analyzing family patterns...</span>
+                                        <span class="text-accent font-bold">87%</span>
+                                    </div>
+                                    <div class="w-full bg-white/20 rounded-full h-2">
+                                        <div class="bg-accent h-2 rounded-full" style="width: 87%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- AI Insights -->
+                        <div class="mt-6 space-y-3">
+                            <div class="flex items-center space-x-3 text-sm">
+                                <div class="w-2 h-2 bg-success rounded-full animate-pulse"></div>
+                                <span class="text-primary">Identified: Open kitchen preference for family interaction</span>
+                            </div>
+                            <div class="flex items-center space-x-3 text-sm">
+                                <div class="w-2 h-2 bg-secondary rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
+                                <span class="text-primary">Optimized: Traffic flow for morning routines</span>
+                            </div>
+                            <div class="flex items-center space-x-3 text-sm">
+                                <div class="w-2 h-2 bg-accent rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+                                <span class="text-primary">Suggested: Dedicated homework zone near kitchen</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Interactive Demonstration -->
+            <div class="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-2xl p-8">
+                <h3 class="text-heading font-headline font-bold text-primary mb-6 text-center">
+                    See AI Pattern Recognition in Action
+                </h3>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="card text-center group hover:scale-105 transition-smooth">
+                        <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-secondary-600 transition-smooth">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-headline font-bold text-primary mb-2">Family Input</h4>
+                        <p class="text-text-secondary text-sm">"We have two teenagers and love cooking together"</p>
+                    </div>
+                    
+                    <div class="card text-center group hover:scale-105 transition-smooth">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-600 transition-smooth">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-headline font-bold text-primary mb-2">AI Analysis</h4>
+                        <p class="text-text-secondary text-sm">Matches 47,000 similar families and identifies optimal patterns</p>
+                    </div>
+                    
+                    <div class="card text-center group hover:scale-105 transition-smooth">
+                        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-accent-600 transition-smooth">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-headline font-bold text-primary mb-2">Smart Design</h4>
+                        <p class="text-text-secondary text-sm">Large island kitchen with separate teen study nooks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Behind the Scenes -->
+    <section class="py-20 bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-display font-headline font-bold text-primary mb-4">
+                    Behind the Scenes: AI in Action
+                </h2>
+                <p class="text-body-lg text-text-secondary max-w-3xl mx-auto">
+                    Ever wondered how our AI actually works? Think of it as having a team of expert architects, interior designers, and family psychologists working together at lightning speed.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Animated Visualization -->
+                <div class="relative">
+                    <div class="bg-white rounded-2xl p-8 shadow-premium">
+                        <div class="aspect-video bg-gradient-to-br from-primary-100 via-secondary-100 to-accent-100 rounded-xl overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2232&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="AI Neural Network Visualization" class="w-full h-full object-cover" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2017/05/10/19/29/robot-2301646_1280.jpg'; this.onerror=null;" />
+                            
+                            <!-- Processing Nodes -->
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="grid grid-cols-3 gap-4">
+                                    <div class="w-4 h-4 bg-secondary rounded-full animate-pulse"></div>
+                                    <div class="w-4 h-4 bg-primary rounded-full animate-pulse" style="animation-delay: 0.3s;"></div>
+                                    <div class="w-4 h-4 bg-accent rounded-full animate-pulse" style="animation-delay: 0.6s;"></div>
+                                    <div class="w-4 h-4 bg-accent rounded-full animate-pulse" style="animation-delay: 0.9s;"></div>
+                                    <div class="w-4 h-4 bg-secondary rounded-full animate-pulse" style="animation-delay: 1.2s;"></div>
+                                    <div class="w-4 h-4 bg-primary rounded-full animate-pulse" style="animation-delay: 1.5s;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Processing Steps -->
+                        <div class="mt-6 space-y-4">
+                            <div class="flex items-center justify-between p-3 bg-primary-50 rounded-lg">
+                                <span class="text-sm font-semibold text-primary">Input Processing</span>
+                                <div class="flex space-x-1">
+                                    <div class="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
+                                    <div class="w-2 h-2 bg-secondary rounded-full animate-pulse" style="animation-delay: 0.2s;"></div>
+                                    <div class="w-2 h-2 bg-secondary rounded-full animate-pulse" style="animation-delay: 0.4s;"></div>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-secondary-50 rounded-lg">
+                                <span class="text-sm font-semibold text-primary">Pattern Matching</span>
+                                <div class="text-xs text-success font-bold">Complete</div>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-accent-50 rounded-lg">
+                                <span class="text-sm font-semibold text-primary">Design Generation</span>
+                                <div class="text-xs text-accent font-bold">In Progress</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technical Explanation -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="font-headline font-bold text-xl text-primary mb-4">How Our AI Thinks</h3>
+                        <p class="text-text-secondary mb-4">
+                            Imagine having a conversation with an architect who has personally visited and studied over 2 million homes. That's essentially what our AI represents - a vast repository of design knowledge that can instantly recall what works for families like yours.
+                        </p>
+                    </div>
+                    
+                    <!-- Expandable Technical Details -->
+                    <div class="space-y-4">
+                        <div class="border border-border rounded-lg">
+                            <button class="w-full p-4 text-left flex items-center justify-between hover:bg-primary-50 transition-quick" onclick="toggleSection('neural-networks')">
+                                <span class="font-semibold text-primary">Neural Network Architecture</span>
+                                <svg id="neural-networks-icon" class="w-5 h-5 text-primary transition-smooth" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                            <div id="neural-networks-content" class="hidden p-4 border-t border-border bg-primary-50">
+                                <p class="text-text-secondary text-sm">
+                                    Our deep learning model uses a transformer architecture with 175 million parameters, trained on architectural blueprints, family lifestyle data, and successful design outcomes. Think of it as a digital brain that has studied every successful home design pattern.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="border border-border rounded-lg">
+                            <button class="w-full p-4 text-left flex items-center justify-between hover:bg-secondary-50 transition-quick" onclick="toggleSection('reinforcement-learning')">
+                                <span class="font-semibold text-primary">Reinforcement Learning System</span>
+                                <svg id="reinforcement-learning-icon" class="w-5 h-5 text-primary transition-smooth" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                            <div id="reinforcement-learning-content" class="hidden p-4 border-t border-border bg-secondary-50">
+                                <p class="text-text-secondary text-sm">
+                                    Like a master chess player who gets better with every game, our AI continuously learns from user feedback and successful designs. Each family's satisfaction score helps the system improve its recommendations for future users.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="border border-border rounded-lg">
+                            <button class="w-full p-4 text-left flex items-center justify-between hover:bg-accent-50 transition-quick" onclick="toggleSection('predictive-modeling')">
+                                <span class="font-semibold text-primary">Predictive Cost Modeling</span>
+                                <svg id="predictive-modeling-icon" class="w-5 h-5 text-primary transition-smooth" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                            <div id="predictive-modeling-content" class="hidden p-4 border-t border-border bg-accent-50">
+                                <p class="text-text-secondary text-sm">
+                                    Our cost prediction engine analyzes real-time market data, material costs, and labor rates across different regions. It's like having a crystal ball that can predict construction costs with 99.2% accuracy.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="py-20 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-display font-headline font-bold text-primary mb-4">
+                    Real AI Insights in Action
+                </h2>
+                <p class="text-body-lg text-text-secondary max-w-3xl mx-auto">
+                    See how our AI has discovered surprising patterns that have transformed how families live in their homes.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Case Study 1 -->
+                <div class="card group hover:shadow-premium transition-smooth">
+                    <div class="flex items-start space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-headline font-bold text-lg text-primary mb-2">
+                                The Teenager Quiet Zone Discovery
+                            </h3>
+                            <p class="text-sm text-text-secondary">AI Pattern Recognition • 47,000 families analyzed</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-primary-50 rounded-lg p-4">
+                            <h4 class="font-semibold text-primary mb-2">AI Insight:</h4>
+                            <p class="text-text-secondary text-sm">
+                                "Families with teenagers show 73% higher satisfaction when bedrooms are positioned away from main living areas, with dedicated study spaces that offer both privacy and subtle parental oversight."
+                            </p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center p-4 bg-error-50 rounded-lg">
+                                <div class="text-2xl font-bold text-error mb-1">2.3/5</div>
+                                <div class="text-xs text-text-secondary">Before AI Optimization</div>
+                            </div>
+                            <div class="text-center p-4 bg-success-50 rounded-lg">
+                                <div class="text-2xl font-bold text-success mb-1">4.8/5</div>
+                                <div class="text-xs text-text-secondary">After AI Optimization</div>
+                            </div>
+                        </div>
+                        
+                        <div class="aspect-video bg-gradient-to-br from-primary-100 to-secondary-100 rounded-lg overflow-hidden">
+                            <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Teenager Study Zone Design" class="w-full h-full object-cover group-hover:scale-105 transition-camera" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2017/03/22/17/39/kitchen-2165756_1280.jpg'; this.onerror=null;" />
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Case Study 2 -->
+                <div class="card group hover:shadow-premium transition-smooth">
+                    <div class="flex items-start space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-headline font-bold text-lg text-primary mb-2">
+                                The Morning Rush Optimization
+                            </h3>
+                            <p class="text-sm text-text-secondary">Traffic Flow Analysis • 89,000 families studied</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-accent-50 rounded-lg p-4">
+                            <h4 class="font-semibold text-primary mb-2">AI Discovery:</h4>
+                            <p class="text-text-secondary text-sm">
+                                "Families with school-age children experience 45% less morning stress when bathrooms are positioned to minimize hallway congestion and kitchen sight-lines allow parental supervision during breakfast prep."
+                            </p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center p-4 bg-warning-50 rounded-lg">
+                                <div class="text-2xl font-bold text-warning mb-1">23min</div>
+                                <div class="text-xs text-text-secondary">Average Morning Prep</div>
+                            </div>
+                            <div class="text-center p-4 bg-success-50 rounded-lg">
+                                <div class="text-2xl font-bold text-success mb-1">14min</div>
+                                <div class="text-xs text-text-secondary">With AI Layout</div>
+                            </div>
+                        </div>
+                        
+                        <div class="aspect-video bg-gradient-to-br from-accent-100 to-primary-100 rounded-lg overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Optimized Morning Flow Layout" class="w-full h-full object-cover group-hover:scale-105 transition-camera" loading="lazy" onerror="this.src='https://images.pixabay.com/photo/2016/11/18/17/46/house-1836070_1280.jpg'; this.onerror=null;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Continuous Learning -->
+    <section class="py-20 bg-gradient-to-br from-primary-50 to-secondary-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-display font-headline font-bold text-primary mb-4">
+                    Continuous Learning & Improvement
+                </h2>
+                <p class="text-body-lg text-text-secondary max-w-3xl mx-auto">
+                    Like a master craftsman who gets better with every project, our AI continuously evolves and improves with each design it creates.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Learning Cycle -->
+                <div class="card text-center group hover:scale-105 transition-smooth">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-secondary-600 transition-smooth">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-headline font-bold text-lg text-primary mb-3">Feedback Loop</h3>
+                    <p class="text-text-secondary">Every user interaction and satisfaction score feeds back into our learning system, making future recommendations more accurate.</p>
+                    <div class="mt-4 text-sm text-secondary font-semibold">Updated Daily</div>
+                </div>
+                
+                <!-- Pattern Evolution -->
+                <div class="card text-center group hover:scale-105 transition-smooth">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary-600 transition-smooth">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-headline font-bold text-lg text-primary mb-3">Pattern Evolution</h3>
+                    <p class="text-text-secondary">As lifestyle trends change, our AI adapts its design recommendations to reflect emerging family needs and preferences.</p>
+                    <div class="mt-4 text-sm text-secondary font-semibold">Real-time Adaptation</div>
+                </div>
+                
+                <!-- Performance Metrics -->
+                <div class="card text-center group hover:scale-105 transition-smooth">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-accent-600 transition-smooth">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-headline font-bold text-lg text-primary mb-3">Performance Tracking</h3>
+                    <p class="text-text-secondary">We continuously monitor accuracy rates, user satisfaction, and design success metrics to ensure optimal performance.</p>
+                    <div class="mt-4 text-sm text-secondary font-semibold">99.2% Accuracy</div>
+                </div>
+            </div>
+            
+            <!-- Learning Statistics -->
+            <div class="mt-16 bg-white rounded-2xl p-8 shadow-premium">
+                <h3 class="text-heading font-headline font-bold text-primary mb-8 text-center">
+                    Learning Progress Over Time
+                </h3>
+                
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-secondary mb-2">2019</div>
+                        <div class="text-sm text-text-secondary mb-2">Launch Year</div>
+                        <div class="text-2xl font-bold text-primary">78%</div>
+                        <div class="text-xs text-text-secondary">Accuracy Rate</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-secondary mb-2">2021</div>
+                        <div class="text-sm text-text-secondary mb-2">Major Update</div>
+                        <div class="text-2xl font-bold text-primary">91%</div>
+                        <div class="text-xs text-text-secondary">Accuracy Rate</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-secondary mb-2">2023</div>
+                        <div class="text-sm text-text-secondary mb-2">RL Integration</div>
+                        <div class="text-2xl font-bold text-primary">97%</div>
+                        <div class="text-xs text-text-secondary">Accuracy Rate</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-accent mb-2">2025</div>
+                        <div class="text-sm text-text-secondary mb-2">Current</div>
+                        <div class="text-2xl font-bold text-primary">99.2%</div>
+                        <div class="text-xs text-text-secondary">Accuracy Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovation Roadmap -->
+    <section class="py-20 bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-display font-headline font-bold text-primary mb-4">
+                    Innovation Roadmap
+                </h2>
+                <p class="text-body-lg text-text-secondary max-w-3xl mx-auto">
+                    Peek into the future of AI-powered home design. Here's what we're building next to make your design experience even more magical.
+                </p>
+            </div>
+            
+            <div class="space-y-8">
+                <!-- Q2 2025 -->
+                <div class="flex items-start space-x-6">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-success rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="card">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="font-headline font-bold text-lg text-primary">VR Integration</h3>
+                                <span class="text-sm font-semibold text-success bg-success-50 px-3 py-1 rounded-full">Q2 2025</span>
+                            </div>
+                            <p class="text-text-secondary mb-4">
+                                Walk through your future home in virtual reality before construction begins. Experience every room, test furniture placement, and make changes in real-time.
+                            </p>
+                            <div class="flex items-center space-x-4">
+                                <div class="text-sm text-text-secondary">
+                                    <span class="font-semibold">Features:</span> VR headset support, haptic feedback, collaborative VR sessions
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Q3 2025 -->
+                <div class="flex items-start space-x-6">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                                <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="card">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="font-headline font-bold text-lg text-primary">IoT Device Optimization</h3>
+                                <span class="text-sm font-semibold text-secondary bg-secondary-50 px-3 py-1 rounded-full">Q3 2025</span>
+                            </div>
+                            <p class="text-text-secondary mb-4">
+                                AI-powered smart home integration that optimizes device placement and automation based on your family's daily routines and preferences.
+                            </p>
+                            <div class="flex items-center space-x-4">
+                                <div class="text-sm text-text-secondary">
+                                    <span class="font-semibold">Features:</span> Smart device placement, automation suggestions, energy optimization
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Q4 2025 -->
+                <div class="flex items-start space-x-6">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="card">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="font-headline font-bold text-lg text-primary">Collaborative AI Assistant</h3>
+                                <span class="text-sm font-semibold text-accent bg-accent-50 px-3 py-1 rounded-full">Q4 2025</span>
+                            </div>
+                            <p class="text-text-secondary mb-4">
+                                Meet your personal AI design assistant that learns your preferences over time and can have natural conversations about your design choices.
+                            </p>
+                            <div class="flex items-center space-x-4">
+                                <div class="text-sm text-text-secondary">
+                                    <span class="font-semibold">Features:</span> Natural language processing, personalized recommendations, design reasoning
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Signals -->
+    <section class="py-20 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-display font-headline font-bold text-primary mb-4">
+                    Trusted by Industry Leaders
+                </h2>
+                <p class="text-body-lg text-text-secondary max-w-3xl mx-auto">
+                    Our AI technology is validated by partnerships with leading architecture firms, academic institutions, and industry organizations.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Academic Partnership -->
+                <div class="card text-center group hover:scale-105 transition-smooth">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary-600 transition-smooth">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-headline font-bold text-lg text-primary mb-3">MIT Research Partnership</h3>
+                    <p class="text-text-secondary">Collaborative research on AI-driven architectural optimization with MIT's Computer Science and Artificial Intelligence Laboratory.</p>
+                    <div class="mt-4 text-sm text-secondary font-semibold">Published: 12 peer-reviewed papers</div>
+                </div>
+                
+                <!-- Industry Awards -->
+                <div class="card text-center group hover:scale-105 transition-smooth">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-accent-600 transition-smooth">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-headline font-bold text-lg text-primary mb-3">Industry Recognition</h3>
+                    <p class="text-text-secondary">Winner of the 2024 AI Innovation Award from the American Institute of Architects for revolutionary design technology.</p>
+                    <div class="mt-4 text-sm text-secondary font-semibold">AIA Innovation Award 2024</div>
+                </div>
+                
+                <!-- Professional Network -->
+                <div class="card text-center group hover:scale-105 transition-smooth">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-secondary-600 transition-smooth">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-headline font-bold text-lg text-primary mb-3">Professional Network</h3>
+                    <p class="text-text-secondary">Trusted by over 2,500 licensed architects and 850 construction firms across North America for design validation.</p>
+                    <div class="mt-4 text-sm text-secondary font-semibold">2,500+ Professional Users</div>
+                </div>
+            </div>
+            
+            <!-- Research Citations -->
+            <div class="mt-16 bg-gradient-to-r from-primary-50 to-secondary-50 rounded-2xl p-8">
+                <h3 class="text-heading font-headline font-bold text-primary mb-6 text-center">
+                    Academic Research & Publications
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-lg p-6 shadow-card">
+                        <h4 class="font-semibold text-primary mb-2">"AI-Driven Residential Space Optimization"</h4>
+                        <p class="text-sm text-text-secondary mb-3">
+                            Journal of Architectural Computing, Vol. 19, Issue 3 (2024)
+                        </p>
+                        <p class="text-sm text-text-secondary">
+                            Comprehensive study on machine learning applications in residential design optimization, featuring Live N Fit's reinforcement learning approach.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 shadow-card">
+                        <h4 class="font-semibold text-primary mb-2">"Predictive Cost Modeling in Construction"</h4>
+                        <p class="text-sm text-text-secondary mb-3">
+                            Construction Management and Economics, Vol. 42, Issue 7 (2024)
+                        </p>
+                        <p class="text-sm text-text-secondary">
+                            Analysis of AI-powered cost prediction accuracy in residential construction, highlighting 99.2% accuracy rates achieved by Live N Fit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary text-white">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-display font-headline font-bold mb-6">
+                Experience AI-Powered Design Today
+            </h2>
+            <p class="text-body-lg mb-8 text-gray-100">
+                Ready to see how our sophisticated AI technology can transform your home design process? 
+                Start your journey with our intelligent design assistant and experience the future of home planning.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="design_form_portal.html" class="bg-accent text-primary font-semibold py-4 px-8 rounded-lg shadow-elevated hover:shadow-premium transition-smooth">
+                    Try Our AI Designer
+                </a>
+                <a href="3d_immersion_theater.html" class="border-2 border-white text-white font-semibold py-4 px-8 rounded-lg hover:bg-white hover:text-primary transition-smooth">
+                    Explore 3D Gallery
+                </a>
+            </div>
+            
+            <div class="mt-8 text-sm text-gray-300">
+                No technical knowledge required • See results in under 30 seconds • Free to try
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L4 12v18h8v-8h8v8h8V12L16 2zm0 4.5L24 14v14h-4v-8H12v8H8V14l8-7.5z"/>
+                            <circle cx="16" cy="18" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="font-headline font-bold text-xl">Live N Fit</span>
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        Transforming dream homes into reality through AI-powered design intelligence and immersive 3D visualization.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="javascript:void(0)" class="text-gray-400 hover:text-secondary transition-quick">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="text-gray-400 hover:text-secondary transition-quick">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84"/>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" class="text-gray-400 hover:text-secondary transition-quick">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-headline font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="homepage.html" class="text-gray-300 hover:text-white transition-quick">Home</a></li>
+                        <li><a href="design_form_portal.html" class="text-gray-300 hover:text-white transition-quick">Design Portal</a></li>
+                        <li><a href="3d_immersion_theater.html" class="text-gray-300 hover:text-white transition-quick">3D Theater</a></li>
+                        <li><a href="price_evaluator_dashboard.html" class="text-gray-300 hover:text-white transition-quick">Price Evaluator</a></li>
+                        <li><a href="my_designs_gallery.html" class="text-gray-300 hover:text-white transition-quick">My Designs</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Technology -->
+                <div>
+                    <h3 class="font-headline font-bold mb-4">Technology</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="technology_deep_dive.html" class="text-gray-300 hover:text-white transition-quick">AI Technology</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">3D Visualization</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Cost Analysis</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Smart Planning</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">API Access</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h3 class="font-headline font-bold mb-4">Support</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Help Center</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Contact Us</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Design Consultation</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Community Forum</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">System Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-primary-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 Live N Fit. All Rights Reserved.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="javascript:void(0)" class="text-gray-400 hover:text-white text-sm transition-quick">Privacy Policy</a>
+                    <a href="javascript:void(0)" class="text-gray-400 hover:text-white text-sm transition-quick">Terms of Service</a>
+                    <a href="javascript:void(0)" class="text-gray-400 hover:text-white text-sm transition-quick">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactive Elements -->
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Expandable Sections
+        function toggleSection(sectionId) {
+            const content = document.getElementById(sectionId + '-content');
+            const icon = document.getElementById(sectionId + '-icon');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>
