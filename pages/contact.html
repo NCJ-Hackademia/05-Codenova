@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Live N Fit</title>
+    <meta name="description" content="Get in touch with the Live N Fit team. We're here to answer your questions about our AI-powered home design platform." />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Flivenfit5572back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+    <style>
+        /* General Contact Page Styles */
+        .contact-page {
+            padding: 4rem 0;
+            background-color: var(--color-background);
+        }
+
+        .contact-page h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text-primary);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .contact-intro {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .contact-info, .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info h3, .contact-form h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-text-primary);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Contact Info Section */
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            background: var(--color-surface);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .contact-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-primary);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .contact-item p {
+            margin: 0;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .contact-item a {
+            color: var(--color-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--color-secondary-600);
+        }
+
+        /* Contact Form Section */
+        .contact-form form {
+            background: var(--color-surface);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--color-text-primary);
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .form-control:focus {
+            border-color: var(--color-secondary);
+            outline: none;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+        }
+
+        .btn--full-width {
+            width: 100%;
+            border-radius: 0.5rem;
+            background-color: var(--color-accent);
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            font-weight: 600;
+            color: var(--color-surface);
+            box-shadow: var(--shadow-light);
+            transition: all 300ms ease-out;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn--full-width:hover {
+            box-shadow: var(--shadow-medium);
+            background-color: var(--color-accent-600);
+        }
+    </style>
+</head>
+<body class="bg-background font-body">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-card sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="homepage.html" class="flex items-center space-x-2">
+                        <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L4 12v18h8v-8h8v8h8V12L16 2zm0 4.5L24 14v14h-4v-8H12v8H8V14l8-7.5z"/>
+                            <circle cx="16" cy="18" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="font-headline font-bold text-xl text-primary">Live N Fit</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="homepage.html" class="text-primary font-semibold border-b-2 border-secondary">Home</a>
+                    <a href="about.html" class="text-text-secondary hover:text-primary transition-quick">About</a>
+                    <a href="design_form_portal.html" class="text-text-secondary hover:text-primary transition-quick">Design</a>
+                    <a href="my_designs_gallery.html" class="text-text-secondary hover:text-primary transition-quick">My Designs</a>
+                    <a href="technology_deep_dive.html" class="text-text-secondary hover:text-primary transition-quick">Technology</a>
+                    <a href="contact.html" class="text-text-secondary hover:text-primary transition-quick">Contact</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-primary hover:text-secondary transition-quick">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-surface border-t border-border">
+            <div class="px-4 py-2 space-y-2">
+                <a href="homepage.html" class="block py-2 text-primary font-semibold">Home</a>
+                <a href="about.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">About</a>
+                <a href="design_form_portal.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Design</a>
+                <a href="my_designs_gallery.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">My Designs</a>
+                <a href="technology_deep_dive.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Technology</a>
+                <a href="contact.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section class="contact-page py-12 bg-background">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h1 class="text-display font-headline font-bold text-primary">Contact Us</h1>
+                    <p class="text-body-lg text-text-secondary mt-4 max-w-3xl mx-auto">We're here to help. Whether you have a question about our platform, a partnership inquiry, or just want to say hello, we'd love to hear from you.</p>
+                </div>
+                
+                <div class="contact-content grid md:grid-cols-2 gap-12 items-start">
+                    <!-- Contact Info -->
+                    <div class="contact-info space-y-8">
+                        <h2 class="text-heading font-headline font-bold text-primary">Get in Touch</h2>
+                        <div class="contact-details space-y-6">
+                            <div class="contact-item flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-secondary-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-xl">📧</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-primary">Email</h4>
+                                    <p class="text-text-secondary">hello@livenfit.com</p>
+                                    <p class="text-text-secondary">support@livenfit.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-secondary-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-xl">📞</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-primary">Phone</h4>
+                                    <p class="text-text-secondary">+1 (555) 123-4567</p>
+                                    <p class="text-sm text-text-secondary">Mon-Fri, 9AM-6PM PST</p>
+                                </div>
+                            </div>
+                            <div class="contact-item flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-secondary-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-xl">🏢</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-primary">Address</h4>
+                                    <p class="text-text-secondary">123 Fitness Avenue<br>Wellness City, CA 94301</p>
+                                </div>
+                            </div>
+                            <div class="contact-item flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-secondary-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <span class="text-xl">🌐</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-primary">Social Media</h4>
+                                    <div class="flex space-x-4 mt-2">
+                                        <a href="#" class="text-text-secondary hover:text-primary transition-quick">LinkedIn</a>
+                                        <a href="#" class="text-text-secondary hover:text-primary transition-quick">Twitter</a>
+                                        <a href="#" class="text-text-secondary hover:text-primary transition-quick">Instagram</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div class="contact-form card">
+                        <h2 class="text-heading font-headline font-bold text-primary mb-6">Send us a Message</h2>
+                        <form id="contact-form" class="space-y-6" method="POST">
+                            <div class="form-group">
+                                <label class="form-label" for="contact-name">Name</label>
+                                <input type="text" id="contact-name" name="name" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="contact-email">Email</label>
+                                <input type="email" id="contact-email" name="email" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="contact-subject">Subject</label>
+                                <select id="contact-subject" name="subject" class="form-input" required>
+                                    <option value="">Select a topic</option>
+                                    <option value="support">Technical Support</option>
+                                    <option value="partnership">Partnership Inquiry</option>
+                                    <option value="feedback">Product Feedback</option>
+                                    <option value="general">General Question</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="contact-message">Message</label>
+                                <textarea id="contact-message" name="message" class="form-input" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" id="submit-btn" class="btn-primary w-full flex items-center justify-center">
+                                Send Message
+                            </button>
+                        </form>
+                        <div id="form-success-message" class="hidden mt-6 bg-success/20 text-success-700 p-4 rounded-lg">
+                            <p>Thank you for your message! We'll get back to you shortly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L4 12v18h8v-8h8v8h8V12L16 2zm0 4.5L24 14v14h-4v-8H12v8H8V14l8-7.5z"/>
+                            <circle cx="16" cy="18" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="font-headline font-bold text-xl">Live N Fit</span>
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        Transforming dream homes into reality through AI-powered design intelligence and immersive 3D visualization.
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-headline font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="homepage.html" class="text-gray-300 hover:text-white transition-quick">Home</a></li>
+                        <li><a href="design_form_portal.html" class="text-gray-300 hover:text-white transition-quick">Design Portal</a></li>
+                        <li><a href="my_designs_gallery.html" class="text-gray-300 hover:text-white transition-quick">My Designs</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white transition-quick">About</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Technology -->
+                <div>
+                    <h3 class="font-headline font-bold mb-4">Technology</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="technology_deep_dive.html" class="text-gray-300 hover:text-white transition-quick">AI Technology</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">3D Visualization</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h3 class="font-headline font-bold mb-4">Support</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Help Center</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white transition-quick">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-primary-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 Live N Fit. All Rights Reserved.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="javascript:void(0)" class="text-gray-400 hover:text-white text-sm transition-quick">Privacy Policy</a>
+                    <a href="javascript:void(0)" class="text-gray-400 hover:text-white text-sm transition-quick">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Contact form submission is now handled by the Rocket.new backend service.
+    </script>
+</body>
+</html>

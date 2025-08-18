@@ -9,6 +9,74 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Flivenfit5572back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+<!-- Family Size Grid Example -->
+<style>
+.family-grid-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.family-grid-count {
+    min-width: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.family-grid-btn {
+    background: #667eea;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.family-grid-btn:active {
+    background: #4c51bf;
+}
+.slider-container {
+    position: relative;
+    padding-top: 1rem;
+}
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 5px;
+}
+.slider:hover {
+    opacity: 1;
+}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: #667eea;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    background: #667eea;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.slider-value {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #4c51bf;
+}
+</style>
 </head>
 <body class="bg-background font-body">
     <!-- Navigation Header -->
@@ -29,11 +97,11 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="homepage.html" class="text-text-secondary hover:text-primary transition-quick">Home</a>
+                    <a href="about.html" class="text-text-secondary hover:text-primary transition-quick">About</a>
                     <a href="design_form_portal.html" class="text-primary font-semibold border-b-2 border-secondary">Design</a>
-                    <a href="3d_immersion_theater.html" class="text-text-secondary hover:text-primary transition-quick">3D Viewer</a>
-                    <a href="price_evaluator_dashboard.html" class="text-text-secondary hover:text-primary transition-quick">Pricing</a>
                     <a href="my_designs_gallery.html" class="text-text-secondary hover:text-primary transition-quick">My Designs</a>
                     <a href="technology_deep_dive.html" class="text-text-secondary hover:text-primary transition-quick">Technology</a>
+                    <a href="contact.html" class="text-text-secondary hover:text-primary transition-quick">Contact</a>
                 </div>
                 
                 <!-- Save Progress Button -->
@@ -50,19 +118,20 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
                     </button>
-                </div>
-            </div>
-        </div>
+                                </div>
+                            </div>
+                            <div id="composition-warning" class="hidden mt-4 p-4 bg-error/20 border border-error text-error rounded-lg"></div>
+                        </div>
         
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden hidden bg-surface border-t border-border">
             <div class="px-4 py-2 space-y-2">
                 <a href="homepage.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Home</a>
+                <a href="about.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">About</a>
                 <a href="design_form_portal.html" class="block py-2 text-primary font-semibold">Design</a>
-                <a href="3d_immersion_theater.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">3D Viewer</a>
-                <a href="price_evaluator_dashboard.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Pricing</a>
                 <a href="my_designs_gallery.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">My Designs</a>
                 <a href="technology_deep_dive.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Technology</a>
+                <a href="contact.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Contact</a>
                 <button class="block py-2 mt-4 text-secondary font-semibold">Save Progress</button>
             </div>
         </div>
@@ -74,32 +143,24 @@
             <div class="flex items-center justify-between mb-4">
                 <h1 class="text-heading font-headline font-bold text-primary">Let's design your perfect home together</h1>
                 <div class="text-sm text-text-secondary">
-                    <span class="font-semibold">Step <span id="current-step">1</span> of 4</span>
+                    <span class="font-semibold">Step <span id="current-step">1</span> of 2</span>
                 </div>
             </div>
             
             <!-- Progress Bar -->
             <div class="w-full bg-gray-200 rounded-full h-2">
-                <div id="progress-bar" class="bg-secondary h-2 rounded-full transition-smooth" style="width: 25%"></div>
+                <div id="progress-bar" class="bg-secondary h-2 rounded-full transition-smooth" style="width: 50%"></div>
             </div>
             
             <!-- Progress Steps -->
             <div class="flex justify-between mt-4">
                 <div class="flex items-center space-x-2">
                     <div class="progress-step active" id="step-1">1</div>
-                    <span class="text-sm font-semibold text-primary">Family Dynamics</span>
+                    <span class="text-sm font-semibold text-primary">Size & Style</span>
                 </div>
                 <div class="flex items-center space-x-2">
                     <div class="progress-step inactive" id="step-2">2</div>
-                    <span class="text-sm text-text-secondary">Lifestyle Preferences</span>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <div class="progress-step inactive" id="step-3">3</div>
-                    <span class="text-sm text-text-secondary">Space Requirements</span>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <div class="progress-step inactive" id="step-4">4</div>
-                    <span class="text-sm text-text-secondary">Style & Budget</span>
+                    <span class="text-sm text-text-secondary">Family Dynamics</span>
                 </div>
             </div>
         </div>
@@ -110,330 +171,51 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <form id="design-form" class="space-y-8">
                 
-                <!-- Section 1: Family Dynamics -->
+                <!-- Section 1: Size & Floor Plan -->
                 <div id="section-1" class="form-section active">
                     <div class="card">
                         <div class="mb-8">
-                            <h2 class="text-display font-headline font-bold text-primary mb-4">Tell us about your family</h2>
-                            <p class="text-body-lg text-text-secondary">Understanding how your family lives and connects helps us create spaces that truly work for you.</p>
+                            <h2 class="text-display font-headline font-bold text-primary mb-4">Choose your home's footprint</h2>
+                            <p class="text-body-lg text-text-secondary">Let's start with the basics. How much space do you envision for your new home?</p>
                         </div>
                         
-                        <!-- Family Size -->
-                        <div class="mb-8">
-                            <label class="block text-lg font-semibold text-primary mb-4">How many people live in your home?</label>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <button type="button" class="family-size-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="1-2">
-                                    <div class="text-2xl mb-2">👫</div>
-                                    <div class="font-semibold">1-2 people</div>
-                                    <div class="text-sm text-text-secondary">Couple or individual</div>
-                                </button>
-                                <button type="button" class="family-size-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="3-4">
-                                    <div class="text-2xl mb-2">👨‍👩‍👧</div>
-                                    <div class="font-semibold">3-4 people</div>
-                                    <div class="text-sm text-text-secondary">Small family</div>
-                                </button>
-                                <button type="button" class="family-size-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="5-6">
-                                    <div class="text-2xl mb-2">👨‍👩‍👧‍👦</div>
-                                    <div class="font-semibold">5-6 people</div>
-                                    <div class="text-sm text-text-secondary">Growing family</div>
-                                </button>
-                                <button type="button" class="family-size-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="7+">
-                                    <div class="text-2xl mb-2">👨‍👩‍👧‍👦‍👶</div>
-                                    <div class="font-semibold">7+ people</div>
-                                    <div class="text-sm text-text-secondary">Large family</div>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Family Activities -->
-                        <div class="mb-8">
-                            <label class="block text-lg font-semibold text-primary mb-4">How does your family love to spend time together?</label>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <button type="button" class="activity-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-left" data-value="cooking">
-                                    <div class="flex items-start space-x-4">
-                                        <div class="text-2xl">🍳</div>
-                                        <div>
-                                            <div class="font-semibold mb-1">Cooking & Dining</div>
-                                            <div class="text-sm text-text-secondary">Family meals, baking, entertaining guests</div>
-                                        </div>
-                                    </div>
-                                </button>
-                                <button type="button" class="activity-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-left" data-value="entertainment">
-                                    <div class="flex items-start space-x-4">
-                                        <div class="text-2xl">📺</div>
-                                        <div>
-                                            <div class="font-semibold mb-1">Entertainment</div>
-                                            <div class="text-sm text-text-secondary">Movie nights, gaming, music</div>
-                                        </div>
-                                    </div>
-                                </button>
-                                <button type="button" class="activity-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-left" data-value="outdoor">
-                                    <div class="flex items-start space-x-4">
-                                        <div class="text-2xl">🌳</div>
-                                        <div>
-                                            <div class="font-semibold mb-1">Outdoor Activities</div>
-                                            <div class="text-sm text-text-secondary">Gardening, BBQ, outdoor games</div>
-                                        </div>
-                                    </div>
-                                </button>
-                                <button type="button" class="activity-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-left" data-value="work-study">
-                                    <div class="flex items-start space-x-4">
-                                        <div class="text-2xl">📚</div>
-                                        <div>
-                                            <div class="font-semibold mb-1">Work & Study</div>
-                                            <div class="text-sm text-text-secondary">Homework, remote work, reading</div>
-                                        </div>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- AI Suggestion Box -->
-                        <div id="ai-suggestion-1" class="bg-accent-50 border border-accent-200 rounded-lg p-4 mb-8 hidden">
-                            <div class="flex items-start space-x-3">
-                                <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" clip-rule="evenodd"/>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-primary mb-1">AI Design Insight</h4>
-                                    <p class="text-sm text-text-secondary">Families with young children often love kitchen islands for homework time and casual meals. We'll make sure to include flexible spaces that grow with your family!</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Life Stage -->
-                        <div class="mb-8">
-                            <label class="block text-lg font-semibold text-primary mb-4">What stage of life is your family in?</label>
-                            <div class="grid md:grid-cols-3 gap-4">
-                                <button type="button" class="life-stage-btn p-4 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="young-couple">
-                                    <div class="font-semibold mb-1">Young Couple</div>
-                                    <div class="text-sm text-text-secondary">Starting out together</div>
-                                </button>
-                                <button type="button" class="life-stage-btn p-4 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="growing-family">
-                                    <div class="font-semibold mb-1">Growing Family</div>
-                                    <div class="text-sm text-text-secondary">Young children at home</div>
-                                </button>
-                                <button type="button" class="life-stage-btn p-4 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="established-family">
-                                    <div class="font-semibold mb-1">Established Family</div>
-                                    <div class="text-sm text-text-secondary">School-age children</div>
-                                </button>
-                                <button type="button" class="life-stage-btn p-4 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="empty-nesters">
-                                    <div class="font-semibold mb-1">Empty Nesters</div>
-                                    <div class="text-sm text-text-secondary">Children have moved out</div>
-                                </button>
-                                <button type="button" class="life-stage-btn p-4 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="multi-generational">
-                                    <div class="font-semibold mb-1">Multi-Generational</div>
-                                    <div class="text-sm text-text-secondary">Multiple generations together</div>
-                                </button>
-                                <button type="button" class="life-stage-btn p-4 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="retirement">
-                                    <div class="font-semibold mb-1">Retirement</div>
-                                    <div class="text-sm text-text-secondary">Enjoying golden years</div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Section 2: Lifestyle Preferences -->
-                <div id="section-2" class="form-section hidden">
-                    <div class="card">
-                        <div class="mb-8">
-                            <h2 class="text-display font-headline font-bold text-primary mb-4">Your lifestyle preferences</h2>
-                            <p class="text-body-lg text-text-secondary">These preferences help us understand how you like to live and what kind of spaces make you feel most comfortable.</p>
-                        </div>
-                        
-                        <!-- Lifestyle Sliders -->
-                        <div class="space-y-8">
-                            <!-- Open vs Private -->
-                            <div>
-                                <label class="block text-lg font-semibold text-primary mb-4">How do you prefer your living spaces?</label>
-                                <div class="bg-gray-50 rounded-lg p-6">
-                                    <div class="flex justify-between items-center mb-4">
-                                        <span class="text-sm font-medium text-text-secondary">Private & Separate Rooms</span>
-                                        <span class="text-sm font-medium text-text-secondary">Open & Connected Spaces</span>
-                                    </div>
-                                    <input type="range" id="openness-slider" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" min="1" max="5" value="3" />
-                                    <div class="flex justify-between text-xs text-text-secondary mt-2">
-                                        <span>Very Private</span>
-                                        <span>Balanced</span>
-                                        <span>Very Open</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Indoor vs Outdoor -->
-                            <div>
-                                <label class="block text-lg font-semibold text-primary mb-4">How important is outdoor living to you?</label>
-                                <div class="bg-gray-50 rounded-lg p-6">
-                                    <div class="flex justify-between items-center mb-4">
-                                        <span class="text-sm font-medium text-text-secondary">Indoor Focus</span>
-                                        <span class="text-sm font-medium text-text-secondary">Outdoor Living Priority</span>
-                                    </div>
-                                    <input type="range" id="outdoor-slider" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" min="1" max="5" value="3" />
-                                    <div class="flex justify-between text-xs text-text-secondary mt-2">
-                                        <span>Indoor Only</span>
-                                        <span>Some Outdoor</span>
-                                        <span>Outdoor Essential</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Formal vs Casual -->
-                            <div>
-                                <label class="block text-lg font-semibold text-primary mb-4">What's your entertaining style?</label>
-                                <div class="bg-gray-50 rounded-lg p-6">
-                                    <div class="flex justify-between items-center mb-4">
-                                        <span class="text-sm font-medium text-text-secondary">Formal & Traditional</span>
-                                        <span class="text-sm font-medium text-text-secondary">Casual & Relaxed</span>
-                                    </div>
-                                    <input type="range" id="formality-slider" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" min="1" max="5" value="3" />
-                                    <div class="flex justify-between text-xs text-text-secondary mt-2">
-                                        <span>Very Formal</span>
-                                        <span>Mixed</span>
-                                        <span>Very Casual</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Special Needs -->
-                        <div class="mt-8">
-                            <label class="block text-lg font-semibold text-primary mb-4">Any special considerations?</label>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <label class="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-gray-50 transition-quick cursor-pointer">
-                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded" name="special-needs" value="accessibility" />
-                                    <span>Accessibility features needed</span>
-                                </label>
-                                <label class="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-gray-50 transition-quick cursor-pointer">
-                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded" name="special-needs" value="pets" />
-                                    <span>Pet-friendly design</span>
-                                </label>
-                                <label class="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-gray-50 transition-quick cursor-pointer">
-                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded" name="special-needs" value="home-office" />
-                                    <span>Dedicated home office space</span>
-                                </label>
-                                <label class="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-gray-50 transition-quick cursor-pointer">
-                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded" name="special-needs" value="guest-space" />
-                                    <span>Frequent guest accommodation</span>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <!-- AI Suggestion Box -->
-                        <div id="ai-suggestion-2" class="bg-secondary-50 border border-secondary-200 rounded-lg p-4 mt-8 hidden">
-                            <div class="flex items-start space-x-3">
-                                <div class="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-primary mb-1">Smart Design Tip</h4>
-                                    <p class="text-sm text-text-secondary">Based on your preferences for open spaces and casual entertaining, we'll design a great room concept that flows seamlessly from kitchen to living areas!</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Section 3: Space Requirements -->
-                <div id="section-3" class="form-section hidden">
-                    <div class="card">
-                        <div class="mb-8">
-                            <h2 class="text-display font-headline font-bold text-primary mb-4">Space requirements</h2>
-                            <p class="text-body-lg text-text-secondary">Let's determine the specific rooms and spaces your family needs to live comfortably.</p>
-                        </div>
-                        
-                        <!-- Bedrooms -->
-                        <div class="mb-8">
-                            <label class="block text-lg font-semibold text-primary mb-4">How many bedrooms do you need?</label>
-                            <div class="flex space-x-4">
-                                <button type="button" class="bedroom-btn w-16 h-16 border-2 border-border rounded-lg hover:border-secondary transition-quick font-semibold" data-value="1">1</button>
-                                <button type="button" class="bedroom-btn w-16 h-16 border-2 border-border rounded-lg hover:border-secondary transition-quick font-semibold" data-value="2">2</button>
-                                <button type="button" class="bedroom-btn w-16 h-16 border-2 border-border rounded-lg hover:border-secondary transition-quick font-semibold" data-value="3">3</button>
-                                <button type="button" class="bedroom-btn w-16 h-16 border-2 border-border rounded-lg hover:border-secondary transition-quick font-semibold" data-value="4">4</button>
-                                <button type="button" class="bedroom-btn w-16 h-16 border-2 border-border rounded-lg hover:border-secondary transition-quick font-semibold" data-value="5+">5+</button>
-                            </div>
-                        </div>
-                        
-                        <!-- Bathrooms -->
-                        <div class="mb-8">
-                            <label class="block text-lg font-semibold text-primary mb-4">How many bathrooms do you need?</label>
-                            <div class="flex space-x-4">
-                                <button type="button" class="bathroom-btn w-16 h-16 border-2 border-border rounded-lg hover:border-secondary transition-quick font-semibold" data-value="1">1</button>
-                                <button type="button" class="bathroom-btn w-16 h-16 border-2 border-border rounded-lg hover:border-secondary transition-quick font-semibold" data-value="1.5">1.5</button>
-                                <button type="button" class="bathroom-btn w-16 h-16 border-2 border-border rounded-lg hover:border-secondary transition-quick font-semibold" data-value="2">2</button>
-                                <button type="button" class="bathroom-btn w-16 h-16 border-2 border-border rounded-lg hover:border-secondary transition-quick font-semibold" data-value="2.5">2.5</button>
-                                <button type="button" class="bathroom-btn w-16 h-16 border-2 border-border rounded-lg hover:border-secondary transition-quick font-semibold" data-value="3+">3+</button>
-                            </div>
-                        </div>
-                        
-                        <!-- Additional Spaces -->
-                        <div class="mb-8">
-                            <label class="block text-lg font-semibold text-primary mb-4">Which additional spaces are important to you?</label>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <label class="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-gray-50 transition-quick cursor-pointer">
-                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded" name="additional-spaces" value="home-office" />
-                                    <span>Home Office/Study</span>
-                                </label>
-                                <label class="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-gray-50 transition-quick cursor-pointer">
-                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded" name="additional-spaces" value="playroom" />
-                                    <span>Playroom/Kids Space</span>
-                                </label>
-                                <label class="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-gray-50 transition-quick cursor-pointer">
-                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded" name="additional-spaces" value="gym" />
-                                    <span>Home Gym/Exercise Room</span>
-                                </label>
-                                <label class="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-gray-50 transition-quick cursor-pointer">
-                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded" name="additional-spaces" value="craft-room" />
-                                    <span>Craft/Hobby Room</span>
-                                </label>
-                                <label class="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-gray-50 transition-quick cursor-pointer">
-                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded" name="additional-spaces" value="library" />
-                                    <span>Library/Reading Nook</span>
-                                </label>
-                                <label class="flex items-center space-x-3 p-4 border border-border rounded-lg hover:bg-gray-50 transition-quick cursor-pointer">
-                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-secondary rounded" name="additional-spaces" value="mudroom" />
-                                    <span>Mudroom/Entry Storage</span>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <!-- Square Footage -->
+                        <!-- Preferred home size -->
                         <div class="mb-8">
                             <label class="block text-lg font-semibold text-primary mb-4">Preferred home size</label>
-                            <div class="grid md:grid-cols-4 gap-4">
-                                <button type="button" class="size-btn p-4 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="under-1500">
-                                    <div class="font-semibold">Under 1,500</div>
-                                    <div class="text-sm text-text-secondary">sq ft</div>
-                                </button>
-                                <button type="button" class="size-btn p-4 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="1500-2500">
-                                    <div class="font-semibold">1,500 - 2,500</div>
-                                    <div class="text-sm text-text-secondary">sq ft</div>
-                                </button>
-                                <button type="button" class="size-btn p-4 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="2500-3500">
-                                    <div class="font-semibold">2,500 - 3,500</div>
-                                    <div class="text-sm text-text-secondary">sq ft</div>
-                                </button>
-                                <button type="button" class="size-btn p-4 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="over-3500">
-                                    <div class="font-semibold">Over 3,500</div>
-                                    <div class="text-sm text-text-secondary">sq ft</div>
-                                </button>
+                            <div class="slider-container">
+                                <div class="flex items-center gap-4">
+                                    <input type="range" min="1000" max="10000" value="3000" class="slider flex-1" id="sqft-slider" step="1">
+                                    <input type="number" id="sqft-input" min="1000" max="10000" value="3000" step="1" class="w-28 p-2 border-2 border-border rounded-lg text-center">
+                                </div>
+                                <div id="slider-value" class="slider-value">3000 sq ft</div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <!-- Section 4: Style & Budget -->
-                <div id="section-4" class="form-section hidden">
-                    <div class="card">
+                        <!-- Number of Floors -->
                         <div class="mb-8">
-                            <h2 class="text-display font-headline font-bold text-primary mb-4">Style & budget preferences</h2>
-                            <p class="text-body-lg text-text-secondary">Finally, let's talk about your design style preferences and budget considerations.</p>
+                            <label class="block text-lg font-semibold text-primary mb-4">Number of floors</label>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <button type="button" class="floor-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="1">
+                                    <div class="font-semibold">1 Floor</div>
+                                </button>
+                                <button type="button" class="floor-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="2">
+                                    <div class="font-semibold">2 Floors</div>
+                                </button>
+                                <button type="button" class="floor-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="3">
+                                    <div class="font-semibold">3 Floors</div>
+                                </button>
+                                <button type="button" class="floor-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="4+">
+                                    <div class="font-semibold">4+ Floors</div>
+                                </button>
+                            </div>
+                            <div id="floors-dropdown-container" class="hidden mt-4">
+                                <label for="floors-dropdown" class="block text-lg font-semibold text-primary mb-2">Select number of floors</label>
+                                <select id="floors-dropdown" class="w-full p-2 border-2 border-border rounded-lg">
+                                    <!-- Options will be populated by JavaScript -->
+                                </select>
+                            </div>
                         </div>
-                        
+
                         <!-- Design Style -->
                         <div class="mb-8">
                             <label class="block text-lg font-semibold text-primary mb-4">Which design style speaks to you?</label>
@@ -483,68 +265,98 @@
                             </div>
                         </div>
                         
-                        <!-- Budget Range -->
+                        
+                    </div>
+                </div>
+                
+                <!-- Section 2: Family Dynamics -->
+                <div id="section-2" class="form-section hidden">
+                    <div class="card">
                         <div class="mb-8">
-                            <label class="block text-lg font-semibold text-primary mb-4">What's your budget range for this project?</label>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <button type="button" class="budget-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="under-200k">
-                                    <div class="font-semibold text-lg">Under $200K</div>
-                                    <div class="text-sm text-text-secondary">Starter home budget</div>
+                            <h2 class="text-display font-headline font-bold text-primary mb-4">Tell us about your family</h2>
+                            <p class="text-body-lg text-text-secondary">Understanding how your family lives and connects helps us create spaces that truly work for you.</p>
+                        </div>
+                        
+                        <!-- Family Size -->
+                        <div class="mb-8">
+                            <label class="block text-lg font-semibold text-primary mb-4">How many people live in your home?</label>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <button type="button" class="family-size-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="1-2">
+                                    <div class="text-2xl mb-2">👫</div>
+                                    <div class="font-semibold">1-2 people</div>
+                                    <div class="text-sm text-text-secondary">Couple or individual</div>
                                 </button>
-                                <button type="button" class="budget-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="200k-400k">
-                                    <div class="font-semibold text-lg">$200K - $400K</div>
-                                    <div class="text-sm text-text-secondary">Mid-range investment</div>
+                                <button type="button" class="family-size-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="3-4">
+                                    <div class="text-2xl mb-2">👨‍👩‍👧</div>
+                                    <div class="font-semibold">3-4 people</div>
+                                    <div class="text-sm text-text-secondary">Small family</div>
                                 </button>
-                                <button type="button" class="budget-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="400k-600k">
-                                    <div class="font-semibold text-lg">$400K - $600K</div>
-                                    <div class="text-sm text-text-secondary">Premium features</div>
+                                <button type="button" class="family-size-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="5-6">
+                                    <div class="text-2xl mb-2">👨‍👩‍👧‍👦</div>
+                                    <div class="font-semibold">5-6 people</div>
+                                    <div class="text-sm text-text-secondary">Growing family</div>
                                 </button>
-                                <button type="button" class="budget-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="over-600k">
-                                    <div class="font-semibold text-lg">$600K+</div>
-                                    <div class="text-sm text-text-secondary">Luxury custom home</div>
+                                <button type="button" class="family-size-btn p-6 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="7+">
+                                    <div class="text-2xl mb-2">👨‍👩‍👧‍👦‍👶</div>
+                                    <div class="font-semibold">7+ people</div>
+                                    <div class="text-sm text-text-secondary">Large family</div>
                                 </button>
                             </div>
                         </div>
                         
-                        <!-- Timeline -->
+                        <!-- Family Composition Grid -->
                         <div class="mb-8">
-                            <label class="block text-lg font-semibold text-primary mb-4">When are you planning to start building?</label>
-                            <div class="grid md:grid-cols-4 gap-4">
-                                <button type="button" class="timeline-btn p-4 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="immediately">
-                                    <div class="font-semibold">Immediately</div>
-                                    <div class="text-sm text-text-secondary">Ready to start</div>
-                                </button>
-                                <button type="button" class="timeline-btn p-4 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="3-6-months">
-                                    <div class="font-semibold">3-6 months</div>
-                                    <div class="text-sm text-text-secondary">Planning phase</div>
-                                </button>
-                                <button type="button" class="timeline-btn p-4 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="6-12-months">
-                                    <div class="font-semibold">6-12 months</div>
-                                    <div class="text-sm text-text-secondary">Future planning</div>
-                                </button>
-                                <button type="button" class="timeline-btn p-4 border-2 border-border rounded-lg hover:border-secondary transition-quick text-center" data-value="over-1-year">
-                                    <div class="font-semibold">1+ years</div>
-                                    <div class="text-sm text-text-secondary">Long-term goal</div>
-                                </button>
+                            <label class="block text-lg font-semibold text-primary mb-4">Specify your family composition:</label>
+                            <div class="space-y-4">
+                                <!-- Children -->
+                                <div class="composition-item p-4 border-2 border-border rounded-lg flex justify-between items-center hover:border-secondary transition-quick">
+                                    <div class="font-semibold text-primary">Children</div>
+                                    <div class="family-grid-controls">
+                                        <button type="button" class="family-grid-btn" onclick="updateCount('children-count', -1)">-</button>
+                                        <span id="children-count" class="family-grid-count">0</span>
+                                        <button type="button" class="family-grid-btn" onclick="updateCount('children-count', 1)">+</button>
+                                    </div>
+                                </div>
+                                <!-- Couples -->
+                                <div class="composition-item p-4 border-2 border-border rounded-lg flex justify-between items-center hover:border-secondary transition-quick">
+                                    <div class="font-semibold text-primary">Couples</div>
+                                    <div class="family-grid-controls">
+                                        <button type="button" class="family-grid-btn" onclick="updateCount('couples-count', -1)">-</button>
+                                        <span id="couples-count" class="family-grid-count">0</span>
+                                        <button type="button" class="family-grid-btn" onclick="updateCount('couples-count', 1)">+</button>
+                                    </div>
+                                </div>
+                                <!-- Singles -->
+                                <div class="composition-item p-4 border-2 border-border rounded-lg flex justify-between items-center hover:border-secondary transition-quick">
+                                    <div class="font-semibold text-primary">Singles</div>
+                                    <div class="family-grid-controls">
+                                        <button type="button" class="family-grid-btn" onclick="updateCount('singles-count', -1)">-</button>
+                                        <span id="singles-count" class="family-grid-count">0</span>
+                                        <button type="button" class="family-grid-btn" onclick="updateCount('singles-count', 1)">+</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
-                        <!-- Final AI Suggestion -->
-                        <div id="ai-suggestion-final" class="bg-success-50 border border-success-200 rounded-lg p-4 mb-8 hidden">
+                        
+                        <!-- AI Suggestion Box -->
+                        <div id="ai-suggestion-1" class="bg-accent-50 border border-accent-200 rounded-lg p-4 mb-8 hidden">
                             <div class="flex items-start space-x-3">
-                                <div class="w-8 h-8 bg-success rounded-full flex items-center justify-center flex-shrink-0">
+                                <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
                                     <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        <path fill-rule="evenodd" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" clip-rule="evenodd"/>
                                     </svg>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-primary mb-1">Perfect! We're ready to design</h4>
-                                    <p class="text-sm text-text-secondary">Based on your preferences, we'll create a personalized design that maximizes your budget and creates the perfect spaces for your family's lifestyle!</p>
+                                    <h4 class="font-semibold text-primary mb-1">AI Design Insight</h4>
+                                    <p class="text-sm text-text-secondary">Families with young children often love kitchen islands for homework time and casual meals. We'll make sure to include flexible spaces that grow with your family!</p>
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
+
 
                 <!-- Navigation Buttons -->
                 <div class="flex justify-between items-center pt-8">
@@ -642,12 +454,10 @@
                         <a href="javascript:void(0)" class="text-gray-400 hover:text-secondary transition-quick">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z" clip-rule="evenodd"/>
-                            </svg>
                         </a>
                         <a href="javascript:void(0)" class="text-gray-400 hover:text-secondary transition-quick">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84"/>
-                            </svg>
                         </a>
                         <a href="javascript:void(0)" class="text-gray-400 hover:text-secondary transition-quick">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -663,9 +473,8 @@
                     <ul class="space-y-2 text-sm">
                         <li><a href="homepage.html" class="text-gray-300 hover:text-white transition-quick">Home</a></li>
                         <li><a href="design_form_portal.html" class="text-gray-300 hover:text-white transition-quick">Design Portal</a></li>
-                        <li><a href="3d_immersion_theater.html" class="text-gray-300 hover:text-white transition-quick">3D Theater</a></li>
-                        <li><a href="price_evaluator_dashboard.html" class="text-gray-300 hover:text-white transition-quick">Price Evaluator</a></li>
                         <li><a href="my_designs_gallery.html" class="text-gray-300 hover:text-white transition-quick">My Designs</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white transition-quick">About</a></li>
                     </ul>
                 </div>
                 
@@ -709,9 +518,31 @@
 
     <!-- Form Interaction Script -->
     <script>
+        // Counter for family composition
+        function updateCount(elementId, change) {
+            const countElement = document.getElementById(elementId);
+            let count = parseInt(countElement.textContent, 10);
+            count = Math.max(0, count + change);
+            countElement.textContent = count;
+
+            // Update parent container style to give feedback
+            const container = countElement.closest('.composition-item');
+            if (count > 0) {
+                container.classList.add('border-secondary', 'bg-secondary-50');
+                container.classList.remove('border-border');
+            } else {
+                container.classList.remove('border-secondary', 'bg-secondary-50');
+                container.classList.add('border-border');
+            }
+            
+            // Update formData
+            formData[elementId] = count;
+            showAISuggestion();
+        }
+
         // Form state management
         let currentStep = 1;
-        const totalSteps = 4;
+        const totalSteps = 2;
         let formData = {};
 
         // Mobile menu functionality
@@ -750,13 +581,87 @@
         // Setup all button selections
         setupButtonSelection('family-size-btn', 'data-value');
         setupButtonSelection('activity-btn', 'data-value');
-        setupButtonSelection('life-stage-btn', 'data-value');
         setupButtonSelection('bedroom-btn', 'data-value');
         setupButtonSelection('bathroom-btn', 'data-value');
-        setupButtonSelection('size-btn', 'data-value');
         setupButtonSelection('style-btn', 'data-value');
         setupButtonSelection('budget-btn', 'data-value');
         setupButtonSelection('timeline-btn', 'data-value');
+        setupButtonSelection('floor-btn', 'data-value', (value) => {
+            const dropdownContainer = document.getElementById('floors-dropdown-container');
+            if (value === '4+') {
+                dropdownContainer.classList.remove('hidden');
+            } else {
+                dropdownContainer.classList.add('hidden');
+            }
+        });
+
+        // Populate floors dropdown
+        const floorsDropdown = document.getElementById('floors-dropdown');
+        if (floorsDropdown) {
+            for (let i = 4; i <= 20; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = `${i} Floors`;
+                floorsDropdown.appendChild(option);
+            }
+            floorsDropdown.addEventListener('change', function() {
+                formData['floor-btn'] = this.value;
+            });
+        }
+
+        // Slider for square footage
+        const sqftSlider = document.getElementById('sqft-slider');
+        const sliderValue = document.getElementById('slider-value');
+        const sqftInput = document.getElementById('sqft-input');
+
+        if (sqftSlider && sliderValue && sqftInput) {
+            function updateSqftValue(value) {
+                const numValue = parseInt(value, 10);
+                
+                sqftSlider.value = numValue;
+                sqftInput.value = numValue;
+                
+                if (numValue >= 10000) {
+                    sliderValue.textContent = '10000+ sq ft';
+                    formData['size-btn'] = '10000+';
+                } else {
+                    sliderValue.textContent = `${numValue} sq ft`;
+                    formData['size-btn'] = numValue;
+                }
+            }
+
+            sqftSlider.addEventListener('input', function() {
+                updateSqftValue(this.value);
+            });
+
+            sqftInput.addEventListener('input', function() {
+                const value = parseInt(this.value, 10);
+                const min = parseInt(this.min, 10);
+                const max = parseInt(this.max, 10);
+                if (!isNaN(value) && value >= min && value <= max) {
+                    sqftSlider.value = value;
+                    sliderValue.textContent = `${value} sq ft`;
+                    formData['size-btn'] = value;
+                }
+            });
+
+            sqftInput.addEventListener('blur', function() {
+                let value = parseInt(this.value, 10);
+                const min = parseInt(this.min, 10);
+                const max = parseInt(this.max, 10);
+                if (isNaN(value)) {
+                    value = min;
+                }
+                value = Math.max(min, Math.min(value, max));
+                updateSqftValue(value);
+            });
+
+            // Set initial value from slider, if not already in formData (e.g. from a saved draft)
+            if (!formData['size-btn']) {
+                formData['size-btn'] = sqftSlider.value;
+            }
+            updateSqftValue(sqftSlider.value);
+        }
 
         // Slider handlers
         document.querySelectorAll('input[type="range"]').forEach(slider => {
@@ -785,8 +690,7 @@
         function showAISuggestion() {
             const suggestions = {
                 1: document.getElementById('ai-suggestion-1'),
-                2: document.getElementById('ai-suggestion-2'),
-                4: document.getElementById('ai-suggestion-final')
+                2: document.getElementById('ai-suggestion-2')
             };
 
             if (suggestions[currentStep]) {
@@ -882,6 +786,46 @@
         document.getElementById('generate-design-btn').addEventListener('click', function(e) {
             e.preventDefault();
             
+            const familySize = formData['family-size-btn'];
+            if (!familySize) {
+                alert('Please select a family size.');
+                return;
+            }
+
+            const children = formData['children-count'] || 0;
+            const couples = formData['couples-count'] || 0;
+            const singles = formData['singles-count'] || 0;
+            const totalComposition = children + (couples * 2) + singles;
+
+            if (totalComposition === 0) {
+                alert('Please specify your family composition.');
+                return;
+            }
+
+            let minSize, maxSize;
+            if (familySize === '1-2') {
+                minSize = 1;
+                maxSize = 2;
+            } else if (familySize === '3-4') {
+                minSize = 3;
+                maxSize = 4;
+            } else if (familySize === '5-6') {
+                minSize = 5;
+                maxSize = 6;
+            } else if (familySize === '7+') {
+                minSize = 7;
+                maxSize = Infinity;
+            }
+
+            const compositionWarning = document.getElementById('composition-warning');
+            if (totalComposition < minSize || totalComposition > maxSize) {
+                compositionWarning.textContent = 'The family composition count (' + totalComposition + ') does not match the selected family size range (' + familySize + '). Please adjust your selections.';
+                compositionWarning.classList.remove('hidden');
+                return;
+            } else {
+                compositionWarning.classList.add('hidden');
+            }
+
             // Show loading state
             this.innerHTML = `
                 <svg class="animate-spin -ml-1 mr-3 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -938,3 +882,32 @@
     </script>
 </body>
 </html>
+
+</file_content>
+
+Now that you have the latest state of the file, try the operation again with fewer, more precise SEARCH blocks. For large files especially, it may be prudent to try to limit yourself to <5 SEARCH/REPLACE blocks at a time, then wait for the user to respond with the result of the operation before following up with another replace_in_file call to make additional edits.
+(If you run into this error 3 times in a row, you may use the write_to_file tool as a fallback.)
+</error><environment_details>
+# VSCode Visible Files
+C:/response_2a7c9b39-da7c-4c7a-8239-d4a4b8fb2f0f/0
+C:/response_2a7c9b39-da7c-4c7a-8239-d4a4b8fb2f0f/0
+pages/design_form_portal.html
+
+# VSCode Open Tabs
+pages/design_form_portal.html
+
+# Current Time
+8/14/2025, 12:31:02 PM (Asia/Calcutta, UTC+5.5:00)
+
+# Context Window Usage
+229,012 / 1,048.576K tokens used (22%)
+
+# Current Mode
+ACT MODE
+</environment_details>
+# Context Window Usage
+229,012 / 1,048.576K tokens used (22%)
+
+# Current Mode
+ACT MODE
+</environment_details>
