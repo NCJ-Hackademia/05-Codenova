@@ -85,7 +85,7 @@
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <a href="homepage.html" class="flex items-center space-x-2">
+                    <a href="{{ url_for('homepage') }}" class="flex items-center space-x-2">
                         <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
                             <path d="M16 2L4 12v18h8v-8h8v8h8V12L16 2zm0 4.5L24 14v14h-4v-8H12v8H8V14l8-7.5z"/>
                             <circle cx="16" cy="18" r="2" fill="currentColor"/>
@@ -96,12 +96,14 @@
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="homepage.html" class="text-text-secondary hover:text-primary transition-quick">Home</a>
-                    <a href="about.html" class="text-text-secondary hover:text-primary transition-quick">About</a>
-                    <a href="design_form_portal.html" class="text-primary font-semibold border-b-2 border-secondary">Design</a>
-                    <a href="my_designs_gallery.html" class="text-text-secondary hover:text-primary transition-quick">My Designs</a>
-                    <a href="technology_deep_dive.html" class="text-text-secondary hover:text-primary transition-quick">Technology</a>
-                    <a href="contact.html" class="text-text-secondary hover:text-primary transition-quick">Contact</a>
+                    <a href="{{ url_for('homepage') }}" class="text-text-secondary hover:text-primary transition-quick">Home</a>
+                    <a href="{{ url_for('about') }}" class="text-text-secondary hover:text-primary transition-quick">About</a>
+                    <a href="{{ url_for('design_portal') }}" class="text-primary font-semibold border-b-2 border-secondary">Design</a>
+                    <a href="{{ url_for('design_2d') }}" class="text-text-secondary hover:text-primary transition-quick">2D Design</a>
+                    <a href="{{ url_for('pricing') }}" class="text-text-secondary hover:text-primary transition-quick">Pricing</a>
+                    <a href="{{ url_for('designs_gallery') }}" class="text-text-secondary hover:text-primary transition-quick">My Designs</a>
+                    <a href="{{ url_for('tech_deep_dive') }}" class="text-text-secondary hover:text-primary transition-quick">Technology</a>
+                    <a href="{{ url_for('contact') }}" class="text-text-secondary hover:text-primary transition-quick">Contact</a>
                 </div>
                 
                 <!-- Save Progress Button -->
@@ -126,12 +128,14 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden hidden bg-surface border-t border-border">
             <div class="px-4 py-2 space-y-2">
-                <a href="homepage.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Home</a>
-                <a href="about.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">About</a>
-                <a href="design_form_portal.html" class="block py-2 text-primary font-semibold">Design</a>
-                <a href="my_designs_gallery.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">My Designs</a>
-                <a href="technology_deep_dive.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Technology</a>
-                <a href="contact.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Contact</a>
+                <a href="{{ url_for('homepage') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">Home</a>
+                <a href="{{ url_for('about') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">About</a>
+                <a href="{{ url_for('design_portal') }}" class="block py-2 text-primary font-semibold">Design</a>
+                <a href="{{ url_for('design_2d') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">2D-design</a>
+                <a href="{{ url_for('pricing') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">Pricing</a>
+                <a href="{{ url_for('designs_gallery') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">My Designs</a>
+                <a href="{{ url_for('tech_deep_dive') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">Technology</a>
+                <a href="{{ url_for('contact') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">Contact</a>
                 <button class="block py-2 mt-4 text-secondary font-semibold">Save Progress</button>
             </div>
         </div>
@@ -169,7 +173,7 @@
     <!-- Main Form Container -->
     <section class="py-12 bg-background">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <form id="design-form" class="space-y-8">
+            <form id="design-form" method="POST" action="{{ url_for('design_portal') }}" class="space-y-8">
                 
                 <!-- Section 1: Size & Floor Plan -->
                 <div id="section-1" class="form-section active">
@@ -317,6 +321,20 @@
                                         <button type="button" class="family-grid-btn" onclick="updateCount('children-count', 1)">+</button>
                                     </div>
                                 </div>
+                                <!-- Separate Rooms for Children -->
+                                <div id="separate-rooms-container" class="composition-item p-4 border-2 border-border rounded-lg mt-4 hidden">
+                                    <div class="font-semibold text-primary">Do children need separate rooms?</div>
+                                    <div class="flex gap-4">
+                                        <label class="flex items-center gap-2 cursor-pointer">
+                                            <input type="radio" name="separate_rooms" value="yes" class="form-radio">
+                                            <span>Yes</span>
+                                        </label>
+                                        <label class="flex items-center gap-2 cursor-pointer">
+                                            <input type="radio" name="separate_rooms" value="no" class="form-radio">
+                                            <span>No</span>
+                                        </label>
+                                    </div>
+                                </div>
                                 <!-- Couples -->
                                 <div class="composition-item p-4 border-2 border-border rounded-lg flex justify-between items-center hover:border-secondary transition-quick">
                                     <div class="font-semibold text-primary">Couples</div>
@@ -345,7 +363,6 @@
                                 <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
                                     <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" clip-rule="evenodd"/>
-                                    </svg>
                                 </div>
                                 <div>
                                     <h4 class="font-semibold text-primary mb-1">AI Design Insight</h4>
@@ -377,7 +394,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                             </svg>
                         </button>
-                        <button type="submit" id="generate-design-btn" class="btn-primary hidden">
+                        <button type="submit" id="generate-design-btn" class="btn-primary">
                             Generate My Design
                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
@@ -448,7 +465,7 @@
                         <span class="font-headline font-bold text-xl">Live N Fit</span>
                     </div>
                     <p class="text-gray-300 text-sm">
-                        Transforming dream homes into reality through AI-powered design intelligence and immersive 3D visualization.
+                        Transforming dream homes into reality through AI-powered design intelligence and immersive D visualization.
                     </p>
                     <div class="flex space-x-4">
                         <a href="javascript:void(0)" class="text-gray-400 hover:text-secondary transition-quick">
@@ -462,7 +479,6 @@
                         <a href="javascript:void(0)" class="text-gray-400 hover:text-secondary transition-quick">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd"/>
-                            </svg>
                         </a>
                     </div>
                 </div>
@@ -471,10 +487,10 @@
                 <div>
                     <h3 class="font-headline font-bold mb-4">Quick Links</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="homepage.html" class="text-gray-300 hover:text-white transition-quick">Home</a></li>
-                        <li><a href="design_form_portal.html" class="text-gray-300 hover:text-white transition-quick">Design Portal</a></li>
-                        <li><a href="my_designs_gallery.html" class="text-gray-300 hover:text-white transition-quick">My Designs</a></li>
-                        <li><a href="about.html" class="text-gray-300 hover:text-white transition-quick">About</a></li>
+                        <li><a href="{{ url_for('homepage') }}" class="text-gray-300 hover:text-white transition-quick">Home</a></li>
+                        <li><a href="{{ url_for('design_portal') }}" class="text-gray-300 hover:text-white transition-quick">Design Portal</a></li>
+                        <li><a href="{{ url_for('designs_gallery') }}" class="text-gray-300 hover:text-white transition-quick">My Designs</a></li>
+                        <li><a href="{{ url_for('about') }}" class="text-gray-300 hover:text-white transition-quick">About</a></li>
                     </ul>
                 </div>
                 
@@ -482,8 +498,8 @@
                 <div>
                     <h3 class="font-headline font-bold mb-4">Technology</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="technology_deep_dive.html" class="text-gray-300 hover:text-white transition-quick">AI Technology</a></li>
-                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">3D Visualization</a></li>
+                        <li><a href="{{ url_for('tech_deep_dive') }}" class="text-gray-300 hover:text-white transition-quick">AI Technology</a></li>
+                        <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">2D Design</a></li>
                         <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Cost Analysis</a></li>
                         <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">Smart Planning</a></li>
                         <li><a href="javascript:void(0)" class="text-gray-300 hover:text-white transition-quick">API Access</a></li>
@@ -535,6 +551,20 @@
                 container.classList.add('border-border');
             }
             
+            // Show/hide separate rooms question
+            if (elementId === 'children-count') {
+                const separateRoomsContainer = document.getElementById('separate-rooms-container');
+                if (count > 1) {
+                    separateRoomsContainer.classList.remove('hidden');
+                } else {
+                    separateRoomsContainer.classList.add('hidden');
+                    // Also reset the value if hidden
+                    const radios = document.getElementsByName('separate_rooms');
+                    radios.forEach(radio => radio.checked = false);
+                    delete formData['separate_rooms'];
+                }
+            }
+
             // Update formData
             formData[elementId] = count;
             showAISuggestion();
@@ -621,7 +651,7 @@
                 sqftSlider.value = numValue;
                 sqftInput.value = numValue;
                 
-                if (numValue >= 10000) {
+                if (numValue > 10000) {
                     sliderValue.textContent = '10000+ sq ft';
                     formData['size-btn'] = '10000+';
                 } else {
@@ -683,6 +713,15 @@
                     formData[name] = formData[name].filter(val => val !== this.value);
                 }
                 showAISuggestion();
+            });
+        });
+
+        // Radio button handler for separate rooms
+        document.querySelectorAll('input[name="separate_rooms"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.checked) {
+                    formData['separate_rooms'] = this.value;
+                }
             });
         });
 
@@ -785,38 +824,25 @@
         // Form submission
         document.getElementById('generate-design-btn').addEventListener('click', function(e) {
             e.preventDefault();
-            
+            // Do validation as before...
             const familySize = formData['family-size-btn'];
             if (!familySize) {
                 alert('Please select a family size.');
                 return;
             }
-
             const children = formData['children-count'] || 0;
             const couples = formData['couples-count'] || 0;
             const singles = formData['singles-count'] || 0;
             const totalComposition = children + (couples * 2) + singles;
-
             if (totalComposition === 0) {
                 alert('Please specify your family composition.');
                 return;
             }
-
             let minSize, maxSize;
-            if (familySize === '1-2') {
-                minSize = 1;
-                maxSize = 2;
-            } else if (familySize === '3-4') {
-                minSize = 3;
-                maxSize = 4;
-            } else if (familySize === '5-6') {
-                minSize = 5;
-                maxSize = 6;
-            } else if (familySize === '7+') {
-                minSize = 7;
-                maxSize = Infinity;
-            }
-
+            if (familySize === '1-2') { minSize = 1; maxSize = 2; }
+            else if (familySize === '3-4') { minSize = 3; maxSize = 4; }
+            else if (familySize === '5-6') { minSize = 5; maxSize = 6; }
+            else if (familySize === '7+') { minSize = 7; maxSize = Infinity; }
             const compositionWarning = document.getElementById('composition-warning');
             if (totalComposition < minSize || totalComposition > maxSize) {
                 compositionWarning.textContent = 'The family composition count (' + totalComposition + ') does not match the selected family size range (' + familySize + '). Please adjust your selections.';
@@ -826,21 +852,22 @@
                 compositionWarning.classList.add('hidden');
             }
 
-            // Show loading state
-            this.innerHTML = `
-                <svg class="animate-spin -ml-1 mr-3 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Generating Your Design...
-            `;
-            this.disabled = true;
-            
-            // Simulate processing time
-            setTimeout(() => {
-                // Redirect to 3D viewer with generated design
-                window.location.href = '3d_immersion_theater.html';
-            }, 3000);
+            // Before submitting, copy JS formData to hidden fields
+            for (const key in formData) {
+                let hidden = document.getElementById('hidden-' + key);
+                if (!hidden) {
+                    hidden = document.createElement('input');
+                    hidden.type = 'hidden';
+                    hidden.name = key;
+                    hidden.id = 'hidden-' + key;
+                    document.getElementById('design-form').appendChild(hidden);
+                }
+                hidden.value = formData[key];
+            }
+
+            // Save to localStorage and redirect
+            localStorage.setItem('designFormData', JSON.stringify(formData));
+            window.location.href = "{{ url_for('design_2d') }}";
         });
 
         // Save draft functionality

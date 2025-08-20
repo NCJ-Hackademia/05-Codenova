@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account - Live N Fit</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        @keyframes rotate-in {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(180deg);
+            }
+        }
+        .eye-icon-button.active {
+            animation: rotate-in 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen font-inter">
+    <!-- Header -->
+    <header class="bg-surface shadow-subtle border-b border-secondary-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="{{ url_for('index') }}" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3.04 1.05 4.35L2 22l5.65-1.05C9.96 21.64 11.46 22 13 22h7c1.1 0 2-.9 2-2V12c0-5.52-4.48-10-10-10zm0 18c-1.4 0-2.76-.35-4-.99L7 19l.99-1c-.64-1.24-.99-2.6-.99-4 0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-semibold text-text-primary">Live N Fit</span>
+                    </a>
+                </div>
+                
+                <!-- Sign In Link -->
+                <div class="flex items-center">
+                    <a href="{{ url_for('login') }}" class="text-secondary-600 hover:text-primary transition-colors duration-200 font-medium">
+                        Sign In
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex items-center justify-center px-4 py-8 sm:py-12">
+        <div class="w-full max-w-md">
+            <!-- Registration Form Container -->
+            <div class="bg-surface rounded-lg shadow-floating p-6 sm:p-8 border border-secondary-200">
+                <!-- Header -->
+                <div class="text-center mb-8">
+                    <h1 class="text-2xl sm:text-3xl font-semibold text-text-primary mb-2">Create Account</h1>
+                    <p class="text-secondary-500">Join Live N Fit to start your fitness journey</p>
+                </div>
+
+                <!-- Registration Form -->
+                <form id="registrationForm" class="space-y-5">
+                    <!-- Full Name Field -->
+                    <div>
+                        <label for="fullName" class="block text-sm font-medium text-text-primary mb-2">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required class="input-adaptive w-full px-4 py-3 border-secondary-300 focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-20 outline-none" placeholder="Enter your full name" />
+                        <div id="fullNameError" class="hidden text-error text-sm mt-1"></div>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-text-primary mb-2">Email Address</label>
+                        <input type="email" id="email" name="email" required class="input-adaptive w-full px-4 py-3 border-secondary-300 focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-20 outline-none" placeholder="Enter your email address" />
+                        <div id="emailError" class="hidden text-error text-sm mt-1"></div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-text-primary mb-2">Password</label>
+                        <div class="relative">
+                            <input type="password" id="password" name="password" required class="input-adaptive w-full px-4 py-3 border-secondary-300 focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-20 outline-none" placeholder="Create a strong password" />
+                        </div>
+                        
+                        <!-- Password Strength Meter -->
+                        <div class="mt-2">
+                            <div class="flex items-center space-x-2">
+                                <div class="flex-1 bg-secondary-200 rounded-full h-2">
+                                    <div id="passwordStrength" class="h-2 rounded-full transition-all duration-300 bg-error" style="width: 0%"></div>
+                                </div>
+                                <span id="passwordStrengthText" class="text-xs text-secondary-500">Weak</span>
+                            </div>
+                            <div class="mt-2 text-xs text-secondary-500">
+                                <p>Password must contain:</p>
+                                <ul class="list-disc list-inside mt-1 space-y-1">
+                                    <li id="lengthReq" class="text-error">At least 8 characters</li>
+                                    <li id="upperReq" class="text-error">One uppercase letter</li>
+                                    <li id="lowerReq" class="text-error">One lowercase letter</li>
+                                    <li id="numberReq" class="text-error">One number</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="passwordError" class="hidden text-error text-sm mt-1"></div>
+                    </div>
+
+                    <!-- Confirm Password Field -->
+                    <div>
+                        <label for="confirmPassword" class="block text-sm font-medium text-text-primary mb-2">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required class="input-adaptive w-full px-4 py-3 border-secondary-300 focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-20 outline-none" placeholder="Confirm your password" />
+                        <div id="confirmPasswordError" class="hidden text-error text-sm mt-1"></div>
+                    </div>
+
+                    <!-- Terms and Privacy -->
+                    <div class="flex items-start">
+                        <input type="checkbox" id="terms" name="terms" required class="mt-1 w-4 h-4 text-primary border-secondary-300 rounded focus:ring-primary focus:ring-2" />
+                        <label for="terms" class="ml-3 text-sm text-secondary-600">
+                            I agree to the 
+                            <a href="#" class="text-primary hover:text-primary-700 underline">Terms of Service</a> 
+                            and 
+                            <a href="#" class="text-primary hover:text-primary-700 underline">Privacy Policy</a>
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" id="submitBtn" class="w-full bg-primary hover:bg-primary-700 text-white font-medium py-3 px-4 rounded-button transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+                        <span id="submitText">Create Account</span>
+                        <svg id="loadingSpinner" class="hidden animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                        </svg>
+                    </button>
+                </form>
+
+                <!-- Sign In Link -->
+                <div class="mt-6 text-center">
+                    <p class="text-secondary-600">
+                        Already have an account? 
+                        <a href="{{ url_for('login') }}" class="text-primary hover:text-primary-700 font-medium underline">Sign In</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registrationForm');
+            const fullNameInput = document.getElementById('fullName');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+
+            // Password strength checker
+            passwordInput.addEventListener('input', function() {
+                const password = this.value;
+                const strengthBar = document.getElementById('passwordStrength');
+                const strengthText = document.getElementById('passwordStrengthText');
+                
+                // Requirements
+                const lengthReq = document.getElementById('lengthReq');
+                const upperReq = document.getElementById('upperReq');
+                const lowerReq = document.getElementById('lowerReq');
+                const numberReq = document.getElementById('numberReq');
+                
+                let score = 0;
+                
+                // Check length
+                if (password.length >= 8) {
+                    lengthReq.className = 'text-success';
+                    score++;
+                } else {
+                    lengthReq.className = 'text-error';
+                }
+                
+                // Check uppercase
+                if (/[A-Z]/.test(password)) {
+                    upperReq.className = 'text-success';
+                    score++;
+                } else {
+                    upperReq.className = 'text-error';
+                }
+                
+                // Check lowercase
+                if (/[a-z]/.test(password)) {
+                    lowerReq.className = 'text-success';
+                    score++;
+                } else {
+                    lowerReq.className = 'text-error';
+                }
+                
+                // Check number
+                if (/[0-9]/.test(password)) {
+                    numberReq.className = 'text-success';
+                    score++;
+                } else {
+                    numberReq.className = 'text-error';
+                }
+                
+                // Update strength bar
+                const percentage = (score / 4) * 100;
+                strengthBar.style.width = percentage + '%';
+                
+                if (score === 0) {
+                    strengthBar.className = 'h-2 rounded-full transition-all duration-300 bg-error';
+                    strengthText.textContent = 'Weak';
+                } else if (score <= 2) {
+                    strengthBar.className = 'h-2 rounded-full transition-all duration-300 bg-warning';
+                    strengthText.textContent = 'Fair';
+                } else if (score === 3) {
+                    strengthBar.className = 'h-2 rounded-full transition-all duration-300 bg-accent';
+                    strengthText.textContent = 'Good';
+                } else {
+                    strengthBar.className = 'h-2 rounded-full transition-all duration-300 bg-success';
+                    strengthText.textContent = 'Strong';
+                }
+            });
+
+            // Real-time validation
+            function validateField(input, errorElement, validator) {
+                input.addEventListener('blur', function() {
+                    const error = validator(this.value);
+                    if (error) {
+                        errorElement.textContent = error;
+                        errorElement.classList.remove('hidden');
+                        input.classList.add('border-error');
+                    } else {
+                        errorElement.classList.add('hidden');
+                        input.classList.remove('border-error');
+                    }
+                });
+            }
+
+            // Validators
+            validateField(fullNameInput, document.getElementById('fullNameError'), function(value) {
+                if (!value.trim()) return 'Full name is required';
+                if (value.trim().length < 2) return 'Full name must be at least 2 characters';
+                return null;
+            });
+
+            validateField(emailInput, document.getElementById('emailError'), function(value) {
+                if (!value) return 'Email is required';
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) return 'Please enter a valid email address';
+                return null;
+            });
+
+            validateField(confirmPasswordInput, document.getElementById('confirmPasswordError'), function(value) {
+                if (!value) return 'Please confirm your password';
+                if (value !== passwordInput.value) return 'Passwords do not match';
+                return null;
+            });
+
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Show loading state
+                submitText.textContent = 'Creating Account...';
+                loadingSpinner.classList.remove('hidden');
+                submitBtn.disabled = true;
+
+                // Gather form data
+                const name = fullNameInput.value.trim();
+                const email = emailInput.value.trim();
+                const password = passwordInput.value;
+                const confirmPassword = confirmPasswordInput.value;
+
+                // Basic validation (already handled above, but double-check)
+                if (!name || !email || !password || !confirmPassword || password !== confirmPassword) {
+                    submitText.textContent = 'Create Account';
+                    loadingSpinner.classList.add('hidden');
+                    submitBtn.disabled = false;
+                    return;
+                }
+
+                fetch("{{ url_for('register') }}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name: name, email: email, password: password })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = "{{ url_for('login') }}";
+                    } else {
+                        // Handle errors if backend returns them
+                        submitText.textContent = 'Create Account';
+                        loadingSpinner.classList.add('hidden');
+                        submitBtn.disabled = false;
+                        alert("Registration failed. Please try again.");
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    submitText.textContent = 'Create Account';
+                    loadingSpinner.classList.add('hidden');
+                    submitBtn.disabled = false;
+                    alert("An error occurred. Please try again.");
+                });
+            });
+        });
+    </script>
+</body>
+</html>

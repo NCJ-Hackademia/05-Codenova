@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pricing - Live N Fit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <style>
+        .pricing-container {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: var(--color-surface, #fff);
+            border-radius: 1rem;
+            box-shadow: var(--shadow-light, 0 4px 6px -1px rgba(0,0,0,0.1));
+            padding: 2.5rem 2rem;
+        }
+        .price-box {
+            background: var(--color-background, #fafafa);
+            padding: 2rem 1.5rem;
+            border-radius: 1rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow-light, 0 4px 6px -1px rgba(0,0,0,0.1));
+        }
+        .btn {
+            padding: 0.75rem 2rem;
+            background: var(--color-secondary, #38b2ac);
+            color: #fff;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 1.5rem;
+        }
+        .btn:disabled {
+            background: #aaa;
+        }
+        .btn:hover {
+            background: var(--color-primary, #1a365d);
+        }
+        .details-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+        }
+        .details-list li {
+            margin-bottom: 0.5rem;
+            color: var(--color-text-primary, #2d3748);
+            font-size: 1rem;
+        }
+        .price-value {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: var(--color-accent, #f6ad55);
+            margin: 1.5rem 0;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-4 { margin-bottom: 1rem; }
+    </style>
+</head>
+<body class="bg-background font-body">
+    <!-- Navigation Header (same as 2d-design.html) -->
+    <nav class="bg-surface shadow-card sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="{{ url_for('homepage') }}" class="flex items-center space-x-2">
+                        <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L4 12v18h8v-8h8v8h8V12L16 2zm0 4.5L24 14v14h-4v-8H12v8H8V14l8-7.5z"/>
+                            <circle cx="16" cy="18" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="font-headline font-bold text-xl text-primary">Live N Fit</span>
+                    </a>
+                </div>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="{{ url_for('homepage') }}" class="text-text-secondary hover:text-primary transition-quick">Home</a>
+                    <a href="{{ url_for('about') }}" class="text-text-secondary hover:text-primary transition-quick">About</a>
+                    <a href="{{ url_for('design_portal') }}" class="text-text-secondary hover:text-primary transition-quick">Design</a>
+                    <a href="{{ url_for('design_2d') }}" class="text-text-secondary hover:text-primary transition-quick">2D Design</a>
+                    <a href="{{ url_for('pricing') }}" class="text-primary font-semibold border-b-2 border-secondary">Pricing</a>
+                    <a href="{{ url_for('designs_gallery') }}" class="text-text-secondary hover:text-primary transition-quick">My Designs</a>
+                    <a href="{{ url_for('tech_deep_dive') }}" class="text-text-secondary hover:text-primary transition-quick">Technology</a>
+                    <a href="{{ url_for('contact') }}" class="text-text-secondary hover:text-primary transition-quick">Contact</a>
+                </div>
+                <!-- Save Progress Button -->
+                <div class="hidden md:block">
+                    <button class="text-secondary font-semibold hover:text-secondary-600 transition-quick">
+                        Save Progress
+                    </button>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-primary hover:text-secondary transition-quick">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-surface border-t border-border">
+            <div class="px-4 py-2 space-y-2">
+                <a href="{{ url_for('homepage') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">Home</a>
+                <a href="{{ url_for('about') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">About</a>
+                <a href="{{ url_for('design_portal') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">Design</a>
+                <a href="{{ url_for('design_2d') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">2D Design</a>
+                <a href="{{ url_for('pricing') }}" class="block py-2 text-primary font-semibold">Pricing</a>
+                <a href="{{ url_for('designs_gallery') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">My Designs</a>
+                <a href="{{ url_for('tech_deep_dive') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">Technology</a>
+                <a href="{{ url_for('contact') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">Contact</a>
+                <button class="block py-2 mt-4 text-secondary font-semibold">Save Progress</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pricing-container">
+        <h1 class="text-display font-headline font-bold text-primary text-center mb-8">Estimated Pricing</h1>
+        <div id="plan-summary" class="mb-8 text-center">
+            <!-- Plan summary will be loaded here -->
+        </div>
+        <div class="price-box text-center">
+            <h2 class="text-2xl font-bold text-primary mb-4">Predicted Price</h2>
+            <div id="price" class="price-value">Calculating...</div>
+            <button class="btn" onclick="goBack()">Back to Design</button>
+        </div>
+    </div>
+
+    <!-- Footer (same as 2d-design.html, adjust as needed) -->
+    <footer class="bg-primary-900 text-white py-16 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="font-bold mb-4">Live N Fit</h4>
+                    <p class="text-gray-400 text-sm">AI-powered smart home design platform for modern families.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li><a href="{{ url_for('homepage') }}" class="hover:underline">Home</a></li>
+                        <li><a href="{{ url_for('about') }}" class="hover:underline">About</a></li>
+                        <li><a href="{{ url_for('design_portal') }}" class="hover:underline">Design</a></li>
+                        <li><a href="{{ url_for('pricing') }}" class="hover:underline">Pricing</a></li>
+                        <li><a href="{{ url_for('contact') }}" class="hover:underline">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li><a href="#" class="hover:underline">Blog</a></li>
+                        <li><a href="#" class="hover:underline">Help Center</a></li>
+                        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:underline">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li>Email: support@livenfit.com</li>
+                        <li>Phone: +91 98765 43210</li>
+                        <li>Address: Bengaluru, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-primary-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 Live N Fit. All Rights Reserved.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-quick">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-quick">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Simulate fetching plan details from localStorage or backend
+        function getPlanDetails() {
+            // Example: { area: 1800, rooms: 3, floors: 2 }
+            return JSON.parse(localStorage.getItem('floorPlan')) || { area: 1500, rooms: 2, floors: 1 };
+        }
+
+        function predictPrice(plan) {
+            // Simple price prediction logic (customize as needed)
+            const basePricePerSqft = 1200;
+            let price = plan.area * basePricePerSqft;
+            price += plan.rooms * 50000;
+            price += (plan.floors - 1) * 200000;
+            return price;
+        }
+
+        function renderPlanSummary(plan) {
+            document.getElementById('plan-summary').innerHTML = `
+                <h3 class="text-xl font-semibold text-secondary mb-4">Plan Summary</h3>
+                <ul class="details-list">
+                    <li><strong>Area:</strong> ${plan.area} sqft</li>
+                    <li><strong>Rooms:</strong> ${plan.rooms}</li>
+                    <li><strong>Floors:</strong> ${plan.floors}</li>
+                </ul>
+            `;
+        }
+
+        function renderPrice(price) {
+            document.getElementById('price').textContent = '₹ ' + price.toLocaleString();
+        }
+
+        function goBack() {
+            window.location.href = '{{ url_for("design_2d") }}';
+        }
+
+        // On page load
+        const plan = getPlanDetails();
+        renderPlanSummary(plan);
+        const price = predictPrice(plan);
+        renderPrice(price);
+
+        // Mobile menu functionality
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

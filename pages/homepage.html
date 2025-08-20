@@ -17,27 +17,36 @@
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <a href="homepage.html" class="flex items-center space-x-2">
-                        <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
-                            <path d="M16 2L4 12v18h8v-8h8v8h8V12L16 2zm0 4.5L24 14v14h-4v-8H12v8H8V14l8-7.5z"/>
-                            <circle cx="16" cy="18" r="2" fill="currentColor"/>
-                        </svg>
-                        <span class="font-headline font-bold text-xl text-primary">Live N Fit</span>
-                    </a>
+                    <a href="{{url_for('homepage')}}" class="flex flex-col items-start space-y-0.5 space-x-2">
+        <span class="flex items-center space-x-2">
+            <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M16 2L4 12v18h8v-8h8v8h8V12L16 2zm0 4.5L24 14v14h-4v-8H12v8H8V14l8-7.5z"/>
+                <circle cx="16" cy="18" r="2" fill="currentColor"/>
+            </svg>
+            <span class="font-headline font-bold text-xl text-primary">Live N Fit</span>
+        </span>
+        <span class="text-sm text-text-secondary font-medium mt-1">
+            Welcome, {{ session['username'] }}!
+        </span>
+    </a>
                 </div>
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="homepage.html" class="text-primary font-semibold border-b-2 border-secondary">Home</a>
-                    <a href="about.html" class="text-text-secondary hover:text-primary transition-quick">About</a>
-                    <a href="design_form_portal.html" class="text-text-secondary hover:text-primary transition-quick">Design</a>
-                    <a href="my_designs_gallery.html" class="text-text-secondary hover:text-primary transition-quick">My Designs</a>
-                    <a href="technology_deep_dive.html" class="text-text-secondary hover:text-primary transition-quick">Technology</a>
-                    <a href="contact.html" class="text-text-secondary hover:text-primary transition-quick">Contact</a>
+                    <a href="{{ url_for('homepage') }}" class="text-primary font-semibold border-b-2 border-secondary">Home</a>
+                    <a href="{{ url_for('about') }}" class="text-text-secondary hover:text-primary transition-quick">About</a>
+                    <a href="{{ url_for('design_portal') }}" class="text-text-secondary hover:text-primary transition-quick">Design</a>
+                  
+                    <a href="{{ url_for('designs_gallery') }}" class="text-text-secondary hover:text-primary transition-quick">My Designs</a>
+                    <a href="{{ url_for('tech_deep_dive') }}" class="text-text-secondary hover:text-primary transition-quick">Technology</a>
+                    <a href="{{ url_for('contact') }}" class="text-text-secondary hover:text-primary transition-quick">Contact</a>
                 </div>
                 
-                <!-- CTA Button -->
-                <div class="hidden md:block">
+                <!-- Logout Button (Top Right) -->
+                <div class="flex items-center space-x-4">
+                    <a href="{{ url_for('login') }}" class="bg-red-500 hover:bg-red-600 text-red font-semibold py-2 px-6 rounded-lg shadow transition-smooth">
+                        Logout
+                    </a>
                 </div>
                 
                 <!-- Mobile Menu Button -->
@@ -54,12 +63,16 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden hidden bg-surface border-t border-border">
             <div class="px-4 py-2 space-y-2">
-                <a href="homepage.html" class="block py-2 text-primary font-semibold">Home</a>
-                <a href="about.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">About</a>
-                <a href="design_form_portal.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Design</a>
-                <a href="my_designs_gallery.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">My Designs</a>
-                <a href="technology_deep_dive.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Technology</a>
-                <a href="contact.html" class="block py-2 text-text-secondary hover:text-primary transition-quick">Contact</a>
+                <a href="{{ url_for('homepage') }}" class="block py-2 text-primary font-semibold">Home</a>
+                <a href="{{ url_for('about') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">About</a>
+                <a href="{{ url_for('design_portal') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">Design</a>
+                <a href="{{ url_for('designs_gallery') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">My Designs</a>
+                <a href="{{ url_for('tech_deep_dive') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">Technology</a>
+                <a href="{{ url_for('contact') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">Contact</a>
+                <!-- Mobile Logout Button -->
+                <a href="{{ url_for('login') }}" class="block py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg text-center transition-smooth">
+                    Logout
+                </a>
             </div>
         </div>
     </nav>
@@ -82,7 +95,7 @@
                     
                     <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="design_form_portal.html" class="bg-accent text-primary font-semibold py-4 px-8 rounded-lg shadow-elevated hover:shadow-premium transition-smooth text-center">
+                        <a href="{{ url_for('design_portal') }}" class="bg-accent text-primary font-semibold py-4 px-8 rounded-lg shadow-elevated hover:shadow-premium transition-smooth text-center">
                             Design My Home
                         </a>
                         <a href="#demo-section" class="border-2 border-white text-white font-semibold py-4 px-8 rounded-lg hover:bg-white hover:text-primary transition-smooth text-center">
@@ -130,47 +143,14 @@
                         Try Our AI Design Assistant
                     </h3>
                     
-                    <div class="grid md:grid-cols-3 gap-6 mb-8">
-                        <!-- Family Size -->
-                        <div class="space-y-3">
-                            <label class="block text-sm font-semibold text-primary">Family Size</label>
-                            <select class="form-input">
-                                <option>Select size</option>
-                                <option>1-2 people</option>
-                                <option>3-4 people</option>
-                                <option>5+ people</option>
-                            </select>
-                        </div>
-                        
-                        <!-- Style Preference -->
-                        <div class="space-y-3">
-                            <label class="block text-sm font-semibold text-primary">Style Preference</label>
-                            <select class="form-input">
-                                <option>Select style</option>
-                                <option>Modern</option>
-                                <option>Traditional</option>
-                                <option>Contemporary</option>
-                                <option>Farmhouse</option>
-                            </select>
-                        </div>
-                        
-                        <!-- Budget Range -->
-                        <div class="space-y-3">
-                            <label class="block text-sm font-semibold text-primary">Budget Range</label>
-                            <select class="form-input">
-                                <option>Select budget</option>
-                                <option>Under $200K</option>
-                                <option>$200K - $400K</option>
-                                <option>$400K - $600K</option>
-                                <option>$600K+</option>
-                            </select>
-                        </div>
-                    </div>
+                    
                     
                     <div class="text-center">
-                        <button class="btn-primary text-lg px-12 py-4">
-                            Generate AI Floor Plan
-                        </button>
+                        
+                        
+                            <a href="{{ url_for('design_portal') }}" class="btn-primary text-lg px-12 py-4">
+                                Generate AI Floor Plan
+                            </a>
                     </div>
                 </div>
                 
@@ -227,12 +207,6 @@
                     <div class="mt-4 text-sm text-secondary font-semibold">Step 2</div>
                 </div>
                 
-            </div>
-            
-            <div class="text-center mt-12">
-                <a href="design_form_portal.html" class="btn-primary text-lg px-8 py-4">
-                    Start Your Design Journey
-                </a>
             </div>
         </div>
     </section>
@@ -358,7 +332,7 @@
             </div>
             
             <div class="text-center mt-12">
-                <a href="my_designs_gallery.html" class="btn-secondary">
+                <a href="{{ url_for('designs_gallery') }}" class="btn-secondary">
                     View More Success Stories
                 </a>
             </div>
@@ -482,7 +456,7 @@
             </p>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="design_form_portal.html" class="bg-accent text-primary font-semibold py-4 px-8 rounded-lg shadow-elevated hover:shadow-premium transition-smooth">
+                <a href="{{ url_for('design_portal') }}" class="bg-accent text-primary font-semibold py-4 px-8 rounded-lg shadow-elevated hover:shadow-premium transition-smooth">
                     Start Designing Now
                 </a>
             </div>
@@ -532,10 +506,10 @@
                 <div>
                     <h3 class="font-headline font-bold mb-4">Quick Links</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="homepage.html" class="text-gray-300 hover:text-white transition-quick">Home</a></li>
-                        <li><a href="design_form_portal.html" class="text-gray-300 hover:text-white transition-quick">Design Portal</a></li>
-                        <li><a href="my_designs_gallery.html" class="text-gray-300 hover:text-white transition-quick">My Designs</a></li>
-                        <li><a href="about.html" class="text-gray-300 hover:text-white transition-quick">About</a></li>
+                        <li><a href="{{ url_for('homepage')}}" class="text-gray-300 hover:text-white transition-quick">Home</a></li>
+                        <li><a href="{{ url_for('design_portal') }}" class="text-gray-300 hover:text-white transition-quick">Design Portal</a></li>
+                        <li><a href="{{ url_for('designs_gallery') }}" class="text-gray-300 hover:text-white transition-quick">My Designs</a></li>
+                        <li><a href="{{ url_for('about') }}" class="text-gray-300 hover:text-white transition-quick">About</a></li>
                     </ul>
                 </div>
                 
