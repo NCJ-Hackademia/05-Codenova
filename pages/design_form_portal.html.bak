@@ -555,16 +555,6 @@
 
     <!-- Form Interaction Script -->
     <script>
-        // Form state management
-        let currentStep = 1;
-        const totalSteps = 2;
-        let formData = {};
-
-        // DOM Elements
-        const sqftSlider = document.getElementById('sqft-slider');
-        const sliderValue = document.getElementById('slider-value');
-        const sqftInput = document.getElementById('sqft-input');
-
         // Counter for family composition
         function updateCount(elementId, change) {
             const countElement = document.getElementById(elementId);
@@ -572,6 +562,7 @@
             count = Math.max(0, count + change);
             countElement.textContent = count;
 
+            // Update parent container style to give feedback
             const container = countElement.closest('.composition-item');
             if (count > 0) {
                 container.classList.add('border-secondary', 'bg-secondary-50');
@@ -581,67 +572,187 @@
                 container.classList.add('border-border');
             }
             
+            // Show/hide separate rooms question
             if (elementId === 'children-count') {
                 const separateRoomsContainer = document.getElementById('separate-rooms-container');
                 if (count > 1) {
                     separateRoomsContainer.classList.remove('hidden');
                 } else {
                     separateRoomsContainer.classList.add('hidden');
+                    // Also reset the value if hidden
                     const radios = document.getElementsByName('separate_rooms');
                     radios.forEach(radio => radio.checked = false);
                     delete formData['separate_rooms'];
                 }
             }
 
+            // Update formData
             formData[elementId] = count;
             showAISuggestion();
         }
 
+        // Form state management
+        let currentStep = 1;
+        const totalSteps = 2;
+        let formData = {};
+
         // Mobile menu functionality
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
         });
 
         // Button selection handlers
         function setupButtonSelection(buttonClass, dataAttribute, callback) {
             document.querySelectorAll(`.${buttonClass}`).forEach(button => {
                 button.addEventListener('click', function() {
+                    // Remove active state from siblings
                     document.querySelectorAll(`.${buttonClass}`).forEach(btn => {
                         btn.classList.remove('border-secondary', 'bg-secondary-50');
                         btn.classList.add('border-border');
                     });
+                    
+                    // Add active state to clicked button
                     this.classList.remove('border-border');
                     this.classList.add('border-secondary', 'bg-secondary-50');
                     
+                    // Store value
                     const value = this.getAttribute(dataAttribute);
                     formData[buttonClass] = value;
                     
+                    // Execute callback if provided
                     if (callback) callback(value);
+                    
+                    // Show AI suggestions based on selection
                     showAISuggestion();
                 });
             });
         }
 
-        // Slider for square footage
-        function updateSqftValue(value) {
-            if (!sqftSlider || !sliderValue || !sqftInput) return;
-            const numValue = parseInt(value, 10);
-            
-            sqftSlider.value = numValue;
-            sqftInput.value = numValue;
-            
-            if (numValue > 10000) {
-                sliderValue.textContent = '10000+ sq ft';
-                formData['size-btn'] = '10000+';
+        // Setup all button selections
+        setupButtonSelection('family-size-btn', 'data-value');
+        setupButtonSelection('activity-btn', 'data-value');
+        setupButtonSelection('bedroom-btn', 'data-value');
+        setupButtonSelection('bathroom-btn', 'data-value');
+        setupButtonSelection('style-btn', 'data-value');
+        setupButtonSelection('budget-btn', 'data-value');
+        setupButtonSelection('timeline-btn', 'data-value');
+        setupButtonSelection('floor-btn', 'data-value', (value) => {
+            const dropdownContainer = document.getElementById('floors-dropdown-container');
+            if (value === '4+') {
+                dropdownContainer.classList.remove('hidden');
             } else {
-                sliderValue.textContent = `${numValue} sq ft`;
-                formData['size-btn'] = numValue;
+                dropdownContainer.classList.add('hidden');
             }
+        });
+
+        // Populate floors dropdown
+        const floorsDropdown = document.getElementById('floors-dropdown');
+        if (floorsDropdown) {
+            for (let i = 4; i <= 20; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = `${i} Floors`;
+                floorsDropdown.appendChild(option);
+            }
+            floorsDropdown.addEventListener('change', function() {
+                formData['floor-btn'] = this.value;
+            });
         }
+
+        // Slider for square footage
+        const sqftSlider = document.getElementById('sqft-slider');
+        const sliderValue = document.getElementById('slider-value');
+        const sqftInput = document.getElementById('sqft-input');
+
+        if (sqftSlider && sliderValue && sqftInput) {
+            function updateSqftValue(value) {
+                const numValue = parseInt(value, 10);
+                
+                sqftSlider.value = numValue;
+                sqftInput.value = numValue;
+                
+                if (numValue > 10000) {
+                    sliderValue.textContent = '10000+ sq ft';
+                    formData['size-btn'] = '10000+';
+                } else {
+                    sliderValue.textContent = `${numValue} sq ft`;
+                    formData['size-btn'] = numValue;
+                }
+            }
+
+            sqftSlider.addEventListener('input', function() {
+                updateSqftValue(this.value);
+            });
+
+            sqftInput.addEventListener('input', function() {
+                const value = parseInt(this.value, 10);
+                const min = parseInt(this.min, 10);
+                const max = parseInt(this.max, 10);
+                if (!isNaN(value) && value >= min && value <= max) {
+                    sqftSlider.value = value;
+                    sliderValue.textContent = `${value} sq ft`;
+                    formData['size-btn'] = value;
+                }
+            });
+
+            sqftInput.addEventListener('blur', function() {
+                let value = parseInt(this.value, 10);
+                const min = parseInt(this.min, 10);
+                const max = parseInt(this.max, 10);
+                if (isNaN(value)) {
+                    value = min;
+                }
+                value = Math.max(min, Math.min(value, max));
+                updateSqftValue(value);
+            });
+
+            // Set initial value from slider, if not already in formData (e.g. from a saved draft)
+            if (!formData['size-btn']) {
+                formData['size-btn'] = sqftSlider.value;
+            }
+            updateSqftValue(sqftSlider.value);
+        }
+
+        // Slider handlers
+        document.querySelectorAll('input[type="range"]').forEach(slider => {
+            slider.addEventListener('input', function() {
+                formData[this.id] = this.value;
+                showAISuggestion();
+            });
+        });
+
+        // Checkbox handlers
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const name = this.name;
+                if (!formData[name]) formData[name] = [];
+                
+                if (this.checked) {
+                    formData[name].push(this.value);
+                } else {
+                    formData[name] = formData[name].filter(val => val !== this.value);
+                }
+                showAISuggestion();
+            });
+        });
+
+        // Radio button handler for separate rooms
+        document.querySelectorAll('input[name="separate_rooms"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.checked) {
+                    formData['separate_rooms'] = this.value;
+                }
+            });
+        });
 
         // Show AI suggestions based on current step and selections
         function showAISuggestion() {
-            const suggestions = { 1: document.getElementById('ai-suggestion-1'), 2: document.getElementById('ai-suggestion-2') };
+            const suggestions = {
+                1: document.getElementById('ai-suggestion-1'),
+                2: document.getElementById('ai-suggestion-2')
+            };
+
             if (suggestions[currentStep]) {
                 suggestions[currentStep].classList.remove('hidden');
             }
@@ -649,24 +760,40 @@
 
         // Navigation functions
         function showStep(step) {
-            document.querySelectorAll('.form-section').forEach(section => section.classList.add('hidden', 'active'));
+            // Hide all sections
+            document.querySelectorAll('.form-section').forEach(section => {
+                section.classList.add('hidden');
+                section.classList.remove('active');
+            });
+
+            // Show current section
             const currentSection = document.getElementById(`section-${step}`);
             if (currentSection) {
                 currentSection.classList.remove('hidden');
                 currentSection.classList.add('active');
             }
+
+            // Update progress
             updateProgress(step);
+            
+            // Update navigation buttons
             updateNavigationButtons(step);
         }
 
         function updateProgress(step) {
             currentStep = step;
             document.getElementById('current-step').textContent = step;
-            document.getElementById('progress-bar').style.width = `${(step / totalSteps) * 100}%`;
             
+            // Update progress bar
+            const progressBar = document.getElementById('progress-bar');
+            const progressPercent = (step / totalSteps) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+            
+            // Update step indicators
             for (let i = 1; i <= totalSteps; i++) {
                 const stepElement = document.getElementById(`step-${i}`);
                 const stepText = stepElement.parentElement.querySelector('span');
+                
                 if (i < step) {
                     stepElement.className = 'progress-step completed';
                     stepText.className = 'text-sm font-semibold text-success';
@@ -684,151 +811,122 @@
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
             const generateBtn = document.getElementById('generate-design-btn');
-            prevBtn.classList.toggle('hidden', step <= 1);
-            nextBtn.classList.toggle('hidden', step >= totalSteps);
-            generateBtn.classList.toggle('hidden', step < totalSteps);
+
+            // Show/hide previous button
+            if (step > 1) {
+                prevBtn.classList.remove('hidden');
+            } else {
+                prevBtn.classList.add('hidden');
+            }
+
+            // Show/hide next vs generate button
+            if (step < totalSteps) {
+                nextBtn.classList.remove('hidden');
+                generateBtn.classList.add('hidden');
+            } else {
+                nextBtn.classList.add('hidden');
+                generateBtn.classList.remove('hidden');
+            }
         }
 
-        function restoreFormState() {
+        // Navigation button handlers
+        document.getElementById('next-btn').addEventListener('click', function() {
+            if (currentStep < totalSteps) {
+                showStep(currentStep + 1);
+            }
+        });
+
+        document.getElementById('prev-btn').addEventListener('click', function() {
+            if (currentStep > 1) {
+                showStep(currentStep - 1);
+            }
+        });
+
+        // Form submission
+        document.getElementById('generate-design-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Do validation as before...
+            const familySize = formData['family-size-btn'];
+            if (!familySize) {
+                alert('Please select a family size.');
+                return;
+            }
+            const children = formData['children-count'] || 0;
+            const couples = formData['couples-count'] || 0;
+            const singles = formData['singles-count'] || 0;
+            const totalComposition = children + (couples * 2) + singles;
+            if (totalComposition === 0) {
+                alert('Please specify your family composition.');
+                return;
+            }
+            let minSize, maxSize;
+            if (familySize === '1-2') { minSize = 1; maxSize = 2; }
+            else if (familySize === '3-4') { minSize = 3; maxSize = 4; }
+            else if (familySize === '5-6') { minSize = 5; maxSize = 6; }
+            else if (familySize === '7+') { minSize = 7; maxSize = Infinity; }
+            const compositionWarning = document.getElementById('composition-warning');
+            if (totalComposition < minSize || totalComposition > maxSize) {
+                compositionWarning.textContent = 'The family composition count (' + totalComposition + ') does not match the selected family size range (' + familySize + '). Please adjust your selections.';
+                compositionWarning.classList.remove('hidden');
+                return;
+            } else {
+                compositionWarning.classList.add('hidden');
+            }
+
+            // Before submitting, copy JS formData to hidden fields
             for (const key in formData) {
-                if (key.endsWith('-btn')) {
-                    const button = document.querySelector(`.${key}[data-value="${formData[key]}"]`);
-                    if (button) button.click();
+                let hidden = document.getElementById('hidden-' + key);
+                if (!hidden) {
+                    hidden = document.createElement('input');
+                    hidden.type = 'hidden';
+                    hidden.name = key;
+                    hidden.id = 'hidden-' + key;
+                    document.getElementById('design-form').appendChild(hidden);
                 }
+                hidden.value = formData[key];
             }
-            if (formData['size-btn']) {
-                updateSqftValue(formData['size-btn']);
+
+            // Save to localStorage and redirect
+            localStorage.setItem('designFormData', JSON.stringify(formData));
+            document.getElementById('design-form').submit();
+        });
+
+        // Save draft functionality
+        document.getElementById('save-draft-btn').addEventListener('click', function() {
+            localStorage.setItem('designFormDraft', JSON.stringify(formData));
+            
+            // Show success message
+            const originalText = this.textContent;
+            this.textContent = 'Saved!';
+            this.classList.add('text-success');
+            
+            setTimeout(() => {
+                this.textContent = originalText;
+                this.classList.remove('text-success');
+            }, 2000);
+        });
+
+        // Load draft on page load
+        window.addEventListener('load', function() {
+            const savedDraft = localStorage.getItem('designFormDraft');
+            if (savedDraft) {
+                formData = JSON.parse(savedDraft);
+                // Restore form state based on saved data
+                // Implementation would restore button selections, slider values, etc.
             }
-            if (formData['children-count']) {
-                document.getElementById('children-count').textContent = formData['children-count'];
-                updateCount('children-count', 0);
-            }
-            if (formData['couples-count']) {
-                document.getElementById('couples-count').textContent = formData['couples-count'];
-                updateCount('couples-count', 0);
-            }
-            if (formData['singles-count']) {
-                document.getElementById('singles-count').textContent = formData['singles-count'];
-                updateCount('singles-count', 0);
-            }
-        }
+        });
 
         // Voice input functionality (placeholder)
         function initVoiceInput() {
             if ('webkitSpeechRecognition' in window) {
+                // Voice recognition implementation would go here
                 console.log('Voice input available');
             }
         }
 
-        // Add this in your <script> tag in design_form_portal.html
-document.querySelectorAll('input, select').forEach(el => {
-    el.addEventListener('change', function() {
-        const formData = {};
-        document.querySelectorAll('input, select').forEach(input => {
-            formData[input.name] = input.value;
-        });
-        fetch('/save_draft', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(formData)
-        });
-    });
-});
-
-        // Event Listeners Setup
-        document.addEventListener('DOMContentLoaded', function() {
-            // Setup button selections
-            setupButtonSelection('family-size-btn', 'data-value');
-            setupButtonSelection('style-btn', 'data-value');
-            setupButtonSelection('floor-btn', 'data-value', (value) => {
-                document.getElementById('floors-dropdown-container').classList.toggle('hidden', value !== '4+');
-            });
-
-            // Populate floors dropdown
-            const floorsDropdown = document.getElementById('floors-dropdown');
-            if (floorsDropdown) {
-                for (let i = 4; i <= 20; i++) {
-                    const option = document.createElement('option');
-                    option.value = i;
-                    option.textContent = `${i} Floors`;
-                    floorsDropdown.appendChild(option);
-                }
-                floorsDropdown.addEventListener('change', () => formData['floor-btn'] = this.value);
-            }
-
-            // Slider listeners
-            if (sqftSlider && sqftInput) {
-                sqftSlider.addEventListener('input', () => updateSqftValue(sqftSlider.value));
-                sqftInput.addEventListener('input', () => updateSqftValue(sqftInput.value));
-                sqftInput.addEventListener('blur', () => {
-                    let value = parseInt(sqftInput.value, 10);
-                    const min = parseInt(sqftInput.min, 10);
-                    const max = parseInt(sqftInput.max, 10);
-                    if (isNaN(value)) value = min;
-                    value = Math.max(min, Math.min(value, max));
-                    updateSqftValue(value);
-                });
-            }
-
-            // Navigation button handlers
-            document.getElementById('next-btn').addEventListener('click', () => { if (currentStep < totalSteps) showStep(currentStep + 1); });
-            document.getElementById('prev-btn').addEventListener('click', () => { if (currentStep > 1) showStep(currentStep - 1); });
-
-            // Form submission
-            document.getElementById('generate-design-btn').addEventListener('click', function(e) {
-                e.preventDefault();
-                // Validation logic here...
-                for (const key in formData) {
-                    let hidden = document.getElementById('hidden-' + key);
-                    if (!hidden) {
-                        hidden = document.createElement('input');
-                        hidden.type = 'hidden';
-                        hidden.name = key;
-                        hidden.id = 'hidden-' + key;
-                        document.getElementById('design-form').appendChild(hidden);
-                    }
-                    hidden.value = formData[key];
-                }
-                document.getElementById('design-form').submit();
-            });
-
-            // Save draft functionality
-            document.getElementById('save-draft-btn').addEventListener('click', function() {
-                fetch("{{ url_for('save_draft') }}", {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        const originalText = this.textContent;
-                        this.textContent = 'Saved!';
-                        this.classList.add('text-success');
-                        setTimeout(() => {
-                            this.textContent = originalText;
-                            this.classList.remove('text-success');
-                        }, 2000);
-                    } else {
-                        alert(data.message);
-                    }
-                });
-            });
-
-            // Load draft data and initialize form
-            const draftData = {{ draft_data|tojson|safe if draft_data else 'null' }};
-            if (draftData) {
-                delete draftData._id;
-                delete draftData.user_email;
-                formData = draftData;
-            } else {
-                if (sqftSlider) formData['size-btn'] = sqftSlider.value;
-            }
-            
-            restoreFormState();
-            showStep(1);
-            initVoiceInput();
-        });
+        // Initialize form
+        showStep(1);
+        initVoiceInput();
     </script>
 </body>
 </html>

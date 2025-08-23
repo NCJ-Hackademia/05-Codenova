@@ -154,33 +154,37 @@
     <!-- Navigation Header -->
     <nav class="bg-surface shadow-card sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
+            <div class="flex justify-between items-center h-16 relative">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <a href="{{url_for('homepage')}}" class="flex items-center space-x-2">
-                        <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
-                            <path d="M16 2L4 12v18h8v-8h8v8h8V12L16 2zm0 4.5L24 14v14h-4v-8H12v8H8V14l8-7.5z"/>
-                            <circle cx="16" cy="18" r="2" fill="currentColor"/>
-                        </svg>
-                        <span class="font-headline font-bold text-xl text-primary">Live N Fit</span>
-                    </a>
+                    <a href="{{url_for('homepage')}}" class="flex flex-col items-start space-y-0.5 space-x-2">
+        <span class="flex items-center space-x-2">
+            <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
+                <path d="M16 2L4 12v18h8v-8h8v8h8V12L16 2zm0 4.5L24 14v14h-4v-8H12v8H8V14l8-7.5z"/>
+                <circle cx="16" cy="18" r="2" fill="currentColor"/>
+            </svg>
+            <span class="font-headline font-bold text-xl text-primary">Live N Fit</span>
+        </span>
+        <span class="text-sm text-text-secondary font-medium mt-1">
+            {% if user_name %}
+                Welcome {{ user_name }}!
+            {% endif %}
+        </span>
+    </a>
                 </div>
                 
                 <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
+                <div class="hidden md:flex items-center space-x-8 absolute left-1/2 transform -translate-x-1/2">
                     <a href="{{ url_for('homepage') }}" class="text-text-secondary hover:text-primary transition-quick">Home</a>
                     <a href="{{ url_for('about') }}" class="text-text-secondary hover:text-primary transition-quick">About</a>
                     <a href="{{ url_for('design_portal') }}" class="text-text-secondary hover:text-primary transition-quick">Design</a>
-                   
+                  
                     <a href="{{ url_for('designs_gallery') }}" class="text-text-secondary hover:text-primary transition-quick">My Designs</a>
                     <a href="{{ url_for('tech_deep_dive') }}" class="text-text-secondary hover:text-primary transition-quick">Technology</a>
                     <a href="{{ url_for('contact') }}" class="text-primary font-semibold border-b-2 border-secondary">Contact</a>
                 </div>
                 
-                <!-- CTA Button -->
-                <div class="hidden md:block">
-                    
-                </div>
+               
                 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden">
@@ -195,14 +199,17 @@
         
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden hidden bg-surface border-t border-border">
-            <div class="px-4 py-2 space-y-2">
+            <div class="px-4 py-2 space-y-2 text-center">
                 <a href="{{ url_for('homepage') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">Home</a>
                 <a href="{{ url_for('about') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">About</a>
                 <a href="{{ url_for('design_portal') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">Design</a>
-              
                 <a href="{{ url_for('designs_gallery') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">My Designs</a>
                 <a href="{{ url_for('tech_deep_dive') }}" class="block py-2 text-text-secondary hover:text-primary transition-quick">Technology</a>
                 <a href="{{ url_for('contact') }}" class="block py-2 text-primary font-semibold">Contact</a>
+                <!-- Mobile Logout Button -->
+                <a href="{{ url_for('login') }}" class="block py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg text-center transition-smooth">
+                    Logout
+                </a>
             </div>
         </div>
     </nav>

@@ -4,17 +4,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import os
 import smtplib
 from email.mime.text import MIMEText
-from bson.objectid import ObjectId
-
-# Helper function to convert ObjectId to string for JSON serialization
-def sanitize_for_json(data):
-    if isinstance(data, list):
-        return [sanitize_for_json(item) for item in data]
-    if isinstance(data, dict):
-        return {key: sanitize_for_json(value) for key, value in data.items()}
-    if isinstance(data, ObjectId):
-        return str(data)
-    return data
 
 app = Flask(
     __name__,
@@ -22,21 +11,14 @@ app = Flask(
     template_folder=os.path.abspath(os.path.join(os.path.dirname(__file__), 'pages'))
 )
 
-# Set a secret key for session management
-app.secret_key = 'your-very-secret-key'  # Change this to a strong, random value in production
-
-# Temporary storage for design preferences
-design_data_store = {}
-
 # MongoDB connection
-try:
-    client = MongoClient("mongodb+srv://ml_dept_project:ml_dept_project@ml-project.gkigx.mongodb.net/")
-    db = client['livenfit']
-    users_collection = db['users']
-    design_collection = db['designs']
-    draft_collection = db['drafts']
-except Exception as e:
-    print(f"Error connecting to MongoDB: {e}")
+client = MongoClient("mongodb+srv://ml_dept_project:ml_dept_project@ml-project.gkigx.mongodb.net/")
+db = client['livenfit']
+users_collection = db['users']
+design_collection = db['designs']
+
+app.secret_key = 'your_secret_key'  # Set a strong secret key!
+
 def send_email(subject, recipient, body):
     # This is a placeholder for a real email sending implementation.
     # In a production environment, use a robust email library like Flask-Mail
@@ -87,36 +69,27 @@ def contact():
 @app.route('/design_form_portal', methods=['GET', 'POST'])
 def design_portal():
     user_name = session.get('user_name', None)
-    email = session.get('email')
     if request.method == 'POST':
-        design_preferences = request.form.to_dict()
+        form_data = request.form.to_dict()
         
         # Set default values for family composition if not provided
-        design_preferences.setdefault('children-count', '0')
-        design_preferences.setdefault('couples-count', '0')
-        design_preferences.setdefault('singles-count', '0')
+        form_data.setdefault('children-count', '0')
+        form_data.setdefault('couples-count', '0')
+        form_data.setdefault('singles-count', '0')
 
-        # Sanitize before storing in session
-        session['design_preferences'] = sanitize_for_json(design_preferences)
-        
-        # Temporarily store data in the backend
-        if email:
-            design_data_store[email] = design_preferences
-            print("--- Temporarily Stored Design Preferences ---")
-            for key, value in design_preferences.items():
-                print(f"{key}: {value}")
-            print("-------------------------------------------")
+        # Temporarily store data in the session
+        session['design_form_data'] = form_data
         
         # Store the data in the database
+        email = session.get('email')
         if email:
-            design_preferences['user_email'] = email
-            draft_collection.delete_one({'user_email': email})
-
+            form_data['user_email'] = email
+            
             # Send email notification
             try:
                 email_subject = "Your Live N Fit Design Submission"
                 email_body = f"Hello {user_name},\n\nThank you for submitting your design preferences.\n\nHere is a summary of your submission:\n"
-                for key, value in design_preferences.items():
+                for key, value in form_data.items():
                     # Sanitize key for display
                     display_key = key.replace('-', ' ').replace('_', ' ').title()
                     email_body += f"- {display_key}: {value}\n"
@@ -127,46 +100,16 @@ def design_portal():
             except Exception as e:
                 flash(f"There was an error sending the confirmation email: {e}", "danger")
 
-        design_collection.insert_one(design_preferences)
-        sanitized_form_data = sanitize_for_json(design_preferences)
-        return render_template('2d-design.html', form_data=sanitized_form_data, user_name=user_name)
-    
-    # For GET request, check for session data first, then saved draft
-    draft_data = session.get('design_preferences')
-    if not draft_data and email:
-        draft_data_from_db = draft_collection.find_one({'user_email': email})
-        if draft_data_from_db:
-            draft_data = sanitize_for_json(draft_data_from_db)
-    else:
-        if draft_data:
-            draft_data = sanitize_for_json(draft_data)
-    # If session is expired, draft_data will be None and form will be empty
-    return render_template('design_form_portal.html', user_name=user_name, draft_data=draft_data)
-
-@app.route('/save_draft', methods=['POST'])
-def save_draft():
-    if 'email' not in session:
-        return jsonify({'status': 'error', 'message': 'User not logged in'}), 401
-    
-    email = session['email']
-    draft_data = request.json
-    
-    # Update or insert draft data
-    draft_collection.update_one(
-        {'user_email': email},
-        {'$set': draft_data},
-        upsert=True
-    )
-    
-    return jsonify({'status': 'success', 'message': 'Draft saved successfully'})
+        design_collection.insert_one(form_data)
+        return render_template('2d-design.html', form_data=form_data, user_name=user_name)
+    return render_template('design_form_portal.html', user_name=user_name)
  
 @app.route('/my_designs_gallery')
 def designs_gallery():
     user_name = session.get('user_name', None)
     email = session.get('email')
     if email:
-        user_designs_from_db = list(design_collection.find({'user_email': email}))
-        user_designs = sanitize_for_json(user_designs_from_db)
+        user_designs = list(design_collection.find({'user_email': email}))
     else:
         user_designs = []
     return render_template('my_designs_gallery.html', user_name=user_name, designs=user_designs)
@@ -196,13 +139,6 @@ def pricing():
         style = form_data.get('style-btn', 'modern').lower()
         factor = style_factor.get(style, 1.0)
         price = int(size * floors * base_price * factor)
-
-        # After price prediction, clear draft from backend and session
-        email = session.get('email')
-        if email:
-            draft_collection.delete_one({'user_email': email})
-        session.pop('design_preferences', None)
-
         return render_template('pricing.html', form_data=form_data, price=price, user_name=user_name)
     else:
         return render_template('pricing.html', form_data=None, price=None, user_name=user_name)
@@ -212,12 +148,9 @@ def design_2d():
     user_name = session.get('user_name', None)
     if request.method == 'POST':
         form_data = request.form.to_dict()
-        # Sanitize before storing in session
-        session['design_preferences'] = sanitize_for_json(form_data)
         return render_template('2d-design.html', form_data=form_data, user_name=user_name)
     else:
-        form_data = session.get('design_preferences', None)
-        return render_template('2d-design.html', form_data=form_data, user_name=user_name)
+        return render_template('2d-design.html', form_data=None, user_name=user_name)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -262,16 +195,6 @@ def register():
 def family_api():
     data = request.json
     return jsonify({"status": "success", "received": data}), 200
-
-@app.route('/view_stored_data')
-def view_stored_data():
-    return jsonify(design_data_store)
-
-@app.route('/logout')
-def logout():
-    session.clear()
-    flash("You have been logged out.", "success")
-    return redirect(url_for('homepage'))
 
 if __name__ == '__main__':
     app.run(debug=True)

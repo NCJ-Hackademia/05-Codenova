@@ -17,12 +17,19 @@
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <a href="{{url_for('homepage')}}" class="flex items-center space-x-2">
-                        <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
-                            <path d="M16 2L4 12v18h8v-8h8v8h8V12L16 2zm0 4.5L24 14v14h-4v-8H12v8H8V14l8-7.5z"/>
-                            <circle cx="16" cy="18" r="2" fill="currentColor"/>
-                        </svg>
-                        <span class="font-headline font-bold text-xl text-primary">Live N Fit</span>
+                    <a href="{{url_for('homepage')}}" class="flex flex-col items-start space-y-0.5 space-x-2">
+                        <span class="flex items-center space-x-2">
+                            <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
+                                <path d="M16 2L4 12v18h8v-8h8v8h8V12L16 2zm0 4.5L24 14v14h-4v-8H12v8H8V14l8-7.5z"/>
+                                <circle cx="16" cy="18" r="2" fill="currentColor"/>
+                            </svg>
+                            <span class="font-headline font-bold text-xl text-primary">Live N Fit</span>
+                        </span>
+                        <span class="text-sm text-text-secondary font-medium mt-1">
+                            {% if user_name %}
+                                Welcome {{ user_name }}!
+                            {% endif %}
+                        </span>
                     </a>
                 </div>
                 
