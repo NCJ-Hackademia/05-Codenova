@@ -244,9 +244,11 @@ def register():
         email = data.get('email')
         password = data.get('password')
 
+        # Check if user already exists
         if users_collection.find_one({'email': email}):
-            return jsonify({'error': 'Email already registered'}), 400
+            return jsonify({'error': 'Email already registered'}), 409
 
+        # Hash the password and create the user
         hashed_password = generate_password_hash(password)
         users_collection.insert_one({
             'name': name,
@@ -272,6 +274,46 @@ def logout():
     session.clear()
     flash("You have been logged out.", "success")
     return redirect(url_for('homepage'))
+
+@app.route('/forgot_password', methods=['POST'])
+def forgot_password():
+    data = request.get_json()
+    email = data.get('email')
+    user = users_collection.find_one({'email': email})
+    if user:
+        # Send reset link logic here (implement actual email sending)
+        return jsonify(success=True, message="Reset link sent.")
+    else:
+        return jsonify(success=False, message="Email not found.")
+
+@app.route('/forgot_password')
+def forgot_password_page():
+    return render_template('forgot_password.html')
+
+@app.route('/change-password', methods=['POST'])
+def change_password():
+    data = request.get_json()
+    email = data.get('email')
+    new_password = data.get('new_password')
+
+    # Validate input
+    if not email or not new_password:
+        return jsonify(success=False, field='email', message='Email and new password are required.')
+
+    if len(new_password) < 6:
+        return jsonify(success=False, field='new_password', message='New password must be at least 6 characters.')
+
+    user = users_collection.find_one({'email': email})
+    if not user:
+        return jsonify(success=False, field='email', message='Email not found.')
+
+    # Update password
+    users_collection.update_one(
+        {'email': email},
+        {'$set': {'password': generate_password_hash(new_password)}}
+    )
+
+    return jsonify(success=True, message='Password changed successfully.')
 
 if __name__ == '__main__':
     app.run(debug=True)

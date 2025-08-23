@@ -265,7 +265,7 @@
                 const password = passwordInput.value;
                 const confirmPassword = confirmPasswordInput.value;
 
-                // Basic validation (already handled above, but double-check)
+                // Basic validation
                 if (!name || !email || !password || !confirmPassword || password !== confirmPassword) {
                     submitText.textContent = 'Create Account';
                     loadingSpinner.classList.add('hidden');
@@ -280,15 +280,16 @@
                     },
                     body: JSON.stringify({ name: name, email: email, password: password })
                 })
-                .then(response => {
-                    if (response.ok) {
+                .then(response => response.json().then(data => ({ status: response.status, body: data })))
+                .then(({ status, body }) => {
+                    if (status === 200) {
                         window.location.href = "{{ url_for('login') }}";
                     } else {
-                        // Handle errors if backend returns them
                         submitText.textContent = 'Create Account';
                         loadingSpinner.classList.add('hidden');
                         submitBtn.disabled = false;
-                        alert("Registration failed. Please try again.");
+                        // Show backend error message if available
+                        alert(body.error || "Registration failed. Please try again.");
                     }
                 })
                 .catch(error => {
