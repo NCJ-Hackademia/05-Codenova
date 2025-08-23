@@ -162,128 +162,48 @@
         </section>
     </main>
     <script>
-    function generateSVG(formData) {
-        let rooms = 1;
-        let label = "Open Space";
-        let fill = "#e0e7ff";
-        let textColor = "#3730a3";
-        let details = "";
-
-        if (formData['family-size-btn']) {
-            if (formData['family-size-btn'] === "1-2") { rooms = 2; label = "Living + Bedroom"; }
-            if (formData['family-size-btn'] === "3-4") { rooms = 3; label = "Living + 2 Bedrooms"; }
-            if (formData['family-size-btn'] === "5-6") { rooms = 4; label = "Living + 3 Bedrooms"; }
-            if (formData['family-size-btn'] === "7+") { rooms = 5; label = "Living + 4 Bedrooms"; }
-        }
-        if (formData['style-btn']) {
-            details += "Style: " + formData['style-btn'].charAt(0).toUpperCase() + formData['style-btn'].slice(1) + " ";
-        }
-        if (formData['size-btn']) {
-            details += "| Size: " + formData['size-btn'] + " sq ft ";
-        }
-        if (formData['floor-btn']) {
-            details += "| Floors: " + formData['floor-btn'] + " ";
-        }
-
-        const width = 600, height = 340;
-        let svg = `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" class="svg-floorplan">
-            <rect x="20" y="20" width="${width-40}" height="${height-40}" rx="30" fill="${fill}" stroke="#6366f1" stroke-width="4"/>
-            <text x="${width/2}" y="60" text-anchor="middle" font-size="2rem" fill="${textColor}" font-family="Arial" font-weight="bold">${label}</text>
-        `;
-
-        // Draw rooms as rectangles
-        const roomWidth = (width-80)/rooms, roomHeight = height-140;
-        for(let i=0; i<rooms; i++) {
-            svg += `<rect x="${40+i*roomWidth}" y="100" width="${roomWidth-10}" height="${roomHeight}" rx="16" fill="#fff" stroke="#6366f1" stroke-width="2"/>`;
-            svg += `<text x="${40+i*roomWidth+roomWidth/2-5}" y="${100+roomHeight/2}" text-anchor="middle" font-size="1.1rem" fill="#6366f1" font-family="Arial">Room ${i+1}</text>`;
-        }
-        svg += `<text x="${width/2}" y="${height-40}" text-anchor="middle" font-size="1rem" fill="#64748b" font-family="Arial">${details}</text>`;
-        svg += "</svg>";
-        return svg;
-    }
-
-    function updateDetails(formData) {
-        const detailsList = document.getElementById('details-list');
-        detailsList.innerHTML = ''; // Clear existing details
-
-        if (formData && Object.keys(formData).length > 0) {
-            const details = {
-                'size-btn': 'Preferred Home Size',
-                'floor-btn': 'Number of Floors',
-                'style-btn': 'Design Style',
-                'family-size-btn': 'Family Size',
-                'children-count': 'Children',
-                'couples-count': 'Couples',
-                'singles-count': 'Singles'
-            };
-
-            for (const key in details) {
-                if (formData[key]) {
-                    const li = document.createElement('li');
-                    let value = formData[key];
-                    if (key === 'style-btn') {
-                        value = value.charAt(0).toUpperCase() + value.slice(1);
-                    }
-                    if (key === 'size-btn') {
-                        value += ' sq ft';
-                    }
-                    li.innerHTML = `<strong>${details[key]}:</strong> ${value}`;
-                    detailsList.appendChild(li);
-                }
-            }
-        } else {
-            const li = document.createElement('li');
-            li.textContent = 'No design data found. Please create a design first.';
-            detailsList.appendChild(li);
-        }
-    }
-
     document.addEventListener('DOMContentLoaded', function() {
-        const savedData = localStorage.getItem('designFormData');
-        let formData = {};
-        if (savedData) {
-            formData = JSON.parse(savedData);
+        // Get design data from localStorage
+        const designData = JSON.parse(localStorage.getItem('designData'));
+        if (!designData || !designData.area || !designData.floors || !designData.rooms || !designData.style) {
+            document.body.innerHTML = '<p class="text-center mt-10 text-red-600">No design data found. Please go back and fill the design form.</p>';
+            return;
         }
 
-        updateDetails(formData);
-        document.getElementById('svg-container').innerHTML = generateSVG(formData);
+        // Generate a simple SVG floor plan based on area, rooms, floors
+        function generateSVG(data) {
+            // Calculate width and height based on area and floors
+            const width = Math.min(600, Math.max(300, parseInt(data.area) / 10));
+            const floorHeight = 60;
+            const height = 60 + (parseInt(data.floors) * floorHeight);
 
-        document.getElementById('generate-btn').addEventListener('click', function() {
-            const styles = ['modern', 'traditional', 'contemporary', 'farmhouse', 'industrial', 'transitional'];
-            const newStyle = styles[Math.floor(Math.random() * styles.length)];
-            formData['style-btn'] = newStyle;
-            
-            // Update UI and save to localStorage
-            document.getElementById('svg-container').innerHTML = generateSVG(formData);
-            updateDetails(formData);
-            localStorage.setItem('designFormData', JSON.stringify(formData));
-        });
-
-        document.getElementById('proceed-btn').addEventListener('click', function() {
-            // Set default values
-            let area = 1500;
-            let rooms = 2;
-            let floors = 1;
-
-            // Overwrite with form data if it exists
-            if (formData) {
-                const familySize = formData['family-size-btn'];
-                if (familySize === "3-4") rooms = 3;
-                if (familySize === "5-6") rooms = 4;
-                if (familySize === "7+") rooms = 5;
-
-                area = parseInt(formData['size-btn'], 10) || area;
+            let svg = `<svg width="${width}" height="${height}" class="svg-floorplan" xmlns="http://www.w3.org/2000/svg">`;
+            for (let f = 0; f < parseInt(data.floors); f++) {
+                svg += `<rect x="10" y="${20 + f * floorHeight}" width="${width - 20}" height="50" fill="#e2e8f0" stroke="#4c51bf" stroke-width="2"/>`;
+                svg += `<text x="${width / 2}" y="${50 + f * floorHeight}" text-anchor="middle" font-size="18" fill="#4c51bf">Floor ${f + 1}</text>`;
             }
+            svg += `<text x="${width / 2}" y="${height - 10}" text-anchor="middle" font-size="16" fill="#2d3748">Rooms: ${data.rooms}, Style: ${data.style}</text>`;
+            svg += `</svg>`;
+            document.getElementById('svg-container').innerHTML = svg;
+        }
 
-            const floorPlan = {
-                area: area,
-                rooms: rooms,
-                floors: floors,
-                style: formData ? formData['style-btn'] : 'modern'
-            };
-            localStorage.setItem('floorPlan', JSON.stringify(floorPlan));
+        // Show details
+        function updateDetails(data) {
+            document.getElementById('details-list').innerHTML = `
+                <li><strong>Area:</strong> ${data.area} sq ft</li>
+                <li><strong>Floors:</strong> ${data.floors}</li>
+                <li><strong>Rooms:</strong> ${data.rooms}</li>
+                <li><strong>Style:</strong> ${data.style}</li>
+            `;
+        }
 
-            // Redirect to the pricing page
+        // Render the design and details
+        generateSVG(designData);
+        updateDetails(designData);
+
+        // Proceed button: Save for pricing
+        document.getElementById('proceed-btn').addEventListener('click', function() {
+            localStorage.setItem('floorPlan', JSON.stringify(designData));
             window.location.href = "{{ url_for('pricing') }}";
         });
     });

@@ -771,26 +771,37 @@ document.querySelectorAll('input, select').forEach(el => {
             }
 
             // Navigation button handlers
-            document.getElementById('next-btn').addEventListener('click', () => { if (currentStep < totalSteps) showStep(currentStep + 1); });
+            document.getElementById('next-btn').addEventListener('click', () => {
+    if (currentStep === 1) {
+        if (!validateFamilySizeAndComposition()) return;
+    }
+    if (currentStep < totalSteps) showStep(currentStep + 1);
+});
             document.getElementById('prev-btn').addEventListener('click', () => { if (currentStep > 1) showStep(currentStep - 1); });
 
             // Form submission
             document.getElementById('generate-design-btn').addEventListener('click', function(e) {
-                e.preventDefault();
-                // Validation logic here...
-                for (const key in formData) {
-                    let hidden = document.getElementById('hidden-' + key);
-                    if (!hidden) {
-                        hidden = document.createElement('input');
-                        hidden.type = 'hidden';
-                        hidden.name = key;
-                        hidden.id = 'hidden-' + key;
-                        document.getElementById('design-form').appendChild(hidden);
-                    }
-                    hidden.value = formData[key];
-                }
-                document.getElementById('design-form').submit();
-            });
+    e.preventDefault();
+    if (!validateFamilySizeAndComposition()) return;
+
+    // Collect all relevant data from formData
+    const designData = {
+        area: formData['size-btn'],
+        floors: formData['floor-btn'] === '4+' ? document.getElementById('floors-dropdown').value : formData['floor-btn'],
+        style: formData['style-btn'],
+        rooms: (
+            parseInt(formData['children-count'] || 0) +
+            parseInt(formData['couples-count'] || 0) +
+            parseInt(formData['singles-count'] || 0)
+        )
+    };
+
+    // Save to localStorage
+    localStorage.setItem('designData', JSON.stringify(designData));
+
+    // Redirect to 2D design page using Flask route
+    window.location.href = "{{ url_for('design_2d') }}";
+});
 
             // Save draft functionality
             document.getElementById('save-draft-btn').addEventListener('click', function() {
@@ -829,6 +840,42 @@ document.querySelectorAll('input, select').forEach(el => {
             showStep(1);
             initVoiceInput();
         });
+
+function validateFamilySizeAndComposition() {
+    // Get selected family size value
+    let familySizeValue = null;
+    document.querySelectorAll('.family-size-btn').forEach(btn => {
+        if (btn.classList.contains('border-secondary')) {
+            familySizeValue = btn.getAttribute('data-value');
+        }
+    });
+
+    // Convert family size to a number
+    let expectedSize = 0;
+    if (familySizeValue) {
+        if (familySizeValue === '1-2') expectedSize = 2;
+        else if (familySizeValue === '3-4') expectedSize = 4;
+        else if (familySizeValue === '5-6') expectedSize = 6;
+        else if (familySizeValue === '7+') expectedSize = 7;
+    }
+
+    // Get composition counts
+    const children = parseInt(document.getElementById('children-count').textContent) || 0;
+    const couples = parseInt(document.getElementById('couples-count').textContent) || 0;
+    const singles = parseInt(document.getElementById('singles-count').textContent) || 0;
+    const compositionTotal = children + couples + singles;
+
+    // Compare
+    if (expectedSize !== compositionTotal) {
+        document.getElementById('composition-warning').textContent =
+            `Family size (${expectedSize}) and composition (${compositionTotal}) must be equal.`;
+        document.getElementById('composition-warning').classList.remove('hidden');
+        return false;
+    } else {
+        document.getElementById('composition-warning').classList.add('hidden');
+        return true;
+    }
+}
     </script>
 </body>
 </html>

@@ -5,6 +5,7 @@ import os
 import smtplib
 from email.mime.text import MIMEText
 from bson.objectid import ObjectId
+import pickle
 
 # Helper function to convert ObjectId to string for JSON serialization
 def sanitize_for_json(data):
@@ -37,14 +38,9 @@ try:
     draft_collection = db['drafts']
 except Exception as e:
     print(f"Error connecting to MongoDB: {e}")
+
 def send_email(subject, recipient, body):
-    # This is a placeholder for a real email sending implementation.
-    # In a production environment, use a robust email library like Flask-Mail
-    # and secure credentials management (e.g., environment variables).
-    sender_email = "noreply@livenfit.com"  # Use a generic sender
-    
-    # For demonstration, we'll just print the email content to the console.
-    # This avoids needing real SMTP credentials for this exercise.
+    sender_email = "noreply@livenfit.com"
     print("--- Sending Email ---")
     print(f"To: {recipient}")
     print(f"From: {sender_email}")
@@ -52,18 +48,6 @@ def send_email(subject, recipient, body):
     print("--- Body ---")
     print(body)
     print("---------------------")
-    # In a real implementation, the smtplib code would go here.
-    # try:
-    #     msg = MIMEText(body)
-    #     msg['Subject'] = subject
-    #     msg['From'] = sender_email
-    #     msg['To'] = recipient
-    #     with smtplib.SMTP("smtp.example.com", 587) as server:
-    #         server.starttls()
-    #         server.login("user", "password")
-    #         server.send_message(msg)
-    # except Exception as e:
-    #     print(f"Failed to send email: {e}")
 
 @app.route('/')
 def index():
@@ -90,48 +74,33 @@ def design_portal():
     email = session.get('email')
     if request.method == 'POST':
         design_preferences = request.form.to_dict()
-        
-        # Set default values for family composition if not provided
         design_preferences.setdefault('children-count', '0')
         design_preferences.setdefault('couples-count', '0')
         design_preferences.setdefault('singles-count', '0')
-
-        # Sanitize before storing in session
         session['design_preferences'] = sanitize_for_json(design_preferences)
-        
-        # Temporarily store data in the backend
         if email:
             design_data_store[email] = design_preferences
             print("--- Temporarily Stored Design Preferences ---")
             for key, value in design_preferences.items():
                 print(f"{key}: {value}")
             print("-------------------------------------------")
-        
-        # Store the data in the database
         if email:
             design_preferences['user_email'] = email
             draft_collection.delete_one({'user_email': email})
-
-            # Send email notification
             try:
                 email_subject = "Your Live N Fit Design Submission"
                 email_body = f"Hello {user_name},\n\nThank you for submitting your design preferences.\n\nHere is a summary of your submission:\n"
                 for key, value in design_preferences.items():
-                    # Sanitize key for display
                     display_key = key.replace('-', ' ').replace('_', ' ').title()
                     email_body += f"- {display_key}: {value}\n"
                 email_body += "\nWe will review your design and get back to you shortly.\n\nBest regards,\nThe Live N Fit Team"
-                
                 send_email(email_subject, email, email_body)
                 flash("Design submitted and a confirmation email has been sent.", "success")
             except Exception as e:
                 flash(f"There was an error sending the confirmation email: {e}", "danger")
-
         design_collection.insert_one(design_preferences)
         sanitized_form_data = sanitize_for_json(design_preferences)
         return render_template('2d-design.html', form_data=sanitized_form_data, user_name=user_name)
-    
-    # For GET request, check for session data first, then saved draft
     draft_data = session.get('design_preferences')
     if not draft_data and email:
         draft_data_from_db = draft_collection.find_one({'user_email': email})
@@ -140,24 +109,19 @@ def design_portal():
     else:
         if draft_data:
             draft_data = sanitize_for_json(draft_data)
-    # If session is expired, draft_data will be None and form will be empty
     return render_template('design_form_portal.html', user_name=user_name, draft_data=draft_data)
 
 @app.route('/save_draft', methods=['POST'])
 def save_draft():
     if 'email' not in session:
         return jsonify({'status': 'error', 'message': 'User not logged in'}), 401
-    
     email = session['email']
     draft_data = request.json
-    
-    # Update or insert draft data
     draft_collection.update_one(
         {'user_email': email},
         {'$set': draft_data},
         upsert=True
     )
-    
     return jsonify({'status': 'success', 'message': 'Draft saved successfully'})
  
 @app.route('/my_designs_gallery')
@@ -181,7 +145,6 @@ def pricing():
     user_name = session.get('user_name', None)
     if request.method == 'POST':
         form_data = request.form.to_dict()
-        # Simple price prediction logic (customize as needed)
         base_price = 1500  # per sq ft
         size = int(form_data.get('size-btn', 1000))
         floors = int(form_data.get('floor-btn', 1))
@@ -196,28 +159,17 @@ def pricing():
         style = form_data.get('style-btn', 'modern').lower()
         factor = style_factor.get(style, 1.0)
         price = int(size * floors * base_price * factor)
-
-        # After price prediction, clear draft from backend and session
         email = session.get('email')
         if email:
             draft_collection.delete_one({'user_email': email})
         session.pop('design_preferences', None)
-
         return render_template('pricing.html', form_data=form_data, price=price, user_name=user_name)
     else:
         return render_template('pricing.html', form_data=None, price=None, user_name=user_name)
 
-@app.route('/2d-design', methods=['GET', 'POST'])
+@app.route('/design_2d')
 def design_2d():
-    user_name = session.get('user_name', None)
-    if request.method == 'POST':
-        form_data = request.form.to_dict()
-        # Sanitize before storing in session
-        session['design_preferences'] = sanitize_for_json(form_data)
-        return render_template('2d-design.html', form_data=form_data, user_name=user_name)
-    else:
-        form_data = session.get('design_preferences', None)
-        return render_template('2d-design.html', form_data=form_data, user_name=user_name)
+    return render_template('2d-design.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -225,7 +177,6 @@ def login():
         data = request.get_json()
         email = data.get('email')
         password = data.get('password')
-
         user = users_collection.find_one({'email': email})
         if user and check_password_hash(user['password'], password):
             session['user_name'] = user['name']
@@ -233,7 +184,6 @@ def login():
             return jsonify({'message': 'Login successful'}), 200
         else:
             return jsonify({'error': 'Invalid email or password'}), 401
-
     return render_template('login.html')
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -243,12 +193,8 @@ def register():
         name = data.get('name')
         email = data.get('email')
         password = data.get('password')
-
-        # Check if user already exists
         if users_collection.find_one({'email': email}):
             return jsonify({'error': 'Email already registered'}), 409
-
-        # Hash the password and create the user
         hashed_password = generate_password_hash(password)
         users_collection.insert_one({
             'name': name,
@@ -256,10 +202,8 @@ def register():
             'password': hashed_password
         })
         return jsonify({'message': 'Registration successful'}), 200
-
     return render_template('register.html')
 
-# Example API endpoint for family grid (POST)
 @app.route('/api/family', methods=['POST'])
 def family_api():
     data = request.json
@@ -281,7 +225,6 @@ def forgot_password():
     email = data.get('email')
     user = users_collection.find_one({'email': email})
     if user:
-        # Send reset link logic here (implement actual email sending)
         return jsonify(success=True, message="Reset link sent.")
     else:
         return jsonify(success=False, message="Email not found.")
@@ -295,25 +238,61 @@ def change_password():
     data = request.get_json()
     email = data.get('email')
     new_password = data.get('new_password')
-
-    # Validate input
     if not email or not new_password:
         return jsonify(success=False, field='email', message='Email and new password are required.')
-
     if len(new_password) < 6:
         return jsonify(success=False, field='new_password', message='New password must be at least 6 characters.')
-
     user = users_collection.find_one({'email': email})
     if not user:
         return jsonify(success=False, field='email', message='Email not found.')
-
-    # Update password
     users_collection.update_one(
         {'email': email},
         {'$set': {'password': generate_password_hash(new_password)}}
     )
-
     return jsonify(success=True, message='Password changed successfully.')
+
+@app.route('/predict-price', methods=['POST'])
+def predict_price():
+    data = request.get_json()
+    area = data.get('area')
+    rooms = data.get('rooms')
+    floors = data.get('floors')
+    predictions = {}
+    try:
+        with open('model_rooms.pkl', 'rb') as f:
+            rooms_model = pickle.load(f)
+        features = [[area, rooms, floors]]
+        predictions['rooms'] = int(rooms_model.predict(features)[0])
+    except Exception as e:
+        print(f"Error with rooms model: {e}")
+        predictions['rooms'] = None
+    try:
+        with open('model_price.pkl', 'rb') as f:
+            price_model = pickle.load(f)
+        features = [[area, rooms, floors]]
+        predictions['price'] = int(price_model.predict(features)[0])
+    except Exception as e:
+        print(f"Error with price model: {e}")
+        predictions['price'] = None
+    try:
+        with open('model_baths.pkl', 'rb') as f:
+            baths_model = pickle.load(f)
+        features = [[area, rooms, floors]]
+        predictions['baths'] = int(baths_model.predict(features)[0])
+    except Exception as e:
+        print(f"Error with baths model: {e}")
+        predictions['baths'] = None
+    return jsonify(predictions)
+
+@app.route('/get-design-preferences', methods=['GET'])
+def get_design_preferences():
+    email = session.get('email')
+    if not email:
+        return jsonify({'error': 'User not logged in'}), 401
+    design_prefs = design_data_store.get(email) or session.get('design_preferences', {})
+    if not design_prefs:
+        return jsonify({'error': 'No design preferences found'}), 404
+    return jsonify(sanitize_for_json(design_prefs))
 
 if __name__ == '__main__':
     app.run(debug=True)

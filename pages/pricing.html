@@ -133,8 +133,26 @@
             <!-- Plan summary will be loaded here -->
         </div>
         <div class="price-box text-center">
-            <h2 class="text-2xl font-bold text-primary mb-4">Predicted Price</h2>
-            <div id="price" class="price-value">Calculating...</div>
+            <h2 class="text-2xl font-bold text-primary mb-4">AI Model Predictions</h2>
+            
+            <!-- Price Prediction -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-secondary mb-2">Estimated Price</h3>
+                <div id="price-prediction" class="price-value">Calculating...</div>
+            </div>
+            
+            <!-- Rooms Prediction -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-secondary mb-2">Recommended Rooms</h3>
+                <div id="rooms-prediction" class="text-2xl font-bold text-accent mb-2">Calculating...</div>
+            </div>
+            
+            <!-- Bathrooms Prediction -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-secondary mb-2">Recommended Bathrooms</h3>
+                <div id="baths-prediction" class="text-2xl font-bold text-accent mb-2">Calculating...</div>
+            </div>
+            
             <button class="btn" onclick="goBack()">Back to Design</button>
         </div>
     </div>
@@ -187,45 +205,87 @@
         </div>
     </footer>
     <script>
-        // Simulate fetching plan details from localStorage or backend
-        function getPlanDetails() {
-            // Example: { area: 1800, rooms: 3, floors: 2 }
-            return JSON.parse(localStorage.getItem('floorPlan')) || { area: 1500, rooms: 2, floors: 1 };
-        }
-
-        function predictPrice(plan) {
-            // Simple price prediction logic (customize as needed)
-            const basePricePerSqft = 1200;
-            let price = plan.area * basePricePerSqft;
-            price += plan.rooms * 50000;
-            price += (plan.floors - 1) * 200000;
-            return price;
+        // Use localStorage data if available, otherwise fallback to backend
+        function getDesignData() {
+            const localData = localStorage.getItem('designData') || localStorage.getItem('floorPlan');
+            if (localData) {
+                return Promise.resolve(JSON.parse(localData));
+            }
+            // Fallback to backend if localStorage is empty
+            return fetch('/get-design-preferences')
+                .then(response => response.json())
+                .catch(() => ({ area: 1500, floors: 1, style: 'modern', rooms: 3, children: 0, couples: 0, singles: 0 }));
         }
 
         function renderPlanSummary(plan) {
             document.getElementById('plan-summary').innerHTML = `
-                <h3 class="text-xl font-semibold text-secondary mb-4">Plan Summary</h3>
+                <h3 class="text-xl font-semibold text-secondary mb-4">Your Design Summary</h3>
                 <ul class="details-list">
                     <li><strong>Area:</strong> ${plan.area} sqft</li>
-                    <li><strong>Rooms:</strong> ${plan.rooms}</li>
                     <li><strong>Floors:</strong> ${plan.floors}</li>
+                    <li><strong>Style:</strong> ${plan.style}</li>
+                    <li><strong>Rooms:</strong> ${plan.rooms}</li>
+                    ${plan.children !== undefined ? `<li><strong>Children:</strong> ${plan.children}</li>` : ""}
+                    ${plan.couples !== undefined ? `<li><strong>Couples:</strong> ${plan.couples}</li>` : ""}
+                    ${plan.singles !== undefined ? `<li><strong>Singles:</strong> ${plan.singles}</li>` : ""}
                 </ul>
             `;
         }
 
-        function renderPrice(price) {
-            document.getElementById('price').textContent = '₹ ' + price.toLocaleString();
+        function predictBathrooms(rooms) {
+            rooms = parseInt(rooms);
+            if (isNaN(rooms)) return 'Bathrooms not entered';
+            if (rooms <= 2) return '1 bathroom';
+            if (rooms <= 4) return '2 bathrooms';
+            return '3 bathrooms';
+        }
+
+        function renderPredictions(predictions, plan) {
+            document.getElementById('price-prediction').textContent =
+                predictions.price !== null
+                    ? '₹ ' + predictions.price.toLocaleString()
+                    : (plan.area ? '₹ ' + (plan.area * 1500) : 'Price not entered');
+
+            document.getElementById('rooms-prediction').textContent =
+                predictions.rooms !== null
+                    ? predictions.rooms + ' rooms'
+                    : (plan.rooms ? plan.rooms + ' rooms' : 'Rooms not entered');
+
+            document.getElementById('baths-prediction').textContent =
+                predictions.baths !== null
+                    ? predictions.baths + ' bathrooms'
+                    : predictBathrooms(plan.rooms);
+        }
+
+        function fetchAllPredictions(plan) {
+            fetch('/predict-price', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    area: plan.area,
+                    rooms: plan.rooms,
+                    floors: plan.floors
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                renderPredictions(data, plan);
+            })
+            .catch(error => {
+                // On error, show user input
+                renderPredictions({ price: null, rooms: null, baths: null }, plan);
+            });
         }
 
         function goBack() {
-            window.location.href = '{{ url_for("design_2d") }}';
+            window.location.href = "/design_form_portal";
         }
 
         // On page load
-        const plan = getPlanDetails();
-        renderPlanSummary(plan);
-        const price = predictPrice(plan);
-        renderPrice(price);
+        getDesignData().then(plan => {
+            renderPlanSummary(plan);
+            fetchAllPredictions(plan);
+        });
 
         // Mobile menu functionality
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
