@@ -595,6 +595,9 @@
 
             formData[elementId] = count;
             showAISuggestion();
+
+            // Add this line:
+            updateFamilySizeFromComposition();
         }
 
         // Mobile menu functionality
@@ -723,10 +726,16 @@
         // Add this in your <script> tag in design_form_portal.html
 document.querySelectorAll('input, select').forEach(el => {
     el.addEventListener('change', function() {
+        // Collect all form data
         const formData = {};
         document.querySelectorAll('input, select').forEach(input => {
-            formData[input.name] = input.value;
+            if (input.type === 'radio') {
+                if (input.checked) formData[input.name] = input.value;
+            } else {
+                formData[input.name] = input.value;
+            }
         });
+        // Save draft to backend
         fetch('/save_draft', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -734,6 +743,39 @@ document.querySelectorAll('input, select').forEach(el => {
         });
     });
 });
+
+        // Add this function inside your <script> tag
+function updateFamilySizeFromComposition() {
+    const children = parseInt(document.getElementById('children-count').textContent) || 0;
+    const couples = parseInt(document.getElementById('couples-count').textContent) || 0;
+    const singles = parseInt(document.getElementById('singles-count').textContent) || 0;
+    const totalPeople = children + (couples * 2) + singles;
+
+    // Find the appropriate family size button
+    let targetValue = null;
+    if (totalPeople >= 7) {
+        targetValue = "7+";
+    } else if (totalPeople >= 5) {
+        targetValue = "5-6";
+    } else if (totalPeople >= 3) {
+        targetValue = "3-4";
+    } else if (totalPeople >= 1) {
+        targetValue = "1-2";
+    }
+
+    if (targetValue) {
+        document.querySelectorAll('.family-size-btn').forEach(btn => {
+            if (btn.getAttribute('data-value') === targetValue) {
+                btn.classList.add('border-secondary', 'bg-secondary-50');
+                btn.classList.remove('border-border');
+                formData['family-size-btn'] = targetValue;
+            } else {
+                btn.classList.remove('border-secondary', 'bg-secondary-50');
+                btn.classList.add('border-border');
+            }
+        });
+    }
+}
 
         // Event Listeners Setup
         document.addEventListener('DOMContentLoaded', function() {
@@ -772,9 +814,6 @@ document.querySelectorAll('input, select').forEach(el => {
 
             // Navigation button handlers
             document.getElementById('next-btn').addEventListener('click', () => {
-    if (currentStep === 1) {
-        if (!validateFamilySizeAndComposition()) return;
-    }
     if (currentStep < totalSteps) showStep(currentStep + 1);
 });
             document.getElementById('prev-btn').addEventListener('click', () => { if (currentStep > 1) showStep(currentStep - 1); });
@@ -791,7 +830,7 @@ document.querySelectorAll('input, select').forEach(el => {
         style: formData['style-btn'],
         rooms: (
             parseInt(formData['children-count'] || 0) +
-            parseInt(formData['couples-count'] || 0) +
+            (parseInt(formData['couples-count'] || 0) * 2) +
             parseInt(formData['singles-count'] || 0)
         )
     };
@@ -850,28 +889,45 @@ function validateFamilySizeAndComposition() {
         }
     });
 
-    // Convert family size to a number
-    let expectedSize = 0;
-    if (familySizeValue) {
-        if (familySizeValue === '1-2') expectedSize = 2;
-        else if (familySizeValue === '3-4') expectedSize = 4;
-        else if (familySizeValue === '5-6') expectedSize = 6;
-        else if (familySizeValue === '7+') expectedSize = 7;
-    }
-
-    // Get composition counts
+    // Get composition counts and calculate total people
     const children = parseInt(document.getElementById('children-count').textContent) || 0;
     const couples = parseInt(document.getElementById('couples-count').textContent) || 0;
     const singles = parseInt(document.getElementById('singles-count').textContent) || 0;
-    const compositionTotal = children + couples + singles;
+    const compositionTotal = children + (couples * 2) + singles;
+
+    if (!familySizeValue) {
+        const msg = "Please select a family size.";
+        document.getElementById('composition-warning').textContent = msg;
+        document.getElementById('composition-warning').classList.remove('hidden');
+        alert(msg);
+        return false;
+    }
+
+    if (compositionTotal === 0) {
+        const msg = "Please specify your family composition.";
+        document.getElementById('composition-warning').textContent = msg;
+        document.getElementById('composition-warning').classList.remove('hidden');
+        alert(msg);
+        return false;
+    }
+
+    // Parse the family size range
+    let minSize, maxSize;
+    if (familySizeValue.includes('-')) {
+        [minSize, maxSize] = familySizeValue.split('-').map(Number);
+    } else if (familySizeValue.includes('+')) {
+        minSize = parseInt(familySizeValue);
+        maxSize = Infinity;
+    }
 
     // Compare
-    if (expectedSize !== compositionTotal) {
-        document.getElementById('composition-warning').textContent =
-            `Family size (${expectedSize}) and composition (${compositionTotal}) must be equal.`;
+    if (compositionTotal < minSize || compositionTotal > maxSize) {
+        const warningMessage = `The family composition total (${compositionTotal} people) does not match the selected family size range (${familySizeValue} people).`;
+        document.getElementById('composition-warning').textContent = warningMessage;
         document.getElementById('composition-warning').classList.remove('hidden');
+        alert(warningMessage);
         return false;
-    } else {
+    } else{
         document.getElementById('composition-warning').classList.add('hidden');
         return true;
     }

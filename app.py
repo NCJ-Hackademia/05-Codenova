@@ -294,5 +294,14 @@ def get_design_preferences():
         return jsonify({'error': 'No design preferences found'}), 404
     return jsonify(sanitize_for_json(design_prefs))
 
+@app.route('/clear_design_draft', methods=['POST'])
+def clear_design_draft():
+    email = session.get('email')
+    if email:
+        draft_collection.delete_one({'user_email': email})
+        design_data_store.pop(email, None)
+    session.pop('design_preferences', None)
+    return jsonify({'status': 'success'})
+
 if __name__ == '__main__':
     app.run(debug=True)

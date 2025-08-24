@@ -153,7 +153,7 @@
                 <div id="baths-prediction" class="text-2xl font-bold text-accent mb-2">Calculating...</div>
             </div>
             
-            <button class="btn" onclick="goBack()">Back to Design</button>
+            <button class="btn" onclick="saveAndGoHome()">Save</button>
         </div>
     </div>
 
@@ -279,6 +279,24 @@
 
         function goBack() {
             window.location.href = "/design_form_portal";
+        }
+
+        function saveAndGoHome() {
+            // Save the current plan to backend
+            getDesignData().then(plan => {
+                fetch('/save_draft', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(plan)
+                }).then(() => {
+                    // Clear localStorage and backend draft
+                    localStorage.removeItem('designData');
+                    localStorage.removeItem('floorPlan');
+                    fetch('/clear_design_draft', { method: 'POST' }).then(() => {
+                        window.location.href = "/homepage";
+                    });
+                });
+            });
         }
 
         // On page load
