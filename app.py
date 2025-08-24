@@ -117,11 +117,18 @@ def save_draft():
         return jsonify({'status': 'error', 'message': 'User not logged in'}), 401
     email = session['email']
     draft_data = request.json
+    # Save draft
     draft_collection.update_one(
         {'user_email': email},
         {'$set': draft_data},
         upsert=True
     )
+    # If this is a final save (from pricing), also save to designs
+    if draft_data.get('final_save'):
+        draft_data['user_email'] = email
+        # Remove any _id if present (to avoid duplicate key error)
+        draft_data.pop('_id', None)
+        design_collection.insert_one(draft_data)
     return jsonify({'status': 'success', 'message': 'Draft saved successfully'})
  
 @app.route('/my_designs_gallery')

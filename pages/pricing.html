@@ -284,6 +284,12 @@
         function saveAndGoHome() {
             // Save the current plan to backend
             getDesignData().then(plan => {
+                // Get the predicted price from the page
+                const priceText = document.getElementById('price-prediction').textContent.replace(/[^\d]/g, '');
+                const price = parseInt(priceText) || null;
+                plan.price = price;
+                plan.final_save = true; // Mark as final save
+
                 fetch('/save_draft', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },

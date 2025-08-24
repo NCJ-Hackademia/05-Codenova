@@ -145,6 +145,13 @@
                 <!-- 2D Floor Plan SVG -->
                 <div id="svg-container"></div>
 
+                <!-- Work in Progress Message -->
+                <div style="text-align:center; margin-bottom:1.5rem;">
+                    <span class="inline-block bg-yellow-100 text-yellow-800 px-4 py-2 rounded-lg font-semibold text-lg shadow">
+                        Working on your design... (In Progress)
+                    </span>
+                </div>
+
                 <!-- User Details -->
                 <div class="details-box">
                     <h2>Your Design Details</h2>
@@ -166,7 +173,8 @@
         // Get design data from localStorage
         const designData = JSON.parse(localStorage.getItem('designData'));
         if (!designData || !designData.area || !designData.floors || !designData.rooms || !designData.style) {
-            document.body.innerHTML = '<p class="text-center mt-10 text-red-600">No design data found. Please go back and fill the design form.</p>';
+            alert('No design data found. Please go back and fill the design form.');
+            window.location.href = "{{ url_for('design_portal') }}";
             return;
         }
 

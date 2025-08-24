@@ -1,82 +1,102 @@
-# HTML
+# Live N Fit
 
-A modern HTML project utilizing Tailwind CSS for building responsive web applications with minimal setup.
+A web application for personalized home design using AI and user preferences.
 
-## 🚀 Features
+## Features
+- User registration and login
+- Save and view design drafts
+- Predict home price, rooms, and baths using ML models
+- Interactive design form portal
+- MongoDB backend
 
-- **HTML5** - Modern HTML structure with best practices
-- **Tailwind CSS** - Utility-first CSS framework for rapid UI development
-- **Custom Components** - Pre-built component classes for buttons and containers
-- **NPM Scripts** - Easy-to-use commands for development and building
-- **Responsive Design** - Mobile-first approach for all screen sizes
+## Getting Started
 
-## 📋 Prerequisites
+### Prerequisites
+- Python 3.9+
+- Git (optional)
 
-- Node.js (v12.x or higher)
-- npm or yarn
+### Setup
+1. Clone the repository or download the source code.
+2. Open a terminal in the project directory.
+3. Run the batch file to set up and start the app:
+	```
+	run_app.bat
+	```
+	This will:
+	- Create a virtual environment (if not present)
+	- Install required packages
+	- Start the Flask app
 
-## 🛠️ Installation
+### Manual Setup
+If you prefer manual setup:
+1. Create a virtual environment:
+	```
+	python -m venv venv
+	```
+2. Activate the environment:
+	```
+	venv\Scripts\activate
+	```
+3. Install dependencies:
+	```
+	pip install -r requirements.txt
+	```
+4. Run the app:
+	```
+	python app.py
+	```
 
-1. Install dependencies:
-```bash
-npm install
-# or
-yarn install
+
+## File Structure
+
 ```
-
-2. Start the development server:
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-## 📁 Project Structure
-
-```
-html_app/
+live_n_fit/
+│   app.py
+│   requirements.txt
+│   run_app.bat
+│   README.md
+│   tailwind.config.js
+│   package.json
+│   model_price.pkl
+│   model_rooms.pkl
+│   model_baths.pkl
+│
 ├── css/
-│   ├── tailwind.css   # Tailwind source file with custom utilities
-│   └── main.css       # Compiled CSS (generated)
-├── pages/             # HTML pages
-├── index.html         # Main entry point
-├── package.json       # Project dependencies and scripts
-└── tailwind.config.js # Tailwind CSS configuration
+│     main.css
+│     tailwind.css
+│
+├── pages/
+│     index.html
+│     homepage.html
+│     about.html
+│     contact.html
+│     design_form_portal.html
+│     2d-design.html
+│     my_designs_gallery.html
+│     pricing.html
+│     register.html
+│     login.html
+│     forgot_password.html
+│     technology_deep_dive.html
+│
+├── public/
+│     favicon.ico
+│     manifest.json
+│
+└── __pycache__/
+	app.cpython-313.pyc
 ```
 
-## 🎨 Styling
+- `app.py` - Main Flask application
+- `requirements.txt` - Python dependencies
+- `run_app.bat` - Windows batch file for setup and running
+- `pages/` - HTML templates
+- `css/` - Stylesheets
+- `model_price.pkl`, `model_rooms.pkl`, `model_baths.pkl` - ML models
 
-This project uses Tailwind CSS for styling. Custom utility classes include:
+## Environment Variables
+- Set your MongoDB connection string in `app.py` if needed.
+- Change the Flask secret key in `app.py` for production.
 
-
-## 🧩 Customization
-
-To customize the Tailwind configuration, edit the `tailwind.config.js` file:
-
-
-## 📦 Build for Production
-
-Build the CSS for production:
-
-```bash
-npm run build:css
-# or
-yarn build:css
-```
-
-## 📱 Responsive Design
-
-The app is built with responsive design using Tailwind CSS breakpoints:
-
-- `sm`: 640px and up
-- `md`: 768px and up
-- `lg`: 1024px and up
-- `xl`: 1280px and up
-- `2xl`: 1536px and up
-
-## 🙏 Acknowledgments
-
-- Built with [Rocket.new](https://rocket.new)
-- Powered by HTML and Tailwind CSS
-
-Built with ❤️ on Rocket.new
+## License
+MIT
